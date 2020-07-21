@@ -1,0 +1,28 @@
+
+nav {
+    background-color: grey;
+    height: 40px;
+    font-size: 30px;
+    padding-left: 10pc;
+}
+
+main {
+    padding: 0 10pc;
+}
+
+p{
+    border-style: groove;
+}
+
+h1{
+    font-size: large;
+}
+
+h2{
+    font-size: medium;
+}
+
+b{
+    display: block;
+    font-size: 2pc;
+}
