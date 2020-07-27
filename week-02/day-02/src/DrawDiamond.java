@@ -19,7 +19,7 @@ public class DrawDiamond {
     System.out.println("Please enter a number for pyramid rows: ");
     Scanner scanner = new Scanner(System.in);
     int numberOfRows = scanner.nextInt();
-    for (int i = 0; i < numberOfRows; i++) {
+   /* for (int i = 0; i < numberOfRows; i++) {
       for (int j = i; j < numberOfRows; j++) {
         System.out.print(" ");
       }
@@ -27,7 +27,7 @@ public class DrawDiamond {
         System.out.print("*");
       }
       System.out.println();
-    }
+    }*/
 
     /*for (int i = 1; i <= numberOfRows ; i++) {
       for (int j = 0; j <=  i; j++) {
@@ -41,8 +41,8 @@ public class DrawDiamond {
 
     }*/
 
-    for (int i = 1; i < 10; i += 2) {
-      for (int j = 0; j < 9 - i / 2; j++)
+    for (int i = 1; i < numberOfRows+1; i += 2) {
+      for (int j = 0; j < numberOfRows - i / 2; j++)
         System.out.print(" ");
 
       for (int j = 0; j < i; j++)
@@ -51,8 +51,8 @@ public class DrawDiamond {
       System.out.print("\n");
     }
 
-    for (int i = 7; i > 0; i -= 2) {
-      for (int j = 0; j < 9 - i / 2; j++)
+    for (int i = numberOfRows-1; i > 0; i -= 2) {
+      for (int j = 0; j < numberOfRows - i / 2; j++)
         System.out.print(" ");
 
       for (int j = 0; j < i; j++)
