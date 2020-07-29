@@ -47,7 +47,7 @@ public class VariableMutation {
     int h = 135798745;
     // tell if it has 11 as a divisor (print as a boolean)
     boolean isDivisibleBy11 = false;
-    if (h%11 == 0){
+    if (h % 11 == 0){
       isDivisibleBy11 = true;
     }
     System.out.println("Is h has 11 as a divisor? " + isDivisibleBy11);
