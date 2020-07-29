@@ -7,7 +7,7 @@ public class SwapElements {
 // - Swap the first and the third element of `orders`
 
     String[] orders = {"first", "second", "third"};
-    String[] temp = {"blank"};
+    String[] temp = {"xyz"};
     temp[0] = orders[0];
     orders[0] = orders[2];
     orders[2] = temp[0];
