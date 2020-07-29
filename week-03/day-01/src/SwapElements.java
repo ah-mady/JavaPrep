@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class SwapElements {
   public static void main(String[] args) {
     // - Create an array variable named `orders`
@@ -6,9 +8,9 @@ public class SwapElements {
 
     String[] orders = {"first", "second", "third"};
     String[] temp = {"blank"};
-    orders[0] = temp[0];
+    temp[0] = orders[0];
+    orders[0] = orders[2];
     orders[2] = temp[0];
-    
-
+    System.out.println(Arrays.toString(orders));
   }
 }
