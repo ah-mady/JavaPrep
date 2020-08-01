@@ -11,7 +11,9 @@ public class URLFixer {
   }
 
   private static String fixedUrl(String url) {
-    String urlString = url.replace("bots", "odds");
+    int toIndex = url.length() - 4;
+    String toAdd = "odds";
+    String urlString = url.substring(0, toIndex) + toAdd;
     String fixedUrl = urlString.replace("//", "//:");
     return fixedUrl;
   }
