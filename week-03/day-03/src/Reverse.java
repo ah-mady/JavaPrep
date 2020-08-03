@@ -13,7 +13,7 @@ public class Reverse {
   private static char[] reverse(String toBeReversed) {
     char[] reversedChar = toBeReversed.toCharArray();
     int begin = 0;
-    int end = reversedChar.length -1;
+    int end = reversedChar.length - 1;
     char temp;
     while (end > begin) {
       temp = reversedChar[begin];
