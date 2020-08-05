@@ -8,7 +8,7 @@ public class PurpleSteps3D {
     // Reproduce this:
     // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/assets/r4.png]
 
-    Color PURPLE = new Color(150, 40, 141);
+    Color PURPLE = new Color(150, 0, 141);
     graphics.setColor(PURPLE);
     int size = 15;
     int startingX = 10;
