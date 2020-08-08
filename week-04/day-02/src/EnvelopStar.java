@@ -9,7 +9,7 @@ public class EnvelopStar {
   }
 
   private static void drawEnvelop(int steps, Graphics graphics) {
-    graphics.setColor(new Color(95,216,103));
+    graphics.setColor(new Color(95, 216, 103));
     int patternWidth = WIDTH / 2;
     int patternHeight = HEIGHT / 2;
     for (int i = 1; i < steps; i++) {
