@@ -3,6 +3,8 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WriteSingleLine {
@@ -17,14 +19,12 @@ public class WriteSingleLine {
 
   private static void writeLine() {
     Path path = Paths.get("my-file.txt");
+    List<String> lines = new ArrayList<>();
+    lines.add("Muhammad Ahmed");
     try {
-      List<String> lines = Files.readAllLines(path);
-      lines.add("Muhammad Ahmed");
       Files.write(path, lines);
-    } catch (NoSuchFileException e){
-      System.out.println("Unable to write file: my-file.txt");
     } catch (IOException e){
-      System.out.println();
+      System.out.println("Unable to write file: my-file.txt");
     }
   }
 }
