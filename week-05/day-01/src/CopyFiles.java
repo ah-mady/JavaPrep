@@ -12,11 +12,12 @@ public class CopyFiles {
 // It should take the filenames as parameters
 // It should return a boolean that shows if the copy was successful
     System.out.println(copyFiles("my-file.txt"));
+
   }
 
   private static boolean copyFiles(String fileName) {
     Path path = Paths.get(fileName);
-    Path path1 = Paths.get("newfile.txt");
+    Path path1 = Paths.get("new-file-from-copyFile-task.txt");
     boolean result = false;
     try{
       List<String> lines = readFiles(fileName);
