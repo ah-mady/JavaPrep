@@ -15,26 +15,29 @@ public class Logs {
 // Write a function that returns an array with the unique IP adresses.
 // Write a function that returns the GET / POST request ratio.
 
-   // readFile("path");
-    uniqueIP();
-   // getPostRatio();
+    // readFile("path");
+    // uniqueIP();
+    // getPostRatio();
   }
 
-  private static void uniqueIP() {
-    List <String> lines = readFile("log.txt");
-    for (String line:lines) {
-      String[] stringArray = line.split("   ");
-      System.out.println(Arrays.toString(stringArray));
+  private static String uniqueIP() {
+    List<String> lines = readFile("log.txt");
+    String iPAddresses = "";
+    String[] splitLine;
+    for (String line : lines) {
+      splitLine = line.split("   ");
+      iPAddresses += (splitLine[1]) + "\n";
     }
+    return iPAddresses;
   }
 
   private static List<String> readFile(String fileName) {
     Path path = Paths.get(fileName);
-    List <String> lines = new ArrayList<>();
-    try{
+    List<String> lines = new ArrayList<>();
+    try {
       List<String> readLines = Files.readAllLines(path);
       lines.addAll(readLines);
-    } catch (IOException e){
+    } catch (IOException e) {
       System.out.println("IOException in readFile function");
     }
     return lines;
