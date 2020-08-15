@@ -1,10 +1,10 @@
 package blog_post;
 
 public class BlogPost {
-  String authorName;
-  String title;
-  String text;
-  String publicationDate;
+  private String authorName;
+  private String title;
+  private String text;
+  private String publicationDate;
 
   public BlogPost(String authorName, String title, String text, String publicationDate) {
     this.authorName = authorName;
@@ -15,6 +15,6 @@ public class BlogPost {
 
   @Override
   public String toString() {
-    return   "- \"" + this.title + "\" titled by " + this.authorName + " posted at \"" + this.publicationDate + "\".\n\t" + " - " + this.text;
+    return "- \"" + this.title + "\" titled by " + this.authorName + " posted at \"" + this.publicationDate + "\".\n\t" + " - " + this.text;
   }
 }
