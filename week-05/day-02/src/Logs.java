@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Logs {
@@ -15,9 +14,32 @@ public class Logs {
 // Write a function that returns an array with the unique IP adresses.
 // Write a function that returns the GET / POST request ratio.
 
-    // readFile("path");
-    // uniqueIP();
-    // getPostRatio();
+    System.out.println(uniqueIP());
+    System.out.println(getPostRatio());
+  }
+
+  private static String getPostRatio() {
+    List<String> lines = readFile("log.txt");
+    String[] splitLines;
+    int getCount = 0;
+    int postCount = 0;
+    for (String line : lines) {
+      splitLines = line.split("   ");
+      if (splitLines[2].contains("GET")) {
+        ++getCount;
+      } else if (splitLines[2].contains("POST")) {
+        ++postCount;
+      }
+    }
+    int finalGCF = 0;
+    for (int greatestCommonFactor = 1; greatestCommonFactor <= getCount && greatestCommonFactor <= postCount; greatestCommonFactor++) {
+      if (getCount % greatestCommonFactor == 0 && postCount % greatestCommonFactor == 0) {
+        finalGCF = greatestCommonFactor;
+      }
+    }
+    int getRatio = getCount / finalGCF;
+    int postRatio = postCount / finalGCF;
+    return "GET / POST request ratio is: \n" + "\t" + getCount + " : " + postCount + " = " + getRatio + " : " + postRatio;
   }
 
   private static String uniqueIP() {
