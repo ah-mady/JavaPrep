@@ -20,7 +20,7 @@ public class DiceSet {
   public int getCurrent(int i) {
     return dice.get(i);
   }
-  
+
   public void reroll() {
     for (int i = 0; i < dice.size(); i++) {
       dice.set(i, (int) (Math.random() * 6) + 1);
