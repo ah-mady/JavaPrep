@@ -3,13 +3,12 @@ public class Strings {
   // where all the lowercase 'x' chars have been changed to 'y' chars.
   public static void main(String[] args) {
     System.out.println(changeXCharToY("abcxyzxyzxyz"));
-
   }
 
   private static String changeXCharToY(String string) {
     String finalString;
     int index = string.indexOf("x");
-    String toAdd = "y" + string.substring(index +1);
+    String toAdd = "y" + string.substring(index + 1);
     if (index == string.lastIndexOf("x")) {
       finalString = string.substring(0, index) + toAdd;
       return finalString;
