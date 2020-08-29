@@ -13,19 +13,19 @@ public class Fibonacci {
 
   public static void main(String[] args) {
     //milli seconds
-    /*LocalDateTime start = LocalDateTime.now();
+    LocalDateTime start = LocalDateTime.now();
     System.out.println(fib(45));
     LocalDateTime end = LocalDateTime.now();
-    System.out.println(Duration.between(start, end).toMillis());*/
+    System.out.println(Duration.between(start, end).toMillis());
 
     // nano seconds
-    long start = System.nanoTime();
+  /*  long start = System.nanoTime();
 
     System.out.println(fib(48));
 
     long end = System.nanoTime();
     double executionTimeInMillis = (end - start) / 1000.;
-    System.out.println(executionTimeInMillis);
+    System.out.println(executionTimeInMillis);*/
   }
 
   public static long fib(int n) {
