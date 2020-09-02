@@ -1,9 +1,8 @@
 package greenfox_inheritance_excercise;
 
-public class Student extends Person{
-
+public class Student extends Person {
   private String previousOrganization;
-  private  int skippedDays;
+  private int skippedDays;
 
   public Student() {
     super("Jane Doe", 30, Gender.FEMALE);
@@ -18,18 +17,17 @@ public class Student extends Person{
   }
 
   @Override
-  public void getGoal(){
+  public void getGoal() {
     System.out.println("Be a junior software developer.");
   }
 
   @Override
-  public void introduce(){
-    System.out.println("Hi, I'm " + this.name + " a " + this.age + " year old " + this.gender + " from " + this.previousOrganization
+  public void introduce() {
+    System.out.println("Hi, I'm " + this.name + ", a " + this.age + " year old " + this.gender + " from " + this.previousOrganization
         + " who skipped " + this.skippedDays + " days from the course already.");
   }
 
-  public int skippedDay(int numberOfDays){
+  public int skipDays(int numberOfDays) {
     return this.skippedDays += numberOfDays;
   }
-
 }
