@@ -57,6 +57,10 @@ public class Aircraft {
         + ", All damage: " + fight();
   }
 
+  public int getTotalDamage() {
+    return totalDamage;
+  }
+
   public boolean isPriority() {
     if (this.getType() == "F35") {
       return true;
