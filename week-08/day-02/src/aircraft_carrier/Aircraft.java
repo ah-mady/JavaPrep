@@ -5,13 +5,12 @@ public class Aircraft {
   private int maxAmmo;
   private int baseDamage;
   private int currentAmmo;
-  private int totalDamage;
   private String type;
 
   public int fight() {
-    this.totalDamage = this.baseDamage * this.currentAmmo;
+    int totalDamage = getTotalDamage();
     this.currentAmmo = 0;
-    return this.totalDamage;
+    return totalDamage;
   }
 
   public int refill(int refillAmount) {
@@ -48,17 +47,21 @@ public class Aircraft {
     this.currentAmmo = currentAmmo;
   }
 
+  public void setType(String type) {
+    this.type = type;
+  }
+
   public String getType() {
     return this.type;
   }
 
   public String getStatus() {
     return "Type " + getType() + ", Ammo: " + this.getCurrentAmmo() + ", Base Damage: " + this.getBaseDamage()
-        + ", All damage: " + fight();
+        + ", All damage: " + getTotalDamage();
   }
 
   public int getTotalDamage() {
-    return totalDamage;
+    return baseDamage * currentAmmo;
   }
 
   public boolean isPriority() {
