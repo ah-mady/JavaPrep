@@ -9,6 +9,7 @@ public class App {
     Garden garden = new Garden();
     garden.addFlower(flower);
     garden.waterPlants(3);
+
     System.out.println(flower.getWaterAmount());
   }
 }

@@ -4,14 +4,21 @@ public class Flower extends Garden {
   protected String color;
   private float waterAmount;
   private final float waterCapacity = 0.75f;
+  private boolean isWatered;
 
   public Flower(String color) {
     this.color = color;
     this.waterAmount = 0f;
+    this.isWatered = false;
   }
 
   public boolean isWatered(){
-    return waterAmount < 5;
+    if (this.waterAmount < 5){
+      this.isWatered = true;
+    } else {
+      this.isWatered = false;
+    }
+    return this.isWatered;
   }
 
   public void addWater(int waterAmount){

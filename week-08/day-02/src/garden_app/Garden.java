@@ -25,6 +25,7 @@ public class Garden {
       if (!flower.isWatered()) {
         flower.setWaterAmount(waterAmount * flower.getWaterCapacity());
       }
+      System.out.println(flower.isWatered());
       System.out.println(flower.isWatered() ? "The " + flower.color + " Flower doesn't need water" : "The " + flower.color + " Flower needs water");
     }
 
