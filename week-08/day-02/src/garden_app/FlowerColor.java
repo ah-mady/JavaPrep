@@ -1,2 +1,5 @@
-package garden_app;public enum FlowerColor {
+package garden_app;
+
+public enum FlowerColor {
+  yellow, blue
 }
