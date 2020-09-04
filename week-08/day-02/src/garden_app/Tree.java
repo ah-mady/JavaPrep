@@ -25,4 +25,10 @@ public class Tree extends Garden {
   public float getWaterCapacity() {
     return waterCapacity;
   }
+
+  public void treeStatus(){
+    for (Tree tree: treeList) {
+      System.out.println(tree.isWatered() ? "The " + tree.color + " Tree doesn't need water" : "The " + tree.color + " Tree needs water.");
+    }
+  }
 }

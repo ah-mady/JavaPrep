@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Garden {
-  private List<Tree> treeList;
+  protected List<Tree> treeList;
   protected List<Flower> flowerList;
   private Flower flower;
+  private Tree tree;
 
   public Garden() {
     this.treeList = new ArrayList<>();
@@ -23,6 +24,13 @@ public class Garden {
 
   public void waterPlants() {
     int waterAmount = 40;
+
+    //this doesnt work
+    /*flower.flowerStatus();
+    tree.treeStatus();*/
+
+    //this works
+
     for (Flower flower: flowerList) {
       System.out.println(flower.isWatered() ? "The " + flower.color + " Flower doesn't need water" : "The " + flower.color + " Flower needs water.");
     }
@@ -30,8 +38,10 @@ public class Garden {
     for (Tree tree: treeList) {
       System.out.println(tree.isWatered() ? "The " + tree.color + " Tree doesn't need water" : "The " + tree.color + " Tree needs water.");
     }
+
+
     System.out.println();
-    
+
     System.out.println("Watering with: " + waterAmount);
     for (Flower flower : flowerList) {
       if (!flower.isWatered()) {
