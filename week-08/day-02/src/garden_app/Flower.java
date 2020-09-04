@@ -1,6 +1,6 @@
 package garden_app;
 
-public class Flower extends Garden {
+public class Flower {
   protected FlowerColor color;
   private float waterAmount;
   private final float waterCapacity = 0.75f;
@@ -12,25 +12,19 @@ public class Flower extends Garden {
     this.isWatered = false;
   }
 
-  public boolean isWatered(){
+  public boolean isWatered() {
     return waterAmount > 5;
   }
 
-  public float addWater(float waterAmount){
+  public float addWater(float waterAmount) {
     return this.waterAmount += waterAmount;
-  }
-
-  public float getWaterAmount() {
-    return waterAmount;
   }
 
   public float getWaterCapacity() {
     return waterCapacity;
   }
 
-  public void flowerStatus(){
-    for (Flower flower: flowerList) {
-      System.out.println(flower.isWatered() ? "The " + flower.color + " Flower doesn't need water" : "The " + flower.color + " Flower needs water.");
-    }
+  public void flowerStatus() {
+    System.out.println(this.isWatered() ? "The " + this.color + " Flower doesn't need water" : "The " + this.color + " Flower needs water.");
   }
 }

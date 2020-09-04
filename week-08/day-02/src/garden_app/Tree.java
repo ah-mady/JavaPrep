@@ -1,13 +1,15 @@
 package garden_app;
 
-public class Tree extends Garden {
+public class Tree {
   protected TreeColor color;
   private float waterAmount;
   private final float waterCapacity = 0.40f;
+  private boolean isWatered;
 
   public Tree(TreeColor color) {
     this.color = color;
     this.waterAmount = 0f;
+    this.isWatered = false;
   }
 
   public boolean isWatered() {
@@ -18,17 +20,11 @@ public class Tree extends Garden {
     return this.waterAmount += waterAmount;
   }
 
-  public float getWaterAmount() {
-    return waterAmount;
-  }
-
   public float getWaterCapacity() {
     return waterCapacity;
   }
 
-  public void treeStatus(){
-    for (Tree tree: treeList) {
-      System.out.println(tree.isWatered() ? "The " + tree.color + " Tree doesn't need water" : "The " + tree.color + " Tree needs water.");
-    }
+  public void treeStatus() {
+    System.out.println(this.isWatered() ? "The " + this.color + " Tree doesn't need water" : "The " + this.color + " Tree needs water.");
   }
 }

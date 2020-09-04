@@ -6,8 +6,6 @@ import java.util.List;
 public class Garden {
   protected List<Tree> treeList;
   protected List<Flower> flowerList;
-  private Flower flower;
-  private Tree tree;
 
   public Garden() {
     this.treeList = new ArrayList<>();
@@ -22,41 +20,29 @@ public class Garden {
     this.treeList.add(tree);
   }
 
-  public void waterPlants() {
-    int waterAmount = 40;
-
-    //this doesnt work
-    /*flower.flowerStatus();
-    tree.treeStatus();*/
-
-    //this works
-
-    for (Flower flower: flowerList) {
-      System.out.println(flower.isWatered() ? "The " + flower.color + " Flower doesn't need water" : "The " + flower.color + " Flower needs water.");
-    }
-
-    for (Tree tree: treeList) {
-      System.out.println(tree.isWatered() ? "The " + tree.color + " Tree doesn't need water" : "The " + tree.color + " Tree needs water.");
-    }
-
-
+  public void waterPlants(int waterAmount) {
     System.out.println();
-
     System.out.println("Watering with: " + waterAmount);
     for (Flower flower : flowerList) {
       if (!flower.isWatered()) {
         waterAmount -= flower.addWater(waterAmount * flower.getWaterCapacity());
       }
-      System.out.println(flower.isWatered() ? "The " + flower.color + " Flower doesn't need water" : "The " + flower.color + " Flower needs water.");
+      flower.flowerStatus();
     }
-
     for (Tree tree : treeList) {
       if (!tree.isWatered()) {
         waterAmount -= tree.addWater(waterAmount * tree.getWaterCapacity());
       }
-      System.out.println(tree.isWatered() ? "The " + tree.color + " Tree doesn't need water" : "The " + tree.color + " Tree needs water.");
+      tree.treeStatus();
     }
-
   }
 
+  public void checkStatus() {
+    for (Flower flower : flowerList) {
+      flower.flowerStatus();
+    }
+    for (Tree tree : treeList) {
+      tree.treeStatus();
+    }
+  }
 }

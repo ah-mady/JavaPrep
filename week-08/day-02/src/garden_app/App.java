@@ -15,9 +15,8 @@ public class App {
     garden.addTree(tree);
     garden.addTree(tree2);
 
-    garden.waterPlants();
-    System.out.println();
-    garden.waterPlants();
-
+    garden.checkStatus();
+    garden.waterPlants(40);
+    garden.waterPlants(70);
   }
 }
