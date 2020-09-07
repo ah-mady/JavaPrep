@@ -9,7 +9,7 @@ public class App {
     helicopter.land();
     helicopter.takeOff();
     System.out.println();
-    bird.breed();
+    System.out.println(bird.getName() + " is " + bird.breed());
     bird.fly();
     bird.land();
     bird.takeOff();
