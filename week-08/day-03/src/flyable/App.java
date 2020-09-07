@@ -2,7 +2,7 @@ package flyable;
 
 public class App {
   public static void main(String[] args) {
-    Helicopter helicopter = new Helicopter( "Heelo");
+    Helicopter helicopter = new Helicopter("Heelo");
     Bird bird = new Bird("Eagle");
 
     helicopter.fly();

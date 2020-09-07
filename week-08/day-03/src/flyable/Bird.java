@@ -1,6 +1,6 @@
 package flyable;
 
-public class Bird extends Animal implements Flyable{
+public class Bird extends Animal implements Flyable {
 
   public Bird(String name) {
     super(name);
@@ -23,6 +23,6 @@ public class Bird extends Animal implements Flyable{
 
   @Override
   public void takeOff() {
-    System.out.println(getName()+ " is gonna go away!");
+    System.out.println(getName() + " is gonna go away!");
   }
 }
