@@ -36,4 +36,10 @@ class AnagramTest {
     assertEquals(true, anagram.isAnagram(words));
   }
 
+  @Test
+  void withBothNullString(){
+    words = new String[] {null, null};
+    Assertions.assertThrows(NullPointerException.class, () -> anagram.isAnagram(words));
+  }
+
 }
