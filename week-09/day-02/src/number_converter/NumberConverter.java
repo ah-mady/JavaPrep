@@ -52,7 +52,7 @@ public class NumberConverter {
 
   public String convert(int number) {
 
-    //System.out.println(number);
+    System.out.println(number+" sout");
     if (number <= 0) {
       return "Invalid balance!";
     }
