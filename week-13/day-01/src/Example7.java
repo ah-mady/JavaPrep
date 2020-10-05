@@ -6,5 +6,6 @@ public class Example7 {
 
     List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
 
+
   }
 }
