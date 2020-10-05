@@ -10,7 +10,7 @@ public class Example6 {
 
     stringWithUpperCase.chars()
         .filter(Character::isUpperCase)
-        .mapToObj(Character::toString)
+        .mapToObj(c -> Character.toString((char) c))
         .forEach(System.out::println);
 
     //.collect(Collectors.joining());
