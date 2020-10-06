@@ -1,17 +1,13 @@
 package example10;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class App {
 
   //Create a Fox class with 3 properties:name, color and age Fill a list with at least 5 foxes and:
-  //
 
   public static void main(String[] args) {
 
@@ -35,13 +31,14 @@ public class App {
         .filter(fox -> fox.getColor().equals("green") && fox.getAge() < 5)
         .collect(Collectors.toList());
 
-    System.out.println("Foxes with green color and aged less than 5: "+greenFoxWithLessAgeThanFive);
+    System.out
+        .println("Foxes with green color and aged less than 5: " + greenFoxWithLessAgeThanFive);
 
     //Write a Stream Expression to find the frequency of foxes by color!
     Map<String, Long> frequencyOfFoxes = foxes.stream()
-        .collect(Collectors.groupingBy(a->a.getColor(), Collectors.counting()));
+        .collect(Collectors.groupingBy(a -> a.getColor(), Collectors.counting()));
 
-    System.out.println("Frequency of foxes by color: \n"+frequencyOfFoxes);
+    System.out.println("Frequency of foxes by color: \n" + frequencyOfFoxes);
 
   }
 }
