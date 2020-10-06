@@ -9,11 +9,11 @@ public class Example4 {
 
     Double averageOfOddNumbers = numbers.stream()
         .filter(number -> number % 2 != 0)
-        .mapToInt( number -> number)
+        .mapToInt(number -> number)
         .average()
         .orElse(0.0);
 
     DecimalFormat decimalFormat = new DecimalFormat("0.00");
-    System.out.println( decimalFormat.format(averageOfOddNumbers));
+    System.out.println(decimalFormat.format(averageOfOddNumbers));
   }
 }
