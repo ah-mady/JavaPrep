@@ -23,6 +23,8 @@ public class Sharpie {
 
   @Override
   public String toString() {
-    return "The " + this.color + " sharpie with " + this.width + " width has " + this.inkAmount + " ink amount left.";
+    return "The " + this.color + " sharpie with "
+        + this.width + " width has "
+        + this.inkAmount + " ink amount left.";
   }
 }
