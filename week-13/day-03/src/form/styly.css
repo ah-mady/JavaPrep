@@ -1,6 +1,6 @@
 body {
     font-family: Calibri, serif;
-    background: linear-gradient(240deg, #0b76b8, #a143d9);
+    background: linear-gradient(120deg, #469acd, #a143d9);
     height: 100vh;
     overflow: hidden;
 }
@@ -30,6 +30,9 @@ form .text-field {
     padding-right: 90px;
 }
 
+label {
+    padding-bottom: 10px;
+}
 .pass {
     text-decoration: none;
     color: #1a1818;
