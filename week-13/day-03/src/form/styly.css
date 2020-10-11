@@ -1,0 +1,61 @@
+body {
+    font-family: Calibri, serif;
+    background: linear-gradient(240deg, #0b76b8, #a143d9);
+    height: 100vh;
+    overflow: hidden;
+}
+
+input {
+    display: block;
+}
+
+.center {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 400px;
+    height: 400px;
+    padding-left: 60px;
+}
+
+.center h1 {
+    margin: 30px;
+}
+
+form .text-field {
+    position: relative;
+    margin: 30px;
+    padding-right: 90px;
+}
+
+.pass {
+    text-decoration: none;
+    color: #1a1818;
+    text-align: right;
+    margin-right: -30px;
+}
+
+.form select:focus {
+    outline-color: #7bd667;
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+}
+
+input[type='text'] {
+    outline-color: #7bd667;
+    margin-bottom: 30px;
+}
+
+input[type=submit] {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #1a1818;
+    color: #FFFFFF;
+    border-radius: 30px;
+}
