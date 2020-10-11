@@ -1,16 +1,15 @@
-body{
+body {
     background-color: #3E94EC;
 }
 
-table{
-    margin-top: 60px;
+table {
+    margin-top: 10%;
     width: 40%;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     border-radius: 8px;
     border-collapse: collapse;
-    box-shadow: 2px 5px;
 }
 
 th, td {
@@ -27,16 +26,19 @@ td {
     color: #575b73;
 }
 
-th{
+
+th {
     background-color: black;
     border-bottom: 5px solid #9EA7AF;
-    border-left:2px solid #343A45;
+    border-left: 2px solid #343A45;
     color: #EBEBEB;
+    font-weight: normal;
 }
 
-tr:nth-child(odd){
+tr:nth-child(odd) {
     background-color: #EBEBEB;
 }
-tr:nth-child(even){
+
+tr:nth-child(even) {
     background-color: #FFFFFF;
 }
