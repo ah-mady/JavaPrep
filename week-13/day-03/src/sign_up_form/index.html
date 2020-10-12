@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up Form</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
 <form action="https://newsletter-ws.herokuapp.com/register" method="post">
 
-    <div class="center">
-        <h1>Sign up</h1>
-        <label for="user-name"></label>
-        <input type="text" id="user-name" name="user-name" placeholder="Username">
+  <div class="center">
+    <h1>Sign up</h1>
+    <div class="text-field">
+      <label for="user-name"></label>
+      <input type="text" id="user-name" name="user-name" placeholder="Username" autofocus>
 
-        <label for="email"></label>
-        <input type="email" id="email" name="email" placeholder="E-mail">
+      <label for="email"></label>
+      <input type="email" id="email" name="email" placeholder="E-mail">
 
-        <!--    have no idea what I did here. copy pasted from stack-->
-        <label for="password"></label>
-        <input id="password" name="password" type="password" pattern="^\S{6,}$"
-               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : '');
+      <!--    have no idea what I did here. copy pasted from stack-->
+      <label for="password"></label>
+      <input id="password" name="password" type="password" pattern="^\S{6,}$"
+             onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : '');
            if(this.checkValidity()) form.password_two.pattern = this.value;"
-               placeholder="Password" required>
+             placeholder="Password" required>
 
-        <label for="passwordConfirmation"></label>
-        <input id="passwordConfirmation" name="passwordConfirmation" type="password" pattern="^\S{6,}$"
-               onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
-               placeholder="Retype Password" required>
+      <label for="passwordConfirmation"></label>
+      <input id="passwordConfirmation" name="passwordConfirmation" type="password" pattern="^\S{6,}$"
+             onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+             placeholder="Retype Password" required>
+      <p>OR</p>
 
-        <input type="submit" value="sign me up">
+      <input type="submit" value="Sign me up">
+
+      <div class="col">
+        <a href="#" class="fb btn">
+          <i class=""></i> Login with Facebook
+        </a>
+        <a href="#" class="twitter btn">
+          <i class=""></i> Login with Twitter
+        </a>
+        <a href="#" class="google btn">
+          <i class=""></i> Login with Google+
+        </a>
+      </div>
     </div>
+  </div>
 </form>
 
 </body>
