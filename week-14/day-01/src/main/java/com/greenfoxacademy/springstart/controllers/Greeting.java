@@ -9,6 +9,10 @@ public class Greeting {
     this.contentField = contentField;
   }
 
+  public Greeting(String contentField) {
+    this.contentField = contentField;
+  }
+
   public long getGreetCount() {
     return greetCount;
   }
