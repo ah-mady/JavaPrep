@@ -18,11 +18,11 @@ public class HelloWebController {
 
   @GetMapping("/web/greeting")
   public String greeting(Model model,
-                   @RequestParam(value = "name", required = false, defaultValue = "World") String name,
-                   @RequestParam(value = "color", required = false) String color,
-                   @RequestParam(value = "size", required = false, defaultValue = "16") int size) {
+                         @RequestParam(value = "name", required = false, defaultValue = "World") String name,
+                         @RequestParam(value = "color", required = false) String color,
+                         @RequestParam(value = "size", required = false, defaultValue = "16") int size) {
     Greeting greeting = new Greeting(name);
-    String hello = hellos[((int) (Math.random() * hellos.length-1) + 1)];
+    String hello = hellos[((int) (Math.random() * hellos.length - 1) + 1)];
     model.addAttribute("hello", hello);
     model.addAttribute("color", color);
     model.addAttribute("size", size);
@@ -30,5 +30,4 @@ public class HelloWebController {
     model.addAttribute("counter", atomicLong.getAndIncrement());
     return "greeting";
   }
-
 }
