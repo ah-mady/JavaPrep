@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Getting Started: Serving Web Content</title>
 </head>
-<body th:style="'color:' + ${color}">
+<body th:style="'color:' + ${color} + '; font-size: ' + ${size} + 'px;'">
 <p th:text="${hello} + ', ' + ${name} + '!'"></p>
 <p th:text="'This site has been loaded ' + ${counter} + ' times since last server start.'"></p>
 </body>
