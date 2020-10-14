@@ -20,13 +20,12 @@ public class HelloWebController {
   public String greeting(Model model,
                          @RequestParam(value = "name", required = false, defaultValue = "World") String name,
                          @RequestParam(value = "color", required = false) String color,
-                         @RequestParam(value = "size", required = false, defaultValue = "16") int size) {
-    Greeting greeting = new Greeting(name);
+                         @RequestParam(value = "size", required = false, defaultValue = "24") int size) {
     String hello = hellos[((int) (Math.random() * hellos.length - 1) + 1)];
     model.addAttribute("hello", hello);
     model.addAttribute("color", color);
     model.addAttribute("size", size);
-    model.addAttribute("name", greeting.getContentField());
+    model.addAttribute("name", name);
     model.addAttribute("counter", atomicLong.getAndIncrement());
     return "greeting";
   }
