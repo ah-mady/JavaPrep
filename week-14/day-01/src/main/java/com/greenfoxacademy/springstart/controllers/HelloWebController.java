@@ -23,7 +23,6 @@ public class HelloWebController {
                    @RequestParam(value = "size", required = false) int size) {
     Greeting greeting = new Greeting(name);
     String hello = hellos[((int) (Math.random() * hellos.length-1) + 1)];
-    //size = 8 + (int) (Math.random() * 40) + 1;
     model.addAttribute("hello", hello);
     model.addAttribute("color", color);
     model.addAttribute("size", size);
