@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Register my car</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<h1>CAR REGISTRATION FORM</h1>
+<form action="/login" method="POST">
+
+    <label for="full-name">Full name</label>
+    <input type="text" id="full-name" name="full-name" placeholder="Jane Doe" autofocus required
+           minlength="5">
+
+    <label for="email-address">Email</label>
+    <input type="email" name="email" id="email-address" required novalidation>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+
+    <label for="birth">Date of birth</label>
+    <input type="date" name="date-of-birth" id="birth">
+
+    <label for="phone">Your phone number</label>
+    <input type="tel" name="phone-number" id="phone">
+
+    <label for="licence-plate">Licence plate number</label>
+    <input type="text" name="licence-plate" id="licence-plate" pattern="[A-Z]{3}-[0-9]{3}"
+           placeholder="ABC-123">
+
+    <label for="car-color">Color of your car</label>
+    <!-- with the "value" attribure, this default color will appear first -->
+    <input type="color" name="car-color" id="car-color" value="#e66465">
+
+    <label for="message">Please write here your opinion about your car</label>
+    <textarea name="message" id="message" cols="30" rows="5" style="resize: none;"></textarea>
+
+    <label for="rate">How would you rate your car?</label>
+    <input type="number" name="rate" id="rate" max="20">
+    <!--
+      <button> will also work, the default behaviour for a button in a form
+      is submitting the form
+    -->
+    <!--    <button>SEND FORM</button>-->
+    <input type="submit">
+</form>
+
+</body>
+
+</html>

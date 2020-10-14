@@ -1,0 +1,25 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input, label {
+    display: block;
+    padding: .5em;
+}
+
+input, textarea {
+    margin: 0.5em;
+}
+
+input[type="submit"] {
+    font-size: 20px;
+    border-radius: .4em;
+    border: 2px green solid;
+    background-color: rgb(95, 165, 95);
+    padding: 0.5em;
+    text-transform: uppercase;
+}
+
+:focus {
+    border: 1px red solid;
+}
