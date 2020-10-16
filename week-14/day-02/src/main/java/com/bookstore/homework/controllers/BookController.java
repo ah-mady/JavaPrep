@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class BookController {
@@ -17,9 +18,27 @@ public class BookController {
   }
 
   @GetMapping("/books")
-  public String showBooks(Model model){
+  public String showBooks(Model model) {
     model.addAttribute("books", books);
     return "index";
+  }
+
+  @GetMapping("/books/{id}/details")
+  public String getBookById(Model model, @PathVariable(name = "id") Integer id) {
+    Book bookById = null;
+
+    for (Book book : books) {
+      if (book.getId() == id) {
+        bookById = book;
+      }
+    }
+
+    if (bookById != null) {
+      model.addAttribute("book", bookById);
+    } else {
+      model.addAttribute("error", "No book found");
+    }
+    return "details";
   }
 
 }
