@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank Details</title>
+  <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<table>
+  <tr>
+    <th>Index</th>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Balance</th>
+    <th>Animal Type</th>
+    <th>Character without switch</th>
+    <th>Character with switch</th>
+  </tr>
+  <tr th:each="account, iterationIndex :${accounts}" th:object="${account}">
+    <td th:text="${iterationIndex.index}">Index</td>
+    <td th:text="*{king} ? 'King' : 'Commoner'"
+        th:styleappend="*{king} ? 'font-weight: bold; letter-spacing: 0.2em;'">Rank
+    </td>
+    <td th:text="*{name}">Name</td>
+    <td th:text="*{#numbers.formatDecimal(balance, 1, 2) + ' Zebra'}">Balance</td>
+    <td th:text="*{animalType}">Animal Type</td>
+    <td th:text="*{character} == 'good' ? 'Good One' : 'Bad Guy'">Character without switch</td>
+    <td th:switch="*{character}">
+      <div th:case="'good'" th:text="'Good One'"></div>
+      <div th:case="'bad'" th:text="'Bad Guy'"></div>
+    </td>
+  </tr>
+
+</table>
+</body>
+</html>
