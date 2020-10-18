@@ -1,7 +1,46 @@
 body, html {
     font-family: 'Manrope', sans-serif;
+    text-align: center;
 }
 
-td:nth-child(even){
+table {
+    margin-top: 3%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    border-collapse: collapse;
 
+}
+
+th, td {
+    border-color: black;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: antiquewhite;
+}
+
+tr:nth-child(odd) {
+    background-color: #9bd7cd;
+}
+
+tr:first-child {
+    background-color: khaki;
+}
+
+
+select{
+    padding: 5px;
+    font-size: 25px;
+}
+
+input[type=submit]{
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #1a1818;
+    color: #FFFFFF;
+    border-radius: 30px;
 }

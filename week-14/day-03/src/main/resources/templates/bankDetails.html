@@ -19,7 +19,7 @@
   <tr th:each="account, iterationIndex :${accounts}" th:object="${account}">
     <td th:text="${iterationIndex.index}">Index</td>
     <td th:text="*{king} ? 'King' : 'Commoner'"
-        th:styleappend="*{king} ? 'font-weight: bold; letter-spacing: 0.2em;'">Rank
+        th:styleappend="*{king} ? 'font-weight: bold; background-color: #6ce5e5; letter-spacing: 0.2em; font-size: 20px;'">Rank
     </td>
     <td th:text="*{name}">Name</td>
     <td th:text="*{#numbers.formatDecimal(balance, 1, 2) + ' Zebra'}">Balance</td>
@@ -30,7 +30,18 @@
       <div th:case="'bad'" th:text="'Bad Guy'"></div>
     </td>
   </tr>
-
 </table>
+
+<form th:action="@{'/raised'}" th:method="POST">
+  <div class="balance">
+    <h2>Increase balance for: </h2>
+    <label for="accountName"></label>
+    <select name="accountName" id="accountName">
+      <option th:each="account : ${accounts}" th:value="${account.name}"
+              th:text="${account.name}"></option>
+    </select>
+  </div>
+  <input type="submit" value="Raise">
+</form>
 </body>
 </html>
