@@ -43,5 +43,33 @@
   </div>
   <input type="submit" value="Raise">
 </form>
+
+<form th:method="POST" th:action="@{'/add'}" th:object="${accounts}">
+  <tr>
+    <label for="name"></label>
+    <td><input type="text" placeholder="Name" id="name" name="name"></td>
+
+    <label for="balance"></label>
+    <td><input type="number" placeholder="Balance" id="balance" name="balance"></td>
+
+    <label for="animalType"></label>
+    <td><input type="text" placeholder="lion/meerkat..." id="animalType" name="animalType"></td>
+
+    <label for="isKing"></label>
+    <td><select name="isKing" id="isKing">
+      <option th:value="true" th:text="'King'">
+      <option th:value="false" th:text="'Commoner'">
+    </select></td>
+
+    <label for="character"></label>
+    <td><select name="character" id="character">
+      <option th:value="'good'" th:text="'Good one'">
+      <option th:value="'bad'" th:text="'Bad guy'">
+    </select></td>
+  </tr>
+  <tr>
+    <input type="submit" value="Add new account">
+  </tr>
+</form>
 </body>
 </html>

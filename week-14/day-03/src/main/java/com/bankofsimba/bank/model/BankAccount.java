@@ -7,6 +7,10 @@ public class BankAccount {
   private boolean isKing;
   private String character;
 
+
+  public BankAccount() {
+  }
+
   public BankAccount(String name, int balance, String animalType, String character) {
     this(name, balance, animalType, false, character);
   }

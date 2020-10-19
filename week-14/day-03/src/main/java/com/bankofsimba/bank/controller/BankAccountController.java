@@ -46,6 +46,13 @@ public class BankAccountController {
     return "redirect:/show";
   }
 
+  @PostMapping("/add")
+  public String addAccount(@ModelAttribute BankAccount newAccount){
+    bankAccountList.add(newAccount);
+
+    return "redirect:/show";
+  }
+
   @GetMapping("/html")
   public String HTMLception(Model model) {
     model.addAttribute("utext", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
