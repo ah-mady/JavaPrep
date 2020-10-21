@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -108,6 +109,7 @@ public class ShopItemController {
         .filter(byName.or(byDescription).or(byType))
         .collect(Collectors.toList());
 
+    model.addAttribute("shopItem", shopItem);
     model.addAttribute("items", searchedItem);
     return "homepage";
   }
@@ -154,12 +156,14 @@ public class ShopItemController {
         .map(currency -> new ShopItem(currency.getName(), currency.getType(), currency.getDescription(), currency.getPrice() * 0.0028, currency.getQuantityOfStock()))
         .collect(Collectors.toList());
     model.addAttribute("items", convertToEuro);
-    return "euro";
+    model.addAttribute("currency", "EUR");
+    return "more";
   }
 
   @GetMapping("/original-currency")
   public String originalCurrency(Model model) {
     model.addAttribute("items", shopItemList);
+    model.addAttribute("title", "More Filters");
     return "more";
   }
 
