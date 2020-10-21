@@ -11,30 +11,13 @@
 
 <div th:replace="fragments/topnav :: navbar"></div>
 
+<div th:replace="fragments/topnav :: main-filters"></div>
+
 <div th:replace="fragments/topnav :: searchbar"></div>
 
-<div class="items">
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Quantity of stock</th>
-    </tr>
-    </thead>
+<div th:replace="fragments/topnav :: items-to-display"></div>
 
-    <tbody>
-    <tr th:each="item: ${items}" th:object="${item}">
-      <td th:text="*{name}"></td>
-      <td th:text="*{description}"></td>
-      <td th:text="*{price}"></td>
-      <td th:text="*{quantityOfStock}"></td>
-    </tr>
-    </tbody>
 
-  </table>
-</div>
 
 </body>
 </html>

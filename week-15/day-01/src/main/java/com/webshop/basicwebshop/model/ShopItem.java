@@ -2,18 +2,20 @@ package com.webshop.basicwebshop.model;
 
 public class ShopItem {
   private String name;
+  private String type;
   private String description;
-  private int price;
+  private double price;
   private int quantityOfStock;
 
   public ShopItem() {
   }
 
-  public ShopItem(String name, String description, int price, int quantityOfStock) {
+  public ShopItem(String name, String type, String description, double price, int quantityOfStock) {
     this.name = name;
     this.description = description;
     this.price = price;
     this.quantityOfStock = quantityOfStock;
+    this.type = type;
   }
 
   public String getName() {
@@ -24,6 +26,14 @@ public class ShopItem {
     this.name = name;
   }
 
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
   public String getDescription() {
     return description;
   }
@@ -32,11 +42,11 @@ public class ShopItem {
     this.description = description;
   }
 
-  public int getPrice() {
+  public double getPrice() {
     return price;
   }
 
-  public void setPrice(int price) {
+  public void setPrice(double price) {
     this.price = price;
   }
 

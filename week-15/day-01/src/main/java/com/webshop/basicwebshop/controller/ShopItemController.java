@@ -2,7 +2,6 @@ package com.webshop.basicwebshop.controller;
 
 import com.webshop.basicwebshop.model.ShopItem;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,24 +20,24 @@ public class ShopItemController {
   List<ShopItem> shopItemList = new ArrayList<>();
 
   public ShopItemController() {
-    shopItemList.add(new ShopItem("adidas", "shoes", 100, 10));
-    shopItemList.add(new ShopItem("adidas", "jacket", 200, 11));
-    shopItemList.add(new ShopItem("adidas", "shirt", 300, 2));
-    shopItemList.add(new ShopItem("adidas", "shoes", 555, 14));
-    shopItemList.add(new ShopItem("nike", "shirt", 150, 15));
-    shopItemList.add(new ShopItem("nike", "shoes", 100, 16));
-    shopItemList.add(new ShopItem("nike", "shoes", 180, 8));
-    shopItemList.add(new ShopItem("nike", "jacket", 88, 7));
-    shopItemList.add(new ShopItem("nike", "jacket", 199, 6));
-    shopItemList.add(new ShopItem("puma", "jacket", 228, 5));
-    shopItemList.add(new ShopItem("puma", "shirt", 315, 44));
-    shopItemList.add(new ShopItem("oakley", "backpack", 404, 22));
-    shopItemList.add(new ShopItem("oakley", "glasses", 379, 6));
-    shopItemList.add(new ShopItem("adidas", "glasses", 555, 8));
-    shopItemList.add(new ShopItem("hugo boss", "jacket", 555, 0));
-    shopItemList.add(new ShopItem("hugo boss", "trousers", 555, 0));
-    shopItemList.add(new ShopItem("puma", "shoes", 555, 0));
-    shopItemList.add(new ShopItem("adidas", "shirt", 555, 0));
+    shopItemList.add(new ShopItem("adidas", "shoes", "running shoes", 100, 10));
+    shopItemList.add(new ShopItem("adidas", "lifestyle", "formel1 jacket", 200, 11));
+    shopItemList.add(new ShopItem("adidas", "basketball", "shirt", 300, 2));
+    shopItemList.add(new ShopItem("adidas", "football", "shoes", 555, 14));
+    shopItemList.add(new ShopItem("nike", "running", "shirt", 150, 15));
+    shopItemList.add(new ShopItem("nike", "basketball", "shoes", 100, 16));
+    shopItemList.add(new ShopItem("nike", "lifestyle","shoes", 180, 8));
+    shopItemList.add(new ShopItem("nike", "lifestyle","jacket", 88, 7));
+    shopItemList.add(new ShopItem("nike", "baseball", "jacket", 199, 6));
+    shopItemList.add(new ShopItem("puma", "lifestyle","jacket", 228, 5));
+    shopItemList.add(new ShopItem("puma", "football", "shirt", 315, 44));
+    shopItemList.add(new ShopItem("oakley", "lifestyle","backpack", 404, 22));
+    shopItemList.add(new ShopItem("oakley", "lifestyle","glasses", 379, 6));
+    shopItemList.add(new ShopItem("adidas", "cycling", "glasses", 555, 8));
+    shopItemList.add(new ShopItem("hugo boss", "lifestyle","jacket", 555, 0));
+    shopItemList.add(new ShopItem("hugo boss","lifestyle", "trousers", 555, 0));
+    shopItemList.add(new ShopItem("puma", "running", "shoes", 555, 0));
+    shopItemList.add(new ShopItem("adidas", "golf", "shirt", 555, 0));
   }
 
   @GetMapping("/webshop")
@@ -104,14 +102,53 @@ public class ShopItemController {
   public String searchResult(Model model, @RequestParam String shopItem){
     Predicate<ShopItem> byName = e -> e.getName().toLowerCase().contains(shopItem.toLowerCase());
     Predicate<ShopItem> byDescription = e -> e.getDescription().toLowerCase().contains(shopItem.toLowerCase());
+    Predicate<ShopItem> byType = e -> e.getType().toLowerCase().contains(shopItem.toLowerCase());
 
     List<ShopItem> searchedItem = shopItemList.stream()
-        .filter(byName.or(byDescription))
+        .filter(byName.or(byDescription).or(byType))
         .collect(Collectors.toList());
 
     model.addAttribute("items", searchedItem);
     return "homepage";
   }
 
+  @GetMapping("/more-filters")
+  public String moreFilters(Model model){
+    model.addAttribute("items", shopItemList);
+    return "more";
+  }
+
+  @GetMapping("/lifestyle")
+  public String filterLifestyle(Model model){
+    List<ShopItem> containLifestyle = shopItemList.stream()
+        .filter(contains -> contains.getType() == "lifestyle")
+        .collect(Collectors.toList());
+    model.addAttribute("items", containLifestyle);
+    return "more";
+  }
+
+  @GetMapping("/running")
+  public String filterRunning(Model model) {
+    List<ShopItem> containNike = shopItemList.stream()
+        .filter(contains -> contains.getType() == "running")
+        .collect(Collectors.toList());
+    model.addAttribute("items", containNike);
+    return "more";
+  }
+
+  @GetMapping("/euro")
+  public String euro(Model model){
+    List<ShopItem> convertToEuro = shopItemList.stream()
+        .map(currency -> new ShopItem(currency.getName(), currency.getType(), currency.getDescription(), currency.getPrice() * 0.0028, currency.getQuantityOfStock()))
+        .collect(Collectors.toList());
+    model.addAttribute("items", convertToEuro);
+    return "euro";
+  }
+
+  @GetMapping("/original-currency")
+  public String originalCurrency(Model model){
+    model.addAttribute("items", shopItemList);
+    return "more";
+  }
 
 }

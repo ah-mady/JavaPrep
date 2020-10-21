@@ -9,8 +9,10 @@
 <body>
 
 <div th:replace="fragments/topnav :: navbar"></div>
-<div th:replace="fragments/topnav :: searchbar"></div>
 
+<div th:replace="fragments/topnav :: main-filters"></div>
+
+<div th:replace="fragments/topnav :: searchbar"></div>
 
 <h1 th:text="'Most Expensive item on store is: ' + ${expensive}"></h1>
 

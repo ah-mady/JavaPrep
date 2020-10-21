@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Euro</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div th:replace="fragments/topnav :: more-filters"></div>
+
+<div th:replace="fragments/topnav :: searchbar"></div>
+
+<div class="items">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity of stock</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="item: ${items}" th:object="${item}">
+      <td th:text="*{name}"></td>
+      <td th:text="*{type}"></td>
+      <td th:text="*{description}"></td>
+      <td th:text="*{#numbers.formatDecimal(price, 1 , 2)} + ' €'"></td>
+      <td th:text="*{quantityOfStock}"></td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+</body>
+</html>
