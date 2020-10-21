@@ -1,0 +1,21 @@
+.center {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #9d2828;
+    padding-left: 60px;
+}
+
+
+.navbar{
+    display: block;
+}
+
+.items{
+    background-color: antiquewhite;
+}
+
+body{
+    background-color: aqua;
+}

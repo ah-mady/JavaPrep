@@ -6,95 +6,110 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>fragments</title>
+    <link rel="stylesheet" href="../../static/topnavStyle.css">
 </head>
 <body>
 
-<div th:fragment="navbar">
-  <div class="header" style="display: inline">
-    <div class="homepage">
-      <a href="/webshop"><h1>My Shop</h1></a>
+<div class="center">
+
+  <div th:fragment="navbar">
+    <div class="header" style="display: inline">
+      <div class="homepage">
+        <a href="/webshop"><h1>My Shop</h1></a>
+      </div>
+
+      <div class="more">
+        <a href="/more-filters"><h1>More>></h1></a>
+      </div>
     </div>
 
-    <div class="more">
-      <a href="/more-filters"><h1>More>></h1></a>
+
+    <!--  <div th:if="@{/more-filters}">-->
+    <!--    <a href="/only-available" class="btn btn-primary">More filter</a>-->
+    <!--  </div>-->
+
+    <!--  <div th:if="@{/webshop}">-->
+    <!--    <div class="nav-bar">-->
+    <!--      <a href="/only-available" class="btn btn-primary">Only Available</a>-->
+    <!--      <a href="/cheapest-first" class="btn btn-primary">Cheapest First</a>-->
+    <!--      <a href="/contains-nike" class="btn btn-primary">Contains Nike</a>-->
+    <!--      <a href="/average-stock" class="btn btn-primary">Average Stock</a>-->
+    <!--      <a href="/most-expensive" class="btn btn-primary">Most Expensive Available</a>-->
+    <!--    </div>-->
+    <!--  </div>-->
+  </div>
+
+  <div th:fragment="main-filters">
+    <div class="nav-bar">
+      <a href="/only-available" class="btn btn-primary">Only Available</a>
+      <a href="/cheapest-first" class="btn btn-primary">Cheapest First</a>
+      <a href="/contains-nike" class="btn btn-primary">Contains Nike</a>
+      <a href="/average-stock" class="btn btn-primary">Average Stock</a>
+      <a href="/most-expensive" class="btn btn-primary">Most Expensive Available</a>
     </div>
   </div>
 
+  <div th:fragment="more-filters">
+    <a href="/lifestyle" class="btn btn-primary">Lifestyle</a>
+    <a href="/running" class="btn btn-primary">Running</a>
+    <a href="/euro" class="btn btn-primary">Euro</a>
+    <a href="/original-currency" class="btn btn-primary">Original Currency</a>
 
-<!--  <div th:if="@{/more-filters}">-->
-<!--    <a href="/only-available" class="btn btn-primary">More filter</a>-->
-<!--  </div>-->
-
-<!--  <div th:if="@{/webshop}">-->
-<!--    <div class="nav-bar">-->
-<!--      <a href="/only-available" class="btn btn-primary">Only Available</a>-->
-<!--      <a href="/cheapest-first" class="btn btn-primary">Cheapest First</a>-->
-<!--      <a href="/contains-nike" class="btn btn-primary">Contains Nike</a>-->
-<!--      <a href="/average-stock" class="btn btn-primary">Average Stock</a>-->
-<!--      <a href="/most-expensive" class="btn btn-primary">Most Expensive Available</a>-->
-<!--    </div>-->
-<!--  </div>-->
-</div>
-
-<div th:fragment="main-filters">
-  <div class="nav-bar">
-    <a href="/only-available" class="btn btn-primary">Only Available</a>
-    <a href="/cheapest-first" class="btn btn-primary">Cheapest First</a>
-    <a href="/contains-nike" class="btn btn-primary">Contains Nike</a>
-    <a href="/average-stock" class="btn btn-primary">Average Stock</a>
-    <a href="/most-expensive" class="btn btn-primary">Most Expensive Available</a>
   </div>
-</div>
 
-<div th:fragment="more-filters">
-  <a href="/lifestyle" class="btn btn-primary">Lifestyle</a>
-  <a href="/running" class="btn btn-primary">Running</a>
-  <a href="/euro" class="btn btn-primary">Euro</a>
-  <a href="/original-currency" class="btn btn-primary">Original Currency</a>
-
-</div>
-
-<div th:fragment="searchbar">
-  <div class="search-bar">
-<!--    <form th:action="@{/search}" name="shopItem" th:method="POST">-->
-<!--      <input type="text" name="shopItem" placeholder="...something like nike">-->
-<!--      <input type="submit" value="Search">-->
-<!--    </form>-->
-    <nav class="navbar navbar-light bg-light">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="...something like nike" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </nav>
+  <div th:fragment="searchbar">
+    <div class="search-bar">
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="...something like nike" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+    </div>
   </div>
-</div>
 
-<div th:fragment="items-to-display">
-  <div class="items">
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Quantity of stock</th>
-      </tr>
-      </thead>
+  <div th:fragment="items-to-display">
+    <div class="items">
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity of stock</th>
+        </tr>
+        </thead>
 
-      <tbody>
-      <tr th:each="item: ${items}" th:object="${item}">
-        <td th:text="*{name}"></td>
-        <td th:text="*{type}"></td>
-        <td th:text="*{description}"></td>
-        <td th:text="*{price} + ' HUF'"></td>
-        <td th:text="*{quantityOfStock}"></td>
-      </tr>
-      </tbody>
+        <tbody>
+        <tr th:each="item: ${items}" th:object="${item}">
+          <td th:text="*{name}"></td>
+          <td th:text="*{type}"></td>
+          <td th:text="*{description}"></td>
+          <td th:text="*{price} + ' HUF'"></td>
+          <td th:text="*{quantityOfStock}"></td>
+        </tr>
+        </tbody>
 
-    </table>
+      </table>
+    </div>
   </div>
-</div>
 
+  <div th:fragment="search-by-price">
+    <div class="by-price">
+      <nav class="navbar navbar-light bg-light">
+        <p>Filter by price:</p>
+        <form class="form-inline" th:action="@{/filter-by-price}" th:method="post">
+          <input type="number" class="form-control mr-sm-2" name="price" id="price" placeholder="...e.g.: 300"
+                 th:value="${price}">
+          <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Above">
+          <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Below">
+          <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Exactly">
+        </form>
+      </nav>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>

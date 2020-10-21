@@ -26,16 +26,16 @@ public class ShopItemController {
     shopItemList.add(new ShopItem("adidas", "football", "shoes", 555, 14));
     shopItemList.add(new ShopItem("nike", "running", "shirt", 150, 15));
     shopItemList.add(new ShopItem("nike", "basketball", "shoes", 100, 16));
-    shopItemList.add(new ShopItem("nike", "lifestyle","shoes", 180, 8));
-    shopItemList.add(new ShopItem("nike", "lifestyle","jacket", 88, 7));
+    shopItemList.add(new ShopItem("nike", "lifestyle", "shoes", 180, 8));
+    shopItemList.add(new ShopItem("nike", "lifestyle", "jacket", 88, 7));
     shopItemList.add(new ShopItem("nike", "baseball", "jacket", 199, 6));
-    shopItemList.add(new ShopItem("puma", "lifestyle","jacket", 228, 5));
+    shopItemList.add(new ShopItem("puma", "lifestyle", "jacket", 228, 5));
     shopItemList.add(new ShopItem("puma", "football", "shirt", 315, 44));
-    shopItemList.add(new ShopItem("oakley", "lifestyle","backpack", 404, 22));
-    shopItemList.add(new ShopItem("oakley", "lifestyle","glasses", 379, 6));
+    shopItemList.add(new ShopItem("oakley", "lifestyle", "backpack", 404, 22));
+    shopItemList.add(new ShopItem("oakley", "lifestyle", "glasses", 379, 6));
     shopItemList.add(new ShopItem("adidas", "cycling", "glasses", 555, 8));
-    shopItemList.add(new ShopItem("hugo boss", "lifestyle","jacket", 555, 0));
-    shopItemList.add(new ShopItem("hugo boss","lifestyle", "trousers", 555, 0));
+    shopItemList.add(new ShopItem("hugo boss", "lifestyle", "jacket", 555, 0));
+    shopItemList.add(new ShopItem("hugo boss", "lifestyle", "trousers", 555, 0));
     shopItemList.add(new ShopItem("puma", "running", "shoes", 555, 0));
     shopItemList.add(new ShopItem("adidas", "golf", "shirt", 555, 0));
   }
@@ -99,7 +99,7 @@ public class ShopItemController {
   }
 
   @PostMapping("/search")
-  public String searchResult(Model model, @RequestParam String shopItem){
+  public String searchResult(Model model, @RequestParam String shopItem) {
     Predicate<ShopItem> byName = e -> e.getName().toLowerCase().contains(shopItem.toLowerCase());
     Predicate<ShopItem> byDescription = e -> e.getDescription().toLowerCase().contains(shopItem.toLowerCase());
     Predicate<ShopItem> byType = e -> e.getType().toLowerCase().contains(shopItem.toLowerCase());
@@ -113,13 +113,25 @@ public class ShopItemController {
   }
 
   @GetMapping("/more-filters")
-  public String moreFilters(Model model){
+  public String moreFilters(Model model) {
     model.addAttribute("items", shopItemList);
     return "more";
   }
 
+  @GetMapping("/filter-by-type")
+  public String filterByType(@RequestParam String type, Model model) {
+    Predicate<ShopItem> byType = e -> e.getType().toLowerCase().contains(type.toLowerCase());
+
+    List<ShopItem> filterByType = shopItemList.stream()
+        .filter(byType)
+        .collect(Collectors.toList());
+
+    model.addAttribute("items", filterByType);
+    return "more";
+  }
+
   @GetMapping("/lifestyle")
-  public String filterLifestyle(Model model){
+  public String filterLifestyle(Model model) {
     List<ShopItem> containLifestyle = shopItemList.stream()
         .filter(contains -> contains.getType() == "lifestyle")
         .collect(Collectors.toList());
@@ -137,7 +149,7 @@ public class ShopItemController {
   }
 
   @GetMapping("/euro")
-  public String euro(Model model){
+  public String euro(Model model) {
     List<ShopItem> convertToEuro = shopItemList.stream()
         .map(currency -> new ShopItem(currency.getName(), currency.getType(), currency.getDescription(), currency.getPrice() * 0.0028, currency.getQuantityOfStock()))
         .collect(Collectors.toList());
@@ -146,8 +158,38 @@ public class ShopItemController {
   }
 
   @GetMapping("/original-currency")
-  public String originalCurrency(Model model){
+  public String originalCurrency(Model model) {
     model.addAttribute("items", shopItemList);
+    return "more";
+  }
+
+  @PostMapping("/filter-by-price")
+  public String filterByPrice(Model model, @RequestParam String operator, @RequestParam int price){
+    model.addAttribute("operator", operator);
+
+    List<ShopItem> items = null;
+
+    switch (operator){
+      case ("Above"):
+        items = shopItemList.stream()
+            .filter(i -> i.getPrice() > price)
+            .collect(Collectors.toList());
+        break;
+
+      case ("Below"):
+        items = shopItemList.stream()
+            .filter(i -> i.getPrice() < price)
+            .collect(Collectors.toList());
+        break;
+
+      case ("Exactly"):
+        items = shopItemList.stream()
+            .filter(i-> i.getPrice() == price)
+            .collect(Collectors.toList());
+        break;
+    }
+
+    model.addAttribute("items", items);
     return "more";
   }
 
