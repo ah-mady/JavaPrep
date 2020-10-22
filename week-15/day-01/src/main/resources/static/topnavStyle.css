@@ -14,7 +14,7 @@ body {
 }
 
 .more {
-    margin-left: 470px;
+    float: right;
 }
 
 .center {
@@ -24,7 +24,7 @@ body {
     padding: 10px;
 }
 
-th{
+th {
     position: relative;
     background-color: black;
     border-bottom: 5px solid #9EA7AF;
@@ -33,15 +33,18 @@ th{
     font-weight: normal;
 }
 
-th, td{
+th, td {
     position: center;
     text-align: center;
     padding: 10px;
     margin: auto;
-    width: 10%;
 }
 
-.nav-bar, .more-filters{
+table {
+    width: 100%;
+}
+
+.nav-bar, .more-filters {
 
 }
 
@@ -51,4 +54,21 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
     background-color: #FFFFFF;
+}
+
+.main-filters, .more-filters {
+    position: center;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+}
+
+.search-bar, .by-price {
+    float: right;
+}
+
+p {
+    margin: auto;
+    padding-right: 10px;
 }

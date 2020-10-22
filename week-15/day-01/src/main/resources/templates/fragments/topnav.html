@@ -34,7 +34,7 @@
 
 </div>
 
-<div th:fragment="main-filters" class="nav-bar">
+<div th:fragment="main-filters" class="main-filters">
   <a href="/only-available" class="btn btn-primary">Only Available</a>
   <a href="/cheapest-first" class="btn btn-primary">Cheapest First</a>
   <a href="/contains-nike" class="btn btn-primary">Contains Nike</a>
@@ -50,13 +50,26 @@
 
 </div>
 
-<div th:fragment="searchbar">
-  <div class="search-bar">
+<div th:fragment="searchbar" class="search-bar">
+  <nav class="navbar navbar-light bg-light">
+    <form th:action="@{/search}" class="form-inline" th:method="POST">
+      <input class="form-control mr-sm-2" type="text" placeholder="...something like nike"
+             name="shopItem" id="shopItem">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+</div>
+
+<div th:fragment="search-by-price">
+  <div class="by-price">
     <nav class="navbar navbar-light bg-light">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="...something like nike" name="shopItem"
-               id="shopItem">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline" th:action="@{/filter-by-price}" th:method="post">
+        <p>Filter by price:  </p>
+        <input type="number" class="form-control mr-sm-2" name="price" id="price" placeholder="...e.g.: 300"
+               th:value="${price}">
+        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Above">
+        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Below">
+        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Exactly">
       </form>
     </nav>
   </div>
@@ -80,7 +93,6 @@
         <td th:text="*{name}"></td>
         <td th:text="*{type}"></td>
         <td th:text="*{description}"></td>
-        <!--          <td th:text="${currency} == null ? *{price} + ' HUF' : *{price} + ' EUR' "></td>-->
         <td th:text="${currency} == null ? *{#numbers.formatDecimal(price, 1, 2)} + ' HUF' : *{#numbers.formatDecimal(price, 1, 2)} + ' EUR' "></td>
         <td th:text="*{quantityOfStock}"></td>
       </tr>
@@ -89,22 +101,6 @@
     </table>
   </div>
 </div>
-
-<div th:fragment="search-by-price">
-  <div class="by-price">
-    <nav class="navbar navbar-light bg-light">
-      <p>Filter by price:</p>
-      <form class="form-inline" th:action="@{/filter-by-price}" th:method="post">
-        <input type="number" class="form-control mr-sm-2" name="price" id="price" placeholder="...e.g.: 300"
-               th:value="${price}">
-        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Above">
-        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Below">
-        <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="operator" th:value="Exactly">
-      </form>
-    </nav>
-  </div>
-</div>
-
 
 </body>
 </html>
