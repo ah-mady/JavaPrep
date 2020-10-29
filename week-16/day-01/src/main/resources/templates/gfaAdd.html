@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Student</title>
+</head>
+<body>
+<h3><a href="/gfa">Back to homepage</a></h3>
+
+<form action="/gfa/save" method="post">
+  <div>
+    <label for="studentName">Enter the name of the student: </label>
+    <input type="text" name="studentName" id="studentName" required>
+  </div>
+  <button type="submit">Add student</button>
+</form>
+
+<p th:utext="${confirmation}"></p>
+<a href="/gfa/list" th:text="${listStudents}"></a>
+
+</body>
+</html>

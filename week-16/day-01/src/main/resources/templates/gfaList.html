@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>List of Students</title>
+</head>
+<body>
+<h3><a href="/gfa">Back to homepage</a></h3>
+<p>GFA has the following students: </p>
+<ul th:each="student: ${students}">
+  <li th:text="${student}"></li>
+</ul>
+</body>
+</html>

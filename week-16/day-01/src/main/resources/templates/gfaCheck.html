@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Student validation</title>
+</head>
+<body>
+
+<h3><a href="/gfa">Back to homepage</a></h3>
+<form action="/gfa/check" method="post">
+  <div>
+    <label for="name">Enter the name of the student to validate: </label>
+    <input type="text" name="name" id="name" required>
+  </div>
+  <button type="submit">Check student</button>
+</form>
+
+<p th:utext="${validation}"></p>
+<a href="/gfa/list" th:text="${listStudents}"></a>
+
+</body>
+</html>

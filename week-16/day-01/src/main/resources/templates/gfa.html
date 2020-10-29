@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>HomePage</title>
+</head>
+<body>
+<header th:utext="'Actual count of students in Green Fox: ' + ${counter}"></header>
+<h2>Actions to be performed over GreenFox Academy students</h2>
+<ul>
+  <li><a href="/gfa/list">List all students</a></li>
+  <li><a href="/gfa/add">Add new student</a></li>
+  <li><a href="/gfa/check">Check the student, if he is already in the database</a></li>
+</ul>
+</body>
+</html>
