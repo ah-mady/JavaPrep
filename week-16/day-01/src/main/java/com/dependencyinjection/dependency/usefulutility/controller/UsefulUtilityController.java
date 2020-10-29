@@ -16,32 +16,43 @@ public class UsefulUtilityController {
   }
 
   @GetMapping("/useful")
-  public String homepage () {
+  public String homepage() {
     return "useful";
   }
 
   @GetMapping("/useful/colored")
-  public String backgroundColor(Model model){
+  public String backgroundColor(Model model) {
     model.addAttribute("color", "background-color: " + utilityService.randomColor() + ";");
     return "colored";
   }
 
   @GetMapping("/useful/email")
-  public String emailValidation(Model model, @RequestParam(value = "email", required = false) String email){
+  public String emailValidation(Model model, @RequestParam(value = "email", required = false) String email) {
     String emailResponse;
     String formatResponse;
-
-    if (utilityService.validEmail(email)){
+    if (utilityService.validEmail(email)) {
       emailResponse = "<p style='color:green;'>" + email + " is a valid email address </p>";
       formatResponse = "background-color: green";
     } else {
       emailResponse = "<p style='color:red;'>" + email + " is NOT a valid email address </p>";
       formatResponse = "background-color: red";
     }
-
     model.addAttribute("emailResponse", emailResponse);
     model.addAttribute("formatResponse", formatResponse);
+    return "useful";
+  }
 
+  @PostMapping("/useful/encode")
+  public String encode(@RequestParam String word, @RequestParam Integer number, Model model) {
+    String newWord = utilityService.caesar(word, number);
+    model.addAttribute("newWordResult", "Encoded word/sentence is: <strong>" + newWord + "</strong>");
+    return "useful";
+  }
+
+  @PostMapping("/useful/decode")
+  public String decode(@RequestParam String word, @RequestParam Integer number, Model model) {
+    String newWord = utilityService.caesar(word, number * (-1));
+    model.addAttribute("newWordResult", "Decoded word/sentence is: <strong>" + newWord + "</strong>");
     return "useful";
   }
 

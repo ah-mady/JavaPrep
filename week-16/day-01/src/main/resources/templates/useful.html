@@ -15,5 +15,23 @@
   </div>
   <p th:utext="${emailResponse}"></p>
 </form>
+
+<form action="" method="post">
+  <h1>Ceasar encoder</h1>
+  <div class="inputField">
+    <label for="inputField">Enter the word to be encoded/decoded: </label>
+    <input type="text" placeholder="Enter a word to encode" id="inputField" name="word" required>
+  </div>
+  <div class="inputField">
+    <label for="number">Enter the Caesar number to shift characters: </label>
+    <input type="number" placeholder="Enter a Caesar number" id="number" name="number" required>
+  </div>
+  <div class="submit" id="buttons">
+    <button type="submit" formaction="/useful/encode" name="encoderButton">Encoder</button>
+    <button type="submit" formaction="/useful/decode" name="decoderButton">Decoder</button>
+  </div>
+  <p th:utext="${newWordResult}"></p>
+</form>
+
 </body>
 </html>
