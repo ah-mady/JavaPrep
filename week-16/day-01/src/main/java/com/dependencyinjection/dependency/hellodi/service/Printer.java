@@ -1,4 +1,4 @@
-package com.dependencyinjection.dependency.service;
+package com.dependencyinjection.dependency.hellodi.service;
 
 import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
