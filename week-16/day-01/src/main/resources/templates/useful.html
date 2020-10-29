@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Useful</title>
+</head>
+<body>
+
+<h2><a href="/useful/colored">Colored Background</a></h2>
+
+<form action="/useful/email" method="post">
+  <div>
+    <input type="text" name="email" placeholder="Enter your email">
+    <button type="submit" th:style="${formatResponse}">Submit</button>
+  </div>
+  <p th:utext="${emailResponse}"></p>
+</form>
+</body>
+</html>
