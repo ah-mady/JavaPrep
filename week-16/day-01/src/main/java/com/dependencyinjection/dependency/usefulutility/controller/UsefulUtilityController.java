@@ -26,8 +26,8 @@ public class UsefulUtilityController {
     return "colored";
   }
 
-  @PostMapping("/useful/email")
-  public String emailValidation(Model model, @RequestParam String email){
+  @GetMapping("/useful/email")
+  public String emailValidation(Model model, @RequestParam(value = "email", required = false) String email){
     String emailResponse;
     String formatResponse;
 
