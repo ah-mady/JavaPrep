@@ -4,16 +4,18 @@ import com.greenfox.messageservice.service.EmailService;
 import com.greenfox.messageservice.service.TwitterService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class MessageConfiguration {
 
   @Bean
-  EmailService emailService(){
+  @Primary
+  EmailService sendEmail123(){
     return new EmailService();
   }
 
-  TwitterService twitterService(){
+  TwitterService twitter(){
     return new TwitterService();
   }
 }

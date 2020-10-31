@@ -11,7 +11,7 @@ public class MessageProceeder {
     this.messageService = messageService;
   }
 
-  public String processMessage (String message, String email) {
+  public String processMessage(String message, String email) {
     return messageService.sendMessage(message, email);
   }
 
