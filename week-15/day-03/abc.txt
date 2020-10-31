@@ -1,0 +1,28 @@
+
+
+
+TODO Application:
+
+-Create a schema as "tasksfortoday"
+
+-Create table in Schema:
+
+create table tasks (id int, task_name varchar(255),task_status boolean);
+
+-Set id of the table tasks as Primerykey:
+alter table tasks add primary key (id); 
+
+-Add Task:
+INSERT INTO tasks (id, task_name, task_status)
+VALUES ('01','morining walk','1');
+
+-Show tasks:
+SELECT * FROM tasksfortoday.tasks;
+
+-Update Task's status:
+UPDATE tasks
+SET task_status = '0'
+WHERE id = 1;
+
+-Delete Task from task list:
+DELETE FROM tasks WHERE id= 1;

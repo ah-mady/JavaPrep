@@ -31,8 +31,8 @@ public class DependencyApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    //printer.log("Hello, Dependency Injection");
-    //myColor.printColor();
-    //utilityService.randomColor();
+    printer.log("Hello, Dependency Injection");
+    myColor.printColor();
+    utilityService.randomColor();
   }
 }
