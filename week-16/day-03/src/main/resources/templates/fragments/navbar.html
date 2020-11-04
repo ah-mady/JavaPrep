@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>fragment</title>
+</head>
+<body>
+
+
+<div th:fragment="links(name)">
+  <ul>
+    <li><a href="/">Information</a></li>
+    <li><a th:href="@{|/nutritionStore/?name=${name}|}">Nutrition Store</a></li>
+    <li><a href="">Trick Center</a></li>
+    <li><a href="">Action History</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

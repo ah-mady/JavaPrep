@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Nutrition Store</title>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: links(${name})"></div>
+
+
+<form th:action="@{|/nutritionStore?name=${name}|}" method="post">
+
+  <label for="food">Food</label>
+  <select name="foodList" id="food">
+    <option th:each="food:${foodList}" th:value="${food}">
+      <span th:text="${food.foodName}"></span>
+    </option>
+  </select>
+
+  <label for="drink">Drink</label>
+  <select name="drink" id="drink">
+    <option th:each="drink:${drinkList}" th:value="${drink}">
+      <span th:text="${drink.drinkName}"></span>
+    </option>
+  </select>
+
+  <button type="submit">Change</button></a>
+
+</form>
+
+</body>
+</html>

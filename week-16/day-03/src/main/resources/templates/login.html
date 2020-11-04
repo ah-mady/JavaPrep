@@ -10,6 +10,9 @@
   <h1>Welcome to Programmers fox Club!</h1>
 </header>
 
+<div th:replace="fragments/navbar :: links(defaultName)"></div>
+
+
 <p>Please provide a name, so we can associate it to your pet!</p>
 
 <form action="/login" method="post">

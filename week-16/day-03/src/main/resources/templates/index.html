@@ -6,9 +6,8 @@
 </head>
 <body>
 
-<ul>
-  <li><a href="">Information</a></li>
-</ul>
+<div th:replace="fragments/navbar :: links(${myFox.name})"></div>
+
 
 <img src="greenfox.png" alt="greenfox">
 
@@ -17,9 +16,12 @@
    He knows *{#lists.size(trickList)} trick(s).|"></p>
 
 <h2>Known tricks</h2>
+
 <ul th:each="trick:${myFox.getTrickList()}">
   <li th:text="*{trick.trickName}"></li>
 </ul>
+
+<p th:if="${#lists.size(myFox.trickList)} == 0">No tricks yet, time to learn!</p>
 
 </body>
 </html>
