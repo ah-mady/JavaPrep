@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Homepage</title>
@@ -12,13 +12,13 @@
 
 <img src="greenfox.png" alt="greenfox">
 
-<p>This is Mr. Fox. Currently living on pizza and lemonade. He knows two tricks:</p>
+<p th:object="${myFox}"
+   th:text="|This is Mr. *{name}. Currently living on *{food.foodName} and *{drink.drinkName}.
+   He knows *{#lists.size(trickList)} trick(s).|"></p>
 
-<h1>Known tricks</h1>
-
-<ul>
-  <li>write HTML</li>
-  <li>code in Java</li>
+<h2>Known tricks</h2>
+<ul th:each="trick:${myFox.getTrickList()}">
+  <li th:text="*{trick.trickName}"></li>
 </ul>
 
 </body>
