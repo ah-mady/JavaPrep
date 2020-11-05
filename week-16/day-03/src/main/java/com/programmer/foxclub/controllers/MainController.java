@@ -1,16 +1,15 @@
-package com.programmer.foxclub.controller;
+package com.programmer.foxclub.controllers;
 
-import com.programmer.foxclub.model.Drink;
-import com.programmer.foxclub.model.Food;
-import com.programmer.foxclub.model.Fox;
-import com.programmer.foxclub.service.FoxService;
+import com.programmer.foxclub.models.Drink;
+import com.programmer.foxclub.models.Food;
+import com.programmer.foxclub.models.Fox;
+import com.programmer.foxclub.services.FoxService;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 

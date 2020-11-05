@@ -1,6 +1,6 @@
-package com.programmer.foxclub.service;
+package com.programmer.foxclub.services;
 
-import com.programmer.foxclub.model.Fox;
+import com.programmer.foxclub.models.Fox;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

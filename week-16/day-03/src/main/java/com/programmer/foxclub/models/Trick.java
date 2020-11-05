@@ -1,4 +1,4 @@
-package com.programmer.foxclub.model;
+package com.programmer.foxclub.models;
 
 public enum Trick {
   HTML("write HTML"),
