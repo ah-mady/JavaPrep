@@ -10,6 +10,8 @@ public enum Drink {
 
   private String drinkName;
 
+  Drink() {
+  }
 
   Drink(String drinkName) {
     this.drinkName = drinkName;

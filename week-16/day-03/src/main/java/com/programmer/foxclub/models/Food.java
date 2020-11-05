@@ -9,6 +9,9 @@ public enum Food {
 
   private String foodName;
 
+  Food() {
+  }
+
   Food(String foodName) {
     this.foodName = foodName;
   }

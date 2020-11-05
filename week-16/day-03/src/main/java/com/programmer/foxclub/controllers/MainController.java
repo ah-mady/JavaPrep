@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,7 +48,7 @@ public class MainController {
     return "redirect:/?name=" + name;
   }
 
-  @GetMapping("/nutritionStore/")
+  @GetMapping("/nutritionStore")
   public String nutritionStore(@RequestParam String name, Model model){
     List<Food> foodList = Arrays.asList(Food.values());
     List<Drink> drinkList = Arrays.asList(Drink.values());
@@ -60,11 +61,11 @@ public class MainController {
 
   @PostMapping("/nutritionStore")
   public String updateNutrition(@RequestParam String name,
-                                @RequestParam Food food,
-                                @RequestParam Drink drink){
+                                @ModelAttribute Food food,
+                                @ModelAttribute Drink drink){
     Fox myFox = foxService.getFoxName(name);
-    myFox.setFood(food);
-    myFox.setDrink(drink);
+    myFox.setFood(Food.valueOf(food.getFoodName()));
+    myFox.setDrink(Drink.valueOf(drink.getDrinkName()));
 
     return "redirect:/" + name;
   }

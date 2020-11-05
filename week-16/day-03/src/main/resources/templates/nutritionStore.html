@@ -12,7 +12,7 @@
 <form th:action="@{|/nutritionStore?name=${name}|}" method="post">
 
   <label for="food">Food</label>
-  <select name="foodList" id="food">
+  <select name="food" id="food">
     <option th:each="food:${foodList}" th:value="${food}">
       <span th:text="${food.foodName}"></span>
     </option>
