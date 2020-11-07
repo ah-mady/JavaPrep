@@ -10,7 +10,7 @@
 
 <form th:action="@{/nutritionStore}" method="post">
 
-<!--  <input type="hidden" name="name" th:value="${name}"/>-->
+  <!--  <input type="hidden" name="name" th:value="${name}"/>-->
   <label for="food">Food</label>
   <select name="food" id="food">
     <option th:each="food:${foodList}" th:value="${food.foodName}">
@@ -25,7 +25,8 @@
     </option>
   </select>
 
-  <button type="submit">Change</button></a>
+  <button type="submit">Change</button>
+  </a>
 
 </form>
 

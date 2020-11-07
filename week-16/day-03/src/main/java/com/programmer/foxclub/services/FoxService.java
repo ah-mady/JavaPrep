@@ -23,7 +23,7 @@ public class FoxService {
     return foxName.orElse(null);
   }
 
-  public void addTrick(Trick trick, Fox fox){
+  public void addTrick(Trick trick, Fox fox) {
     fox.getTrickList().add(trick);
   }
 

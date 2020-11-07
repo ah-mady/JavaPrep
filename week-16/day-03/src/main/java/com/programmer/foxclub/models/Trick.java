@@ -19,9 +19,9 @@ public enum Trick {
     return trickName;
   }
 
-  public static Trick getValue(String trickName){
+  public static Trick getValue(String trickName) {
     Optional<Trick> trickStream = Arrays.stream(Trick.values())
-        .filter(e-> e.trickName.equals(trickName))
+        .filter(e -> e.trickName.equals(trickName))
         .findFirst();
     return trickStream.orElse(null);
   }

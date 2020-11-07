@@ -71,16 +71,16 @@ public class MainController {
   }
 
   @GetMapping("/trickCenter")
-  public String tickCenter(Model model){
+  public String tickCenter(Model model) {
     List<Trick> trickList = Arrays.asList(Trick.values());
     model.addAttribute("trickList", trickList);
     return "trickCenter";
   }
 
   @PostMapping("/trickCenter")
-  public String trickAddition(@RequestParam String trick){
+  public String trickAddition(@RequestParam String trick) {
     Fox myFox = foxService.getFoxName(currentlyLoggedFox);
-    foxService.addTrick(Trick.getValue(trick) ,myFox);
+    foxService.addTrick(Trick.getValue(trick), myFox);
     return "redirect:/?name=" + currentlyLoggedFox;
   }
 

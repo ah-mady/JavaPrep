@@ -20,7 +20,7 @@ public enum Drink {
     this.drinkName = drinkName;
   }
 
-  public static Drink getValue(String drinkName){
+  public static Drink getValue(String drinkName) {
 
     Optional<Drink> drinkStream = Arrays.stream(Drink.values())
         .filter(e -> e.drinkName.equals(drinkName))

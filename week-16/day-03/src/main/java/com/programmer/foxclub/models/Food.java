@@ -19,7 +19,7 @@ public enum Food {
     this.foodName = foodName;
   }
 
-  public static Food getValue(String foodName){
+  public static Food getValue(String foodName) {
     Optional<Food> foodStream = Arrays.stream(Food.values())
         .filter(e -> e.foodName.equals(foodName))
         .findFirst();
