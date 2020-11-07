@@ -18,7 +18,7 @@
 <h2>Known tricks</h2>
 
 <ul th:each="trick:${myFox.getTrickList()}">
-  <li th:text="*{trick.trickName}"></li>
+  <li th:text="*{trick}"></li>
 </ul>
 
 <p th:if="${#lists.size(myFox.trickList)} == 0">No tricks yet, time to learn!</p>

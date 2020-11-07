@@ -1,5 +1,8 @@
 package com.programmer.foxclub.models;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Food {
   PIZZA("pizza"),
   BIRYANI("biryani"),
@@ -17,12 +20,10 @@ public enum Food {
   }
 
   public static Food getValue(String foodName){
-    for (Food food: Food.values()) {
-      if (food.foodName.equals(foodName)){
-        return food;
-      }
-    }
-    return null;
+    Optional<Food> foodStream = Arrays.stream(Food.values())
+        .filter(e -> e.foodName.equals(foodName))
+        .findFirst();
+    return foodStream.orElse(null);
   }
 
   public String getFoodName() {

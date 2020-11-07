@@ -3,6 +3,7 @@ package com.programmer.foxclub.controllers;
 import com.programmer.foxclub.models.Drink;
 import com.programmer.foxclub.models.Food;
 import com.programmer.foxclub.models.Fox;
+import com.programmer.foxclub.models.Trick;
 import com.programmer.foxclub.services.FoxService;
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
@@ -49,7 +51,7 @@ public class MainController {
   }
 
   @GetMapping("/nutritionStore")
-  public String nutritionStore( Model model) {
+  public String nutritionStore(Model model) {
     List<Food> foodList = Arrays.asList(Food.values());
     List<Drink> drinkList = Arrays.asList(Drink.values());
 
@@ -65,7 +67,20 @@ public class MainController {
     Fox myFox = foxService.getFoxName(currentlyLoggedFox);
     myFox.setFood(Food.getValue(food));
     myFox.setDrink(Drink.getValue(drink));
+    return "redirect:/?name=" + currentlyLoggedFox;
+  }
 
+  @GetMapping("/trickCenter")
+  public String tickCenter(Model model){
+    List<Trick> trickList = Arrays.asList(Trick.values());
+    model.addAttribute("trickList", trickList);
+    return "trickCenter";
+  }
+
+  @PostMapping("/trickCenter")
+  public String trickAddition(@RequestParam String trick){
+    Fox myFox = foxService.getFoxName(currentlyLoggedFox);
+    foxService.addTrick(Trick.getValue(trick) ,myFox);
     return "redirect:/?name=" + currentlyLoggedFox;
   }
 

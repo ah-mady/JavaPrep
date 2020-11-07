@@ -1,5 +1,8 @@
 package com.programmer.foxclub.models;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Drink {
   WATER("water"),
   BEER("beer"),
@@ -18,12 +21,18 @@ public enum Drink {
   }
 
   public static Drink getValue(String drinkName){
-    for (Drink drink: Drink.values()) {
-      if (drink.drinkName.equals(drinkName)){
-        return drink;
-      }
-    }
-    return null;
+
+    Optional<Drink> drinkStream = Arrays.stream(Drink.values())
+        .filter(e -> e.drinkName.equals(drinkName))
+        .findFirst();
+    return drinkStream.orElse(null);
+
+//    for (Drink drink: Drink.values()) {
+//      if (drink.drinkName.equals(drinkName)){
+//        return drink;
+//      }
+//    }
+//    return null;
   }
 
   public String getDrinkName() {
