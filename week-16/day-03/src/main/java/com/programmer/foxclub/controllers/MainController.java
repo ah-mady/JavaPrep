@@ -49,25 +49,25 @@ public class MainController {
   }
 
   @GetMapping("/nutritionStore")
-  public String nutritionStore(@RequestParam String name, Model model){
+  public String nutritionStore(@RequestParam String name, Model model) {
     List<Food> foodList = Arrays.asList(Food.values());
     List<Drink> drinkList = Arrays.asList(Drink.values());
 
     model.addAttribute("name", foxService.getFoxName(name).getName());
     model.addAttribute("foodList", foodList);
     model.addAttribute("drinkList", drinkList);
-  return "nutritionStore";
+    return "nutritionStore";
   }
 
   @PostMapping("/nutritionStore")
-  public String updateNutrition(@RequestParam String name,
-                                @ModelAttribute Food food,
-                                @ModelAttribute Drink drink){
-    Fox myFox = foxService.getFoxName(name);
-    myFox.setFood(Food.valueOf(food.getFoodName()));
-    myFox.setDrink(Drink.valueOf(drink.getDrinkName()));
+  public String updateNutrition(@RequestParam String food,
+                                @RequestParam String drink,
+                                @RequestParam String name) {
+    Fox myFox = foxService.getFoxName(currentlyLoggedFox);
+    myFox.setFood(Food.getValue(food));
+    myFox.setDrink(Drink.getValue(drink));
 
-    return "redirect:/" + name;
+    return "redirect:/?name=" + name;
   }
 
 }

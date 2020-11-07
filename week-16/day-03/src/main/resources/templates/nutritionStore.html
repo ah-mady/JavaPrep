@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Nutrition Store</title>
@@ -9,18 +9,19 @@
 <div th:replace="fragments/navbar :: links(${name})"></div>
 
 
-<form th:action="@{|/nutritionStore?name=${name}|}" method="post">
+<form th:action="@{/nutritionStore}" method="post">
 
+  <input type="hidden" name="name" th:value="${name}"/>
   <label for="food">Food</label>
   <select name="food" id="food">
-    <option th:each="food:${foodList}" th:value="${food}">
+    <option th:each="food:${foodList}" th:value="${food.foodName}">
       <span th:text="${food.foodName}"></span>
     </option>
   </select>
 
   <label for="drink">Drink</label>
   <select name="drink" id="drink">
-    <option th:each="drink:${drinkList}" th:value="${drink}">
+    <option th:each="drink:${drinkList}" th:value="${drink.drinkName}">
       <span th:text="${drink.drinkName}"></span>
     </option>
   </select>

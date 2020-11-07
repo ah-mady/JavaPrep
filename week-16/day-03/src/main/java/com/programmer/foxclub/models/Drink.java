@@ -17,6 +17,15 @@ public enum Drink {
     this.drinkName = drinkName;
   }
 
+  public static Drink getValue(String drinkName){
+    for (Drink drink: Drink.values()) {
+      if (drink.drinkName.equals(drinkName)){
+        return drink;
+      }
+    }
+    return null;
+  }
+
   public String getDrinkName() {
     return drinkName;
   }

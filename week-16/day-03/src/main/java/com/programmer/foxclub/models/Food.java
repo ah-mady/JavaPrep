@@ -16,6 +16,15 @@ public enum Food {
     this.foodName = foodName;
   }
 
+  public static Food getValue(String foodName){
+    for (Food food: Food.values()) {
+      if (food.foodName.equals(foodName)){
+        return food;
+      }
+    }
+    return null;
+  }
+
   public String getFoodName() {
     return foodName;
   }
