@@ -49,11 +49,11 @@ public class MainController {
   }
 
   @GetMapping("/nutritionStore")
-  public String nutritionStore(@RequestParam String name, Model model) {
+  public String nutritionStore( Model model) {
     List<Food> foodList = Arrays.asList(Food.values());
     List<Drink> drinkList = Arrays.asList(Drink.values());
 
-    model.addAttribute("name", foxService.getFoxName(name).getName());
+//    model.addAttribute("name", foxService.getFoxName(name).getName());
     model.addAttribute("foodList", foodList);
     model.addAttribute("drinkList", drinkList);
     return "nutritionStore";
@@ -61,13 +61,12 @@ public class MainController {
 
   @PostMapping("/nutritionStore")
   public String updateNutrition(@RequestParam String food,
-                                @RequestParam String drink,
-                                @RequestParam String name) {
+                                @RequestParam String drink) {
     Fox myFox = foxService.getFoxName(currentlyLoggedFox);
     myFox.setFood(Food.getValue(food));
     myFox.setDrink(Drink.getValue(drink));
 
-    return "redirect:/?name=" + name;
+    return "redirect:/?name=" + currentlyLoggedFox;
   }
 
 }

@@ -7,10 +7,10 @@
 <body>
 
 
-<div th:fragment="links(name)">
+<div th:fragment="links">
   <ul>
     <li><a href="/">Information</a></li>
-    <li><a th:href="@{|/nutritionStore/?name=${name}|}">Nutrition Store</a></li>
+    <li><a href="nutritionStore">Nutrition Store</a></li>
     <li><a href="">Trick Center</a></li>
     <li><a href="">Action History</a></li>
   </ul>

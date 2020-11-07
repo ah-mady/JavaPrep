@@ -6,12 +6,12 @@
 </head>
 <body>
 
-<div th:replace="fragments/navbar :: links(${name})"></div>
+<div th:replace="fragments/navbar :: links"></div>
 
 
 <form th:action="@{/nutritionStore}" method="post">
 
-  <input type="hidden" name="name" th:value="${name}"/>
+<!--  <input type="hidden" name="name" th:value="${name}"/>-->
   <label for="food">Food</label>
   <select name="food" id="food">
     <option th:each="food:${foodList}" th:value="${food.foodName}">
