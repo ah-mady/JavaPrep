@@ -1,23 +1,40 @@
 package com.todowithh2.listing.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ToDo {
-  private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
   private String title;
   private boolean urgent;
   private boolean done;
 
-  public ToDo(long id, String title) {
+  public ToDo() {
+  }
+
+  public ToDo(String title) {
+    this.title = title;
+    this.urgent = false;
+    this.done = false;
+  }
+
+  public ToDo(Long id, String title) {
     this.id = id;
     this.title = title;
     this.urgent = false;
     this.done = false;
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -43,5 +60,10 @@ public class ToDo {
 
   public void setDone(boolean done) {
     this.done = done;
+  }
+
+  @Override
+  public String toString() {
+    return title;
   }
 }
