@@ -18,19 +18,13 @@ public class TodoController {
     this.toDoRepository = toDoRepository;
   }
 
-  @GetMapping({ "/", "/list" })
-  public String list(Model model){
-    List<String> todoList = new ArrayList<>();
-    todoList.add("Start the day");
-    todoList.add("Finish H2 workshop1");
-    todoList.add("Finish JPA workshop2");
-    todoList.add("Create a CRUD project");
+  @GetMapping({"/", "/list"})
+  public String list(Model model) {
     toDoRepository.save(new ToDo("Start the day"));
     toDoRepository.save(new ToDo("Finish H2 workshop1"));
     toDoRepository.save(new ToDo("Finish JPA workshop2"));
     toDoRepository.save(new ToDo("Create a CRUD project"));
     model.addAttribute("todos", toDoRepository.findAll());
-    model.addAttribute("todoList",todoList);
     return "todo";
   }
 }
