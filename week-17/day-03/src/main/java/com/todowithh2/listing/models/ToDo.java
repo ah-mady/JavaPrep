@@ -1,4 +1,4 @@
-package com.todowithh2.listing.model;
+package com.todowithh2.listing.models;
 
 public class ToDo {
   private long id;
