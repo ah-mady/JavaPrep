@@ -1,9 +1,7 @@
-package com.todowithh2.listing.controllers;
+package com.connectionwith.mysql.controllers;
 
-import com.todowithh2.listing.models.ToDo;
-import com.todowithh2.listing.repositories.ToDoRepository;
-import java.util.ArrayList;
-import java.util.List;
+import com.connectionwith.mysql.models.ToDo;
+import com.connectionwith.mysql.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

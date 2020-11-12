@@ -1,4 +1,4 @@
-package com.todowithh2.listing.models;
+package com.connectionwith.mysql.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,23 +11,23 @@ public class ToDo {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String title;
-  private boolean urgent;
-  private boolean done;
+  private boolean isUrgent;
+  private boolean isDone;
 
   public ToDo() {
   }
 
   public ToDo(String title) {
     this.title = title;
-    this.urgent = false;
-    this.done = false;
+    this.isUrgent = false;
+    this.isDone = false;
   }
 
   public ToDo(Long id, String title) {
     this.id = id;
     this.title = title;
-    this.urgent = false;
-    this.done = false;
+    this.isUrgent = false;
+    this.isDone = false;
   }
 
   public Long getId() {
@@ -47,19 +47,19 @@ public class ToDo {
   }
 
   public boolean isUrgent() {
-    return urgent;
+    return isUrgent;
   }
 
-  public void setUrgent(boolean urgent) {
-    this.urgent = urgent;
+  public void setIsUrgent(boolean urgent) {
+    this.isUrgent = urgent;
   }
 
   public boolean isDone() {
-    return done;
+    return isDone;
   }
 
-  public void setDone(boolean done) {
-    this.done = done;
+  public void setIsDone(boolean done) {
+    this.isDone = done;
   }
 
   @Override

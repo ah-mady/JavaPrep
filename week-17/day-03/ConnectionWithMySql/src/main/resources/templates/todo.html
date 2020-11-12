@@ -26,8 +26,8 @@
     <tr th:each="list:${todos}">
         <td th:text="*{list.getId()}"></td>
         <td th:text="*{list.getTitle()}"></td>
-        <td th:text="*{list.isUrgent()}"></td>
-        <td th:text="*{list.isDone()}"></td>
+        <td th:text="*{list.isIsUrgent()}"></td>
+        <td th:text="*{list.isIsDone()}"></td>
     </tr>
     </tbody>
 

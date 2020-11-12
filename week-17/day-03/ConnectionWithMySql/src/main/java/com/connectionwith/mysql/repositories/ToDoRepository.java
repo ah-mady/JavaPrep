@@ -1,6 +1,7 @@
-package com.todowithh2.listing.repositories;
+package com.connectionwith.mysql.repositories;
 
-import com.todowithh2.listing.models.ToDo;
+
+import com.connectionwith.mysql.models.ToDo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
