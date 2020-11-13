@@ -12,6 +12,10 @@
 <!--<ul th:each="list:${todos}">
     <li th:text="*{list}"></li>
 </ul>-->
+<h2>
+    <a th:href="@{/add}">Add new todo</a>
+</h2>
+
 <a th:href="@{/list}">All List</a>
 <a th:href="@{|/list?@{isActive=true}|}">Yet to be done</a>
 <a th:href="@{|/list?@{isActive=false}|}">Finished tasks</a>

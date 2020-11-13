@@ -24,17 +24,19 @@ public class ToDo {
   }
 
   public ToDo(String title) {
-    this.title = title;
-    this.isUrgent = false;
-    this.isDone = false;
+    this(title, false,false);
   }
 
-  public ToDo(Long id, String title) {
+  public ToDo(String title, boolean isUrgent) {
+    this(title, isUrgent,false);
+  }
+
+ /* public ToDo(Long id, String title) {
     this.id = id;
     this.title = title;
     this.isUrgent = false;
     this.isDone = false;
-  }
+  }*/
 
   public Long getId() {
     return id;
