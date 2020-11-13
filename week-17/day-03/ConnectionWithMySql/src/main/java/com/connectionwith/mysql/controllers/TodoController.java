@@ -2,10 +2,13 @@ package com.connectionwith.mysql.controllers;
 
 import com.connectionwith.mysql.models.ToDo;
 import com.connectionwith.mysql.repositories.ToDoRepository;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TodoController {
@@ -17,12 +20,19 @@ public class TodoController {
   }
 
   @GetMapping({"/", "/list"})
-  public String list(Model model) {
-    toDoRepository.save(new ToDo("Start the day"));
-    toDoRepository.save(new ToDo("Finish H2 workshop1"));
-    toDoRepository.save(new ToDo("Finish JPA workshop2"));
-    toDoRepository.save(new ToDo("Create a CRUD project"));
-    model.addAttribute("todos", toDoRepository.findAll());
+  public String list(Model model,
+                     @RequestParam(value = "isActive", required = false) Boolean isActive) {
+    if (isActive == null) {
+      model.addAttribute("todos", toDoRepository.findAll());
+    } else if (isActive) {
+      model.addAttribute("todos",
+          toDoRepository.findAll().stream().filter(task -> !task.isDone()).collect(
+              Collectors.toList()));
+    } else if (!isActive) {
+      model.addAttribute("todos",
+          toDoRepository.findAll().stream().filter(ToDo::isDone).collect(Collectors.toList()));
+    }
     return "todo";
   }
+
 }

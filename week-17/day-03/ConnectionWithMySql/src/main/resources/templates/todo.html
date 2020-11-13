@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
@@ -11,14 +12,16 @@
 <!--<ul th:each="list:${todos}">
     <li th:text="*{list}"></li>
 </ul>-->
-
+<a th:href="@{/list}">All List</a>
+<a th:href="@{|/list?@{isActive=true}|}">Yet to be done</a>
+<a th:href="@{|/list?@{isActive=false}|}">Finished tasks</a>
 <table>
     <thead>
     <tr>
-        <th>id</th>
-        <th>title</th>
-        <th>urgent</th>
-        <th>done</th>
+        <th>Id</th>
+        <th>Action</th>
+        <th>Urgent</th>
+        <th>Done</th>
     </tr>
     </thead>
 
@@ -26,8 +29,8 @@
     <tr th:each="list:${todos}">
         <td th:text="*{list.getId()}"></td>
         <td th:text="*{list.getTitle()}"></td>
-        <td th:text="*{list.isIsUrgent()}"></td>
-        <td th:text="*{list.isIsDone()}"></td>
+        <td th:text="*{list.isUrgent()}"></td>
+        <td th:text="*{list.isDone()}"></td>
     </tr>
     </tbody>
 
