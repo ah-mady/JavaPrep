@@ -57,5 +57,19 @@ public class TodoController {
     return "redirect:/";
   }
 
+  @GetMapping("/{id}/edit")
+  public String editTask (Model model, @PathVariable("id") Long id){
+/*    model.addAttribute("id", id);*/
+    model.addAttribute("task", toDoRepository.getOne(id));
+    return "edit";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id){
+    task.setId(id);
+    toDoRepository.save(task);
+    return "redirect:/";
+  }
+
 
 }

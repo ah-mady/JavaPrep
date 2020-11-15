@@ -36,6 +36,7 @@
         <td th:text="*{list.isUrgent()}"></td>
         <td th:text="*{list.isDone()}"></td>
         <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
+        <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
     </tr>
     </tbody>
 
