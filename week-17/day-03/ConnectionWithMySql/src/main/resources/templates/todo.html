@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
 
@@ -35,6 +35,7 @@
         <td th:text="*{list.getTitle()}"></td>
         <td th:text="*{list.isUrgent()}"></td>
         <td th:text="*{list.isDone()}"></td>
+        <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
     </tr>
     </tbody>
 
