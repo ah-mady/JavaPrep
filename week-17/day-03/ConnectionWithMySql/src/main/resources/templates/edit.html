@@ -11,8 +11,8 @@
 <form th:action="@{|/${task.id}/edit|}" method="post" th:object="${task}">
     <label for="todoDescription">Todo Description</label>
     <input type="text" name="task" id="todoDescription" th:field="*{title}">
-    Urgent<input type="radio" th:field="*{urgent}" th:value=true/>
-    Done <input type="radio" th:field="*{done}" th:value=true>
+    Urgent<input type="radio" th:field="*{isUrgent}" th:value=true/>
+    Done <input type="radio" th:field="*{isDone}" th:value=true>
     <input type="submit" value="Update task">
     <a th:href="@{/list}">Cancel</a>
 </form>

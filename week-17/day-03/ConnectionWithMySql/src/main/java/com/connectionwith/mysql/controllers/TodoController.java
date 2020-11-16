@@ -29,11 +29,11 @@ public class TodoController {
       model.addAttribute("todos", toDoRepository.findAll());
     } else if (isActive) {
       model.addAttribute("todos",
-          toDoRepository.findAll().stream().filter(task -> !task.isDone()).collect(
+          toDoRepository.findAll().stream().filter(task -> !task.getIsDone()).collect(
               Collectors.toList()));
     } else if (!isActive) {
       model.addAttribute("todos",
-          toDoRepository.findAll().stream().filter(ToDo::isDone).collect(Collectors.toList()));
+          toDoRepository.findAll().stream().filter(task -> task.getIsDone()).collect(Collectors.toList()));
     }
     return "todo";
   }

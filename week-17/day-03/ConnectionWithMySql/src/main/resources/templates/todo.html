@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link th:href="@{style.css}" rel="stylesheet" />
 </head>
 <body>
 
@@ -33,8 +33,8 @@
     <tr th:each="list:${todos}">
         <td th:text="*{list.getId()}"></td>
         <td th:text="*{list.getTitle()}"></td>
-        <td th:text="*{list.isUrgent()}"></td>
-        <td th:text="*{list.isDone()}"></td>
+        <td th:text="*{list.getIsUrgent()}"></td>
+        <td th:text="*{list.getIsDone()}"></td>
         <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
         <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
     </tr>

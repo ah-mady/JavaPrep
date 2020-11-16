@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class ToDo {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String title;
   private boolean isUrgent;
@@ -54,7 +54,7 @@ public class ToDo {
     this.title = title;
   }
 
-  public boolean isUrgent() {
+  public boolean getIsUrgent() {
     return isUrgent;
   }
 
@@ -62,7 +62,7 @@ public class ToDo {
     this.isUrgent = urgent;
   }
 
-  public boolean isDone() {
+  public boolean getIsDone() {
     return isDone;
   }
 
