@@ -1,8 +1,8 @@
-package controller;
+package com.greenfox.finder.controller;
 
-import service.UserService;
-import com.greenfox.error.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.greenfox.finder.model.User;
+import com.greenfox.finder.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/app")
 public class AppController {
 
-    @Autowired
     UserService service;
+
+    public AppController(UserService service) {
+        this.service = service;
+    }
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("new_user", new User());
         model.addAttribute("yolo", service.getAll());
-        return "index";
+        return "main";
     }
 
     @PostMapping("/app")
