@@ -3,6 +3,7 @@ package com.greenfox.finder.service;
 import com.greenfox.finder.model.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,21 +13,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private ArrayList<User> users;
+  private List<User> users;
 
-    public UserService() {
-        this.users = new ArrayList<>();
-    }
+  public UserService() {
+    this.users = new ArrayList<>();
+  }
 
-    public ArrayList<User> getAll() {
-        return users;
-    }
+  public List<User> getAll() {
+    return users;
+  }
 
-    public void save(User user) {
-        users.add(user);
-    }
+  public void save(User user) {
+    users.add(user);
+  }
 
-    public UserService service() {
-        return new UserService();
-    }
+  public UserService service() {
+    return new UserService();
+  }
 }
