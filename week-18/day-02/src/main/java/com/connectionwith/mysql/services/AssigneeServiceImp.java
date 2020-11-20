@@ -15,11 +15,16 @@ public class AssigneeServiceImp implements AssigneeService{
 
   @Override
   public List<Assignee> findAll() {
-    return assigneeRepository == null ? null : assigneeRepository.findAll();
+    return assigneeRepository.findAll();
   }
 
   @Override
   public void add(Assignee assignee) {
     assigneeRepository.save(assignee);
+  }
+
+  @Override
+  public void deleteById(Long id) {
+    assigneeRepository.deleteById(id);
   }
 }

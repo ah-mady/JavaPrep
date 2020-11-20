@@ -9,4 +9,5 @@ public interface AssigneeService {
 
   List<Assignee> findAll();
   void add(Assignee assignee);
+  void deleteById(Long id);
 }

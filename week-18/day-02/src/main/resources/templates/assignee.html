@@ -22,6 +22,9 @@
     <td th:text="*{id}"></td>
     <td th:text="*{name}"></td>
     <td th:text="*{email}"></td>
+    <td>
+      <a th:href="@{/{id}/deleteAssignee(id=${assignee.id})}">delete</a>
+    </td>
   </tr>
 </table>
 
