@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-//@RequestMapping("/app")
+@RequestMapping("/app")
 public class AppController {
 
   UserService service;
@@ -21,14 +21,14 @@ public class AppController {
     this.service = service;
   }
 
-  @GetMapping("/app")
+  @GetMapping()
   public String mainPage(Model model) {
     model.addAttribute("new_user", new User());
     model.addAttribute("yolo", service.getAll());
     return "main";
   }
 
-  @PostMapping("/app")
+  @PostMapping()
   public String create(@ModelAttribute User new_user) {
     service.save(new User(new_user.getFirstName(), new_user.getLastName()));
     return "redirect:/app";
