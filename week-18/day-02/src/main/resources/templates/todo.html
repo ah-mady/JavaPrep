@@ -16,6 +16,10 @@
     <a th:href="@{/add}">Add new todo</a>
 </h2>
 
+<h3>
+    <a th:href="@{/listAssignee}">List all Assignees</a>
+</h3>
+
 <form th:action="@{/search}" method="post">
     <label for="search">Search Todo</label>
     <input type="text" id="search" name="search">
@@ -34,6 +38,7 @@
         <th>Action</th>
         <th>Urgent</th>
         <th>Done</th>
+        <th>Assignee</th>
     </tr>
     </thead>
 
@@ -43,6 +48,9 @@
         <td th:text="*{list.getTitle()}"></td>
         <td th:text="*{list.getIsUrgent()}"></td>
         <td th:text="*{list.getIsDone()}"></td>
+        <td>
+
+        </td>
         <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
         <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
     </tr>

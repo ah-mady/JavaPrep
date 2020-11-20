@@ -20,12 +20,12 @@ public class MysqlApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        /*toDoRepository.save(new ToDo("Start the day"));
-        toDoRepository.save(new ToDo("Finish H2 workshop1" , true, true));
-        toDoRepository.save(new ToDo("Finish JPA workshop2", true, false));
-        toDoRepository.save(new ToDo("Create a CRUD project", false, true));
-        toDoRepository.save(new ToDo("Make the beds", true, true));
-        toDoRepository.save(new ToDo("Do the washing up", false, true));
-        toDoRepository.save(new ToDo("Vacuum the carpet"));*/
+//        toDoRepository.save(new ToDo("Start the day"));
+//        toDoRepository.save(new ToDo("Finish H2 workshop1" , true, true));
+//        toDoRepository.save(new ToDo("Finish JPA workshop2", true, false));
+//        toDoRepository.save(new ToDo("Create a CRUD project", false, true));
+//        toDoRepository.save(new ToDo("Make the beds", true, true));
+//        toDoRepository.save(new ToDo("Do the washing up", false, true));
+//        toDoRepository.save(new ToDo("Vacuum the carpet"));
     }
 }

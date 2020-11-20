@@ -60,4 +60,9 @@ public class Assignee {
   public void setToDoList(List<ToDo> toDoList) {
     this.toDoList = toDoList;
   }
+
+  @Override
+  public String toString() {
+    return this.name;
+  }
 }
