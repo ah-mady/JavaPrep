@@ -10,4 +10,6 @@ public interface AssigneeService {
   List<Assignee> findAll();
   void add(Assignee assignee);
   void deleteById(Long id);
+  Assignee getOne(Long id);
+  void save(Assignee assignee);
 }

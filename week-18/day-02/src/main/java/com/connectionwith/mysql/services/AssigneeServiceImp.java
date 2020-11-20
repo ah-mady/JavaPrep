@@ -27,4 +27,14 @@ public class AssigneeServiceImp implements AssigneeService{
   public void deleteById(Long id) {
     assigneeRepository.deleteById(id);
   }
+
+  @Override
+  public Assignee getOne(Long id) {
+    return assigneeRepository.getOne(id);
+  }
+
+  @Override
+  public void save(Assignee assignee) {
+    assigneeRepository.save(assignee);
+  }
 }
