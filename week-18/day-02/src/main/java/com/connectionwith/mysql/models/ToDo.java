@@ -1,9 +1,14 @@
 package com.connectionwith.mysql.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ToDo {
@@ -14,8 +19,9 @@ public class ToDo {
   private boolean isUrgent;
   private boolean isDone;
 
-  private String description;
-  private String content;
+  @ManyToOne
+  @JoinColumn(name = "assignee_Id")
+  private Assignee assignee;
 
   public ToDo() {
   }
@@ -67,20 +73,12 @@ public class ToDo {
     this.isDone = done;
   }
 
-  public String getDescription() {
-    return description;
+  public Assignee getAssignee() {
+    return assignee;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 
   @Override

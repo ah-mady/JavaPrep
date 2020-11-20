@@ -1,8 +1,7 @@
 package com.connectionwith.mysql.controllers;
 
 import com.connectionwith.mysql.models.ToDo;
-import com.connectionwith.mysql.repositories.ToDoRepository;
-import com.connectionwith.mysql.services.Service;
+import com.connectionwith.mysql.services.TodoService;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,25 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TodoController {
-  private Service service;
+  private TodoService todoService;
 
 
-  public TodoController(Service service) {
-    this.service = service;
+  public TodoController(TodoService todoService) {
+    this.todoService = todoService;
   }
 
   @GetMapping({"/", "/list"})
   public String list(Model model,
                      @RequestParam(value = "isActive", required = false) Boolean isActive) {
     if (isActive == null) {
-      model.addAttribute("todos", service.findAll());
+      model.addAttribute("todos", todoService.findAll());
     } else if (isActive) {
       model.addAttribute("todos",
-          service.findAll().stream().filter(task -> !task.getIsDone()).collect(
+          todoService.findAll().stream().filter(task -> !task.getIsDone()).collect(
               Collectors.toList()));
     } else if (!isActive) {
       model.addAttribute("todos",
-          service.findAll().stream().filter(task -> task.getIsDone()).collect(Collectors.toList()));
+          todoService.findAll().stream().filter(task -> task.getIsDone()).collect(Collectors.toList()));
     }
     return "todo";
   }
@@ -45,33 +44,33 @@ public class TodoController {
 
   @PostMapping("/add")
   public String addTodo(@ModelAttribute ToDo task){
-    service.save(task);
+    todoService.save(task);
     return "redirect:/";
   }
 
   @GetMapping("/{id}/delete")
   public String deleteTask(@PathVariable("id") Long id, Model model){
     model.addAttribute("id", id);
-    service.deleteById(id);
+    todoService.deleteById(id);
     return "redirect:/";
   }
 
   @GetMapping("/{id}/edit")
   public String editTask (Model model, @PathVariable("id") Long id){
-    model.addAttribute("task", service.getOne(id));
+    model.addAttribute("task", todoService.getOne(id));
     return "edit";
   }
 
   @PostMapping("/{id}/edit")
   public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id){
     task.setId(id);
-    service.save(task);
+    todoService.save(task);
     return "redirect:/";
   }
 
   @PostMapping("/search")
   public String searchResult(Model model, @RequestParam String search) {
-    model.addAttribute("todos", service.findTodoByString(search));
+    model.addAttribute("todos", todoService.findTodoByString(search));
     return "todo";
   }
 

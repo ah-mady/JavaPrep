@@ -5,11 +5,11 @@ import com.connectionwith.mysql.repositories.ToDoRepository;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class ServiceImp implements Service {
+public class TodoServiceImp implements TodoService {
 
   ToDoRepository toDoRepository;
 
-  public ServiceImp(ToDoRepository toDoRepository) {
+  public TodoServiceImp(ToDoRepository toDoRepository) {
     this.toDoRepository = toDoRepository;
   }
 
