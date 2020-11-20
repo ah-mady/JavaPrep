@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
+
+<form th:action="@{/add}" th:object="${task}" method="post">
+    <p>Todo description: <input type="text" th:field="*{title}" required/></p>
+   <!-- <p>Is it urgent? </br>
+        Urgent<input type="radio" th:field="*{urgent}" th:value=true/>
+        Not Urgent<input type="radio" th:field="*{urgent}" th:value=false />
+    </p>-->
+    <p>
+        <button type="submit">Submit new task</button>
+<!--        <button type="reset">Reset</button>-->
+    </p>
+</form>
+
+</body>
+</html>

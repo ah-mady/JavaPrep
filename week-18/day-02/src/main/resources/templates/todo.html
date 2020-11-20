@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link th:href="@{style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<h1>Todos for today:</h1>
+
+<!--<ul th:each="list:${todos}">
+    <li th:text="*{list}"></li>
+</ul>-->
+<h2>
+    <a th:href="@{/add}">Add new todo</a>
+</h2>
+
+<form th:action="@{/search}" method="post">
+    <label for="search">Search Todo</label>
+    <input type="text" id="search" name="search">
+    <input type="submit" value="Search Task">
+</form>
+
+<a th:href="@{/list}">All List</a>
+<a th:href="@{|/list?@{isActive=true}|}">Yet to be done</a>
+<a th:href="@{|/list?@{isActive=false}|}">Finished tasks</a>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Action</th>
+        <th>Urgent</th>
+        <th>Done</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="list:${todos}">
+        <td th:text="*{list.getId()}"></td>
+        <td th:text="*{list.getTitle()}"></td>
+        <td th:text="*{list.getIsUrgent()}"></td>
+        <td th:text="*{list.getIsDone()}"></td>
+        <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
+        <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>
