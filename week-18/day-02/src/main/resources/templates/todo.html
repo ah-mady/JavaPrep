@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Todo List</title>
-    <link th:href="@{style.css}" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link th:href="@{style.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,17 +13,17 @@
     <li th:text="*{list}"></li>
 </ul>-->
 <h2>
-    <a th:href="@{/add}">Add new todo</a>
+  <a th:href="@{/add}">Add new todo</a>
 </h2>
 
 <h3>
-    <a th:href="@{/listAssignee}">List all Assignees</a>
+  <a th:href="@{/listAssignee}">List all Assignees</a>
 </h3>
 
 <form th:action="@{/search}" method="post">
-    <label for="search">Search Todo</label>
-    <input type="text" id="search" name="search">
-    <input type="submit" value="Search Task">
+  <label for="search">Search Todo</label>
+  <input type="text" id="search" name="search">
+  <input type="submit" value="Search Task">
 </form>
 
 <a th:href="@{/list}">All List</a>
@@ -32,29 +32,29 @@
 
 
 <table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Action</th>
-        <th>Urgent</th>
-        <th>Done</th>
-        <th>Assignee</th>
-    </tr>
-    </thead>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Action</th>
+    <th>Urgent</th>
+    <th>Done</th>
+    <th>Assignee</th>
+  </tr>
+  </thead>
 
-    <tbody>
-    <tr th:each="list:${todos}">
-        <td th:text="*{list.getId()}"></td>
-        <td th:text="*{list.getTitle()}"></td>
-        <td th:text="*{list.getIsUrgent()}"></td>
-        <td th:text="*{list.getIsDone()}"></td>
-        <td>
+  <tbody>
+  <tr th:each="list:${todos}">
+    <td th:text="*{list.getId()}"></td>
+    <td th:text="*{list.getTitle()}"></td>
+    <td th:text="*{list.getIsUrgent()}"></td>
+    <td th:text="*{list.getIsDone()}"></td>
+    <td>
 
-        </td>
-        <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
-        <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
-    </tr>
-    </tbody>
+    </td>
+    <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
+    <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
+  </tr>
+  </tbody>
 
 </table>
 

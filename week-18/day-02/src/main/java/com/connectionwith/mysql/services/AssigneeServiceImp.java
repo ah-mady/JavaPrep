@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AssigneeServiceImp implements AssigneeService{
+public class AssigneeServiceImp implements AssigneeService {
   private AssigneeRepository assigneeRepository;
 
   public AssigneeServiceImp(AssigneeRepository assigneeRepository) {

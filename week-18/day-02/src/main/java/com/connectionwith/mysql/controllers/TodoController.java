@@ -20,7 +20,7 @@ public class TodoController {
     this.todoService = todoService;
   }
 
-  @GetMapping({"/", "/list"})
+  @GetMapping( {"/", "/list"})
   public String list(Model model,
                      @RequestParam(value = "isActive", required = false) Boolean isActive) {
     if (isActive == null) {
@@ -37,32 +37,32 @@ public class TodoController {
   }
 
   @GetMapping("/add")
-  public String addTodo(Model model){
+  public String addTodo(Model model) {
     model.addAttribute("task", new ToDo());
     return "addTodo";
   }
 
   @PostMapping("/add")
-  public String addTodo(@ModelAttribute ToDo task){
+  public String addTodo(@ModelAttribute ToDo task) {
     todoService.save(task);
     return "redirect:/";
   }
 
   @GetMapping("/{id}/delete")
-  public String deleteTask(@PathVariable("id") Long id, Model model){
+  public String deleteTask(@PathVariable("id") Long id, Model model) {
     model.addAttribute("id", id);
     todoService.deleteById(id);
     return "redirect:/";
   }
 
   @GetMapping("/{id}/edit")
-  public String editTask (Model model, @PathVariable("id") Long id){
+  public String editTask(Model model, @PathVariable("id") Long id) {
     model.addAttribute("task", todoService.getOne(id));
     return "edit";
   }
 
   @PostMapping("/{id}/edit")
-  public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id){
+  public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id) {
     task.setId(id);
     todoService.save(task);
     return "redirect:/";
