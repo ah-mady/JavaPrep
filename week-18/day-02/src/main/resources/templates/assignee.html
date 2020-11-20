@@ -8,6 +8,7 @@
 
 <h1>List of all the Assignees:</h1>
 <p th:if="${emptyList == true}"> There are no assignees! You can add assignees <a th:href="@{/addAssignee}">HERE</a></p>
+<p th:if="${emptyList != true}"> You can add more assignees <a th:href="@{/addAssignee}">HERE</a></p>
 
 <table th:unless="${emptyList == true}">
   <th>

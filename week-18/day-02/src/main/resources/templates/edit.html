@@ -15,6 +15,13 @@
   Done <input type="radio" th:field="*{isDone}" th:value=true>
   <input type="submit" value="Update task">
   <a th:href="@{/list}">Cancel</a>
+  <p>Assign this task to:
+    <select name="assignee">
+      <option th:value="0"> -- no one -- </option>
+      <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
+    </select>
+    <input type="submit" value="Assign">
+  </p>
 </form>
 
 </body>

@@ -39,6 +39,8 @@
     <th>Urgent</th>
     <th>Done</th>
     <th>Assignee</th>
+    <th>Delete task</th>
+    <th>Edit task</th>
   </tr>
   </thead>
 
@@ -49,7 +51,9 @@
     <td th:text="*{list.getIsUrgent()}"></td>
     <td th:text="*{list.getIsDone()}"></td>
     <td>
-
+      <a th:if="${list.assignee} != null"
+         th:href="@{/{id}/todosByAssignee (id=${list.assignee.getId()})}"
+         th:text="${list.assignee} == null ? '' : ${list.assignee.name}"></a>
     </td>
     <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
     <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>

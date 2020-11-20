@@ -1,6 +1,7 @@
 package com.connectionwith.mysql.controllers;
 
 import com.connectionwith.mysql.models.ToDo;
+import com.connectionwith.mysql.services.AssigneeService;
 import com.connectionwith.mysql.services.TodoService;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TodoController {
   private TodoService todoService;
+  private AssigneeService assigneeService;
 
-
-  public TodoController(TodoService todoService) {
+  public TodoController(TodoService todoService, AssigneeService assigneeService) {
     this.todoService = todoService;
+    this.assigneeService = assigneeService;
   }
 
   @GetMapping( {"/", "/list"})
@@ -33,6 +35,7 @@ public class TodoController {
       model.addAttribute("todos",
           todoService.findAll().stream().filter(task -> task.getIsDone()).collect(Collectors.toList()));
     }
+    model.addAttribute("assignees", assigneeService.findAll());
     return "todo";
   }
 
@@ -58,11 +61,18 @@ public class TodoController {
   @GetMapping("/{id}/edit")
   public String editTask(Model model, @PathVariable("id") Long id) {
     model.addAttribute("task", todoService.getOne(id));
+    model.addAttribute("assignees", assigneeService.findAll());
     return "edit";
   }
 
   @PostMapping("/{id}/edit")
-  public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id) {
+  public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id,
+                         @RequestParam(required = false) Long assignee) {
+    if (assignee == 0) {
+      task.setAssignee(null);
+    } else {
+      task.setAssignee(assigneeService.getOne(assignee));
+    }
     task.setId(id);
     todoService.save(task);
     return "redirect:/";

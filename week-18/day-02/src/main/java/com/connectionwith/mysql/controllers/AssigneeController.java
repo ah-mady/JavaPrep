@@ -60,4 +60,11 @@ public class AssigneeController {
     return "redirect:/listAssignee";
   }
 
+  @GetMapping("{id}/todosByAssignee")
+  public String tasksByAssignee(Model model, @PathVariable Long id) {
+    model.addAttribute("todoByAssignee", assigneeService.getOne(id).getToDoList());
+    model.addAttribute("assignee", assigneeService.getOne(id));
+    return "taskByAssignee";
+  }
+
 }

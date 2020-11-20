@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks by Assignees</title>
+</head>
+<body>
+<h1 th:text="|Todos for ${assignee.name}|"></h1>
+<p th:text="|${assignee.name} has the following email: ${assignee.email}.|"></p>
+<p>You can edit details <a th:href="@{|/${assignee.id}/editAssignee|}">HERE</a></p>
+<strong><p th:text="|${assignee.name} is assigned ${assignee.toDoList.size()} tasks!|"></p></strong>
+
+<table>
+  <thead>
+  <tr>
+    <th>Todo Id</th>
+    <th>Action</th>
+    <th>Urgent</th>
+    <th>Done</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr th:each="list:${todoByAssignee}">
+    <td th:text="*{id}"></td>
+    <td th:text="*{list.getTitle()}"></td>
+    <td th:text="*{list.getIsUrgent()}"></td>
+    <td th:text="*{list.getIsDone()}"></td>
+    </td>
+    <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
+    <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
+  </tr>
+  </tbody>
+
+</table>
+
+
+</body>
+</html>
