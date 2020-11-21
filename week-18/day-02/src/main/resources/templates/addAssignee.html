@@ -11,16 +11,25 @@
 <body>
 <header th:replace="~{fragments::header}"></header>
 
-<h2>Add assignee:</h2>
-<form th:action="@{/addAssignee}" method="post" th:object="${newAssignee}">
-  <p>Assignee name:
-    <input type="text" th:field="*{name}" required>
-  </p>
-  <p>Assignee E-mail:
-    <input type="email" th:field="*{email}" required>
-  </p>
-  <input type="submit" value="Add new assignee">
-</form>
-
+<div class="text-center">
+  <div class="card" >
+    <div class="card-header">
+      <h5>
+        <strong>
+          Add assignee:
+        </strong>
+      </h5>
+    </div>
+    <form th:action="@{/addAssignee}" method="post" th:object="${newAssignee}" style="margin: 15px">
+      <p class="card-title">Assignee name:
+        <input type="text" th:field="*{name}" required>
+      </p>
+      <p class="card-title">Assignee E-mail:
+        <input type="email" th:field="*{email}" required>
+      </p>
+      <input type="submit" value="Add new assignee" class="btn btn-primary" style="margin: 10px">
+    </form>
+  </div>
+</div>
 </body>
 </html>

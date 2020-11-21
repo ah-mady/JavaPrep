@@ -5,7 +5,7 @@
   <title>Edit</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link th:href="@{style.css}" rel="stylesheet"/>
+  <link href="/style.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -15,16 +15,45 @@
 <h1>Edit Todo</h1>
 
 <form th:action="@{|/${task.id}/edit|}" method="post" th:object="${task}">
-  <div class="form-group">
-    <label for="todoDescription">Todo Description</label>
-    <input type="text" name="task" id="todoDescription" th:field="*{title}">
-    Urgent<input type="radio" th:field="*{isUrgent}" th:value=true/>
-    Done <input type="radio" th:field="*{isDone}" th:value=true>
-    <input type="submit" value="Update task">
-    <input type="reset" value="Reset">
-    <a th:href="@{/list}" class="btn btn-primary">Cancel</a>
-    <p>Assign this task to:
-    <div class="dropdown-item">
+
+  <div class="card">
+    <h5 class="card-header">
+      <label for="todoDescription">Todo Description</label>
+      <input type="text" name="task" id="todoDescription" th:field="*{title}">
+    </h5>
+    <div class="card-body">
+      <h5 class="card-title">Is it Urgent?</h5>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="urgent" th:field="*{isUrgent}" th:value=true class="custom-control-input">
+        <label class="custom-control-label" for="urgent">Urgent</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="notUrgent" th:field="*{isUrgent}" th:value=false class="custom-control-input">
+        <label class="custom-control-label" for="notUrgent">Not Urgent</label>
+      </div>
+
+      <h5 class="card-title" style="margin-top: 10px">Is it Done?</h5>
+
+      <div class="custom-control custom-radio">
+        <input type="radio" id="done" th:field="*{isDone}" th:value=true class="custom-control-input">
+        <label class="custom-control-label" for="done">Done</label>
+      </div>
+
+      <div class="custom-control custom-radio">
+        <input type="radio" id="notDone" th:field="*{isDone}" th:value=false class="custom-control-input">
+        <label class="custom-control-label" for="notDone">Not Done</label>
+      </div>
+
+      <div class="text-center" style="margin: 10px">
+        <input type="submit" value="Update task" class="btn btn-primary">
+        <input type="reset" value="Reset" class="btn btn-primary">
+        <a th:href="@{/list}" class="btn btn-primary">Cancel</a>
+      </div>
+    </div>
+
+
+    <p class="card-title">Assign this task to:
+    <div class="text-center" style="margin-bottom: 10px">
       <select name="assignee">
         <option th:value="0"> -- no one --</option>
         <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>

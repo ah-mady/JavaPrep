@@ -9,7 +9,12 @@
 </head>
 <body>
 <header th:replace="~{fragments::header}"></header>
-<h1>Todos for today:</h1>
+
+<div class="text-center">
+  <div class="alert alert-dark" role="alert" style="margin: 0px">
+    <h1>Todos for today:</h1>
+  </div>
+</div>
 
 <table>
   <thead>
@@ -35,8 +40,8 @@
          th:href="@{/{id}/todosByAssignee (id=${list.assignee.getId()})}"
          th:text="${list.assignee} == null ? '' : ${list.assignee.name}"></a>
     </td>
-    <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
-    <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
+    <td><a th:href="@{/{id}/delete(id=${list.id})}" class="btn btn-outline-danger">delete</a></td>
+    <td><a th:href="@{/{id}/edit(id=${list.id})}" class="btn btn-outline-info">edit</a></td>
   </tr>
   </tbody>
 

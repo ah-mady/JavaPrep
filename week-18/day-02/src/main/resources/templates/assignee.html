@@ -10,10 +10,18 @@
 </head>
 <body>
 <header th:replace="~{fragments::header}"></header>
-<h1>List of all the Assignees:</h1>
-<p th:if="${emptyList == true}"> There are no assignees! You can add assignees <a th:href="@{/addAssignee}">HERE</a></p>
-<p th:if="${emptyList != true}"> You can add more assignees <a th:href="@{/addAssignee}"
-                                                               class="btn btn-primary">HERE</a></p>
+<div class="text-center">
+  <div class="alert alert-dark" role="alert" style="margin: 0px">
+    <h1>List of all the Assignees:</h1>
+  </div>
+  <div class="alert alert-info" role="alert" style="margin: 0px">
+    <p th:if="${emptyList == true}"> There are no assignees! You can add assignees <a th:href="@{/addAssignee}">HERE</a>
+    </p>
+    <p th:if="${emptyList != true}"> You can add more assignees <a th:href="@{/addAssignee}"
+                                                                   class="btn btn-success">HERE</a></p>
+  </div>
+</div>
+
 
 <table th:unless="${emptyList == true}">
   <thead>

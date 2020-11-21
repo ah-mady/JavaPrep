@@ -5,7 +5,7 @@
   <title>Tasks by Assignees</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link th:href="@{style.css}" rel="stylesheet"/>
+  <link href="/style.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -22,18 +22,17 @@
     <th>Action</th>
     <th>Urgent</th>
     <th>Done</th>
-    <th>Edit</th>
     <th>Delete</th>
+    <th>Edit</th>
   </tr>
   </thead>
 
   <tbody>
   <tr th:each="list:${todoByAssignee}">
-    <td th:text="*{id}"></td>
+    <td th:text="*{list.getId()}"></td>
     <td th:text="*{list.getTitle()}"></td>
     <td th:text="*{list.getIsUrgent()}"></td>
     <td th:text="*{list.getIsDone()}"></td>
-    </td>
     <td><a th:href="@{/{id}/delete(id=${list.id})}">delete</a></td>
     <td><a th:href="@{/{id}/edit(id=${list.id})}">edit</a></td>
   </tr>
