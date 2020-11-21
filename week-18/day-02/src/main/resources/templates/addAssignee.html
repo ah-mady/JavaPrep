@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Assignee</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link th:href="@{style.css}" rel="stylesheet"/>
+
 </head>
 <body>
+<header th:replace="~{fragments::header}"></header>
+
 <h2>Add assignee:</h2>
 <form th:action="@{/addAssignee}" method="post" th:object="${newAssignee}">
   <p>Assignee name:

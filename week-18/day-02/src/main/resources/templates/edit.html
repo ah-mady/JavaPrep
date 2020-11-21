@@ -3,24 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Edit</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link th:href="@{style.css}" rel="stylesheet"/>
+
 </head>
 <body>
+
+<header th:replace="~{fragments::header}"></header>
 
 <h1>Edit Todo</h1>
 
 <form th:action="@{|/${task.id}/edit|}" method="post" th:object="${task}">
-  <label for="todoDescription">Todo Description</label>
-  <input type="text" name="task" id="todoDescription" th:field="*{title}">
-  Urgent<input type="radio" th:field="*{isUrgent}" th:value=true/>
-  Done <input type="radio" th:field="*{isDone}" th:value=true>
-  <input type="submit" value="Update task">
-  <a th:href="@{/list}">Cancel</a>
-  <p>Assign this task to:
-    <select name="assignee">
-      <option th:value="0"> -- no one -- </option>
-      <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
-    </select>
-    <input type="submit" value="Assign">
+  <div class="form-group">
+    <label for="todoDescription">Todo Description</label>
+    <input type="text" name="task" id="todoDescription" th:field="*{title}">
+    Urgent<input type="radio" th:field="*{isUrgent}" th:value=true/>
+    Done <input type="radio" th:field="*{isDone}" th:value=true>
+    <input type="submit" value="Update task">
+    <input type="reset" value="Reset">
+    <a th:href="@{/list}" class="btn btn-primary">Cancel</a>
+    <p>Assign this task to:
+    <div class="dropdown-item">
+      <select name="assignee">
+        <option th:value="0"> -- no one --</option>
+        <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
+      </select>
+      <input type="submit" value="Assign" class="btn btn-primary">
+    </div>
+  </div>
   </p>
 </form>
 

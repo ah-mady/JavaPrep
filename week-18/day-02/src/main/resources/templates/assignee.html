@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Assignee</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link th:href="@{style.css}" rel="stylesheet"/>
+
 </head>
 <body>
-
+<header th:replace="~{fragments::header}"></header>
 <h1>List of all the Assignees:</h1>
 <p th:if="${emptyList == true}"> There are no assignees! You can add assignees <a th:href="@{/addAssignee}">HERE</a></p>
-<p th:if="${emptyList != true}"> You can add more assignees <a th:href="@{/addAssignee}">HERE</a></p>
+<p th:if="${emptyList != true}"> You can add more assignees <a th:href="@{/addAssignee}" class="btn btn-primary">HERE</a></p>
 
 <table th:unless="${emptyList == true}">
-  <th>
-    <tr>
-      <td>Id</td>
-      <td>Name</td>
-      <td>Email</td>
-    </tr>
-  </th>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Delete assignee</th>
+    <th>Edit Assignee</th>
+  </tr>
+  </thead>
 
   <tr th:each="assignee:${assignees}" th:object="${assignee}">
     <td th:text="*{id}"></td>

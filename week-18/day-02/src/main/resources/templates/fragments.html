@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>fragments</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div th:fragment="header"  class="navbar navbar-dark bg-dark" style="width: 700px; margin-top: 10px">
+  <a th:href="@{/list}" class="btn btn-primary">Show All tasks</a>
+  <a th:href="@{/add}" class="btn btn-primary">Add new todo</a>
+  <a th:href="@{/listAssignee}" class="btn btn-primary">List all Assignees</a>
+  <a th:href="@{|/list?@{isActive=true}|}" class="btn btn-primary">Yet to be done</a>
+  <a th:href="@{|/list?@{isActive=false}|}" class="btn btn-primary">Finished tasks</a>
+  <form th:action="@{/search}" method="post" class="form-inline" style="margin: 10px">
+    <label for="search">Search Todo</label>
+    <input type="text" id="search" name="search" class="form-control">
+    <input type="submit" value="Search Task" class="btn btn-primary">
+  </form>
+</div>
+
+</body>
+</html>

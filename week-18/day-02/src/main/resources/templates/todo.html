@@ -3,33 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link th:href="@{style.css}" rel="stylesheet"/>
 </head>
 <body>
-
+<header th:replace="~{fragments::header}"></header>
 <h1>Todos for today:</h1>
-
-<!--<ul th:each="list:${todos}">
-    <li th:text="*{list}"></li>
-</ul>-->
-<h2>
-  <a th:href="@{/add}">Add new todo</a>
-</h2>
-
-<h3>
-  <a th:href="@{/listAssignee}">List all Assignees</a>
-</h3>
-
-<form th:action="@{/search}" method="post">
-  <label for="search">Search Todo</label>
-  <input type="text" id="search" name="search">
-  <input type="submit" value="Search Task">
-</form>
-
-<a th:href="@{/list}">All List</a>
-<a th:href="@{|/list?@{isActive=true}|}">Yet to be done</a>
-<a th:href="@{|/list?@{isActive=false}|}">Finished tasks</a>
-
 
 <table>
   <thead>

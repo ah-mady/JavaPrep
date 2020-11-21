@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Task</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link th:href="@{style.css}" rel="stylesheet"/>
+
 </head>
 <body>
+<header th:replace="~{fragments::header}"></header>
 
 <form th:action="@{/add}" th:object="${task}" method="post">
-  <p>Todo description: <input type="text" th:field="*{title}" required/></p>
-  <!-- <p>Is it urgent? </br>
-       Urgent<input type="radio" th:field="*{urgent}" th:value=true/>
-       Not Urgent<input type="radio" th:field="*{urgent}" th:value=false />
-   </p>-->
-  <p>
-    <button type="submit">Submit new task</button>
-    <!--        <button type="reset">Reset</button>-->
-  </p>
+  <div class="form-group">
+    <label for="todo">Todo description:
+      <input type="text" id="todo" class="form-control"
+             th:field="*{title}" required/>
+    </label>
+
+    <label for="submit">
+      <button type="submit" id="submit" class="btn btn-primary">Submit new task</button>
+    </label>
+  </div>
 </form>
 
 </body>
