@@ -16,8 +16,8 @@
   <a th:href="@{|/list?@{isActive=true}|}" class="btn btn-primary">Yet to be done</a>
   <a th:href="@{|/list?@{isActive=false}|}" class="btn btn-primary">Finished tasks</a>
   <form th:action="@{/search}" method="post" class="form-inline" style="margin: 10px">
-    <label for="search">Search Todo</label>
-    <input type="text" id="search" name="search" class="form-control">
+    <label for="search"></label>
+    <input type="text" id="search" name="search" class="form-control" placeholder="Search for task here.. ">
     <input type="submit" value="Search Task" class="btn btn-primary">
   </form>
 </div>

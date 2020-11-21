@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Tasks by Assignees</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link th:href="@{style.css}" rel="stylesheet"/>
 
 </head>
 <body>
 <header th:replace="~{fragments::header}"></header>
 <h1 th:text="|Todos for ${assignee.name}|"></h1>
-<p th:text="|${assignee.name} has the following email: ${assignee.email}.|"></p>
+<p th:text="|${assignee.name} has the following email: ${assignee.email}|"></p>
 <p>You can edit details <a th:href="@{|/${assignee.id}/editAssignee|}">HERE</a></p>
 <strong><p th:text="|${assignee.name} is assigned ${assignee.toDoList.size()} tasks!|"></p></strong>
 
