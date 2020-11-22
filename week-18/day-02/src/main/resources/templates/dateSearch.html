@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search By Date</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<header th:replace="~{fragments::header}"></header>
+
+<div class="card">
+  <form th:action="@{/searchByDate}" th:object="${task}" method="post">
+    <div class="text-center">
+      <div class="card-header">
+      <h5>
+        <strong>
+          Search By creation date or due date of the task:
+        </strong>
+      </h5>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="dueDate">Task due or creation date is:</label><br>
+        <input type="date" id="dueDate" name="dueDate2">
+        <br>
+        <label for="submit" style="margin-top: 10px">
+          <button type="submit" id="submit" class="btn btn-primary">Search task</button>
+        </label>
+      </div>
+    </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

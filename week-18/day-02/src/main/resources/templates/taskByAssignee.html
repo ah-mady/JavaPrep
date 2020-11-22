@@ -10,10 +10,16 @@
 </head>
 <body>
 <header th:replace="~{fragments::header}"></header>
-<h1 th:text="|Todos for ${assignee.name}|"></h1>
-<p th:text="|${assignee.name} has the following email: ${assignee.email}|"></p>
-<p>You can edit details <a th:href="@{|/${assignee.id}/editAssignee|}">HERE</a></p>
-<strong><p th:text="|${assignee.name} is assigned ${assignee.toDoList.size()} tasks!|"></p></strong>
+<div class="card">
+  <div class="card-header">
+    <h1 th:text="|Todos for ${assignee.name}|"></h1>
+  </div>
+  <div class="card-body">
+    <p th:text="|${assignee.name} has the following email: ${assignee.email}|"></p>
+    <p>You can edit details <a th:href="@{|/${assignee.id}/editAssignee|}">HERE</a></p>
+    <strong><p th:text="|${assignee.name} is assigned ${assignee.toDoList.size()} tasks!|"></p></strong>
+  </div>
+</div>
 
 <table>
   <thead>

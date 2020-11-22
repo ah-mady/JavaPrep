@@ -26,6 +26,8 @@
     <th>Assignee</th>
     <th>Delete task</th>
     <th>Edit task</th>
+    <th>Created At</th>
+    <th>Due Date</th>
   </tr>
   </thead>
 
@@ -42,6 +44,8 @@
     </td>
     <td><a th:href="@{/{id}/delete(id=${list.id})}" class="btn btn-outline-danger">delete</a></td>
     <td><a th:href="@{/{id}/edit(id=${list.id})}" class="btn btn-outline-info">edit</a></td>
+    <td th:text="*{#temporals.format(list.getCreatedAt(), 'dd/MMM/yyyy')}"></td>
+    <td th:text="*{#temporals.format(list.getDueDate(), 'dd/MMM/yyyy')}"></td>
   </tr>
   </tbody>
 

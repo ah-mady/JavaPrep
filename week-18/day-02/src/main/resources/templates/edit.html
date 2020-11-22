@@ -44,22 +44,27 @@
         <label class="custom-control-label" for="notDone">Not Done</label>
       </div>
 
+      <label for="dueDate">Task due date is:</label><br>
+      <input type="date" id="dueDate" name="dueDate2" th:value="*{dueDate}">
+
+      <div class="text-center" style="margin: 20px">
+        <p class="card-title">Assign this task to:
+          <select name="assignee">
+            <br>
+          <option th:value="0"> -- no one --</option>
+          <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
+        </select>
+      </div>
+
       <div class="text-center" style="margin: 10px">
-        <input type="submit" value="Update task" class="btn btn-primary">
+        <input type="submit" value="Update task" class="btn btn-success">
         <input type="reset" value="Reset" class="btn btn-primary">
-        <a th:href="@{/list}" class="btn btn-primary">Cancel</a>
+        <a th:href="@{/list}" class="btn btn-secondary">Cancel</a>
       </div>
     </div>
 
 
-    <p class="card-title">Assign this task to:
-    <div class="text-center" style="margin-bottom: 10px">
-      <select name="assignee">
-        <option th:value="0"> -- no one --</option>
-        <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
-      </select>
-      <input type="submit" value="Assign" class="btn btn-primary">
-    </div>
+
   </div>
   </p>
 </form>

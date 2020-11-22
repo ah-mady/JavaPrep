@@ -3,6 +3,9 @@ package com.connectionwith.mysql.controllers;
 import com.connectionwith.mysql.models.ToDo;
 import com.connectionwith.mysql.services.AssigneeService;
 import com.connectionwith.mysql.services.TodoService;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +49,8 @@ public class TodoController {
   }
 
   @PostMapping("/add")
-  public String addTodo(@ModelAttribute ToDo task) {
+  public String addTodo(@RequestParam String dueDate2, @ModelAttribute ToDo task) {
+    task.setDueDate(LocalDate.parse(dueDate2));
     todoService.save(task);
     return "redirect:/";
   }
@@ -67,13 +71,20 @@ public class TodoController {
 
   @PostMapping("/{id}/edit")
   public String editTask(@ModelAttribute ToDo task, @PathVariable("id") Long id,
-                         @RequestParam(required = false) Long assignee) {
+                         @RequestParam(required = false) Long assignee,
+                         @RequestParam(required = false) String dueDate2) {
     if (assignee == 0) {
       task.setAssignee(null);
     } else {
       task.setAssignee(assigneeService.getOne(assignee));
     }
-    task.setId(id);
+
+    task.setDueDate(LocalDate.parse(dueDate2));
+
+    ToDo toDo = todoService.getOne(id);
+
+    task.setId(toDo.getId());
+    task.setCreatedAt(toDo.getCreatedAt());
     todoService.save(task);
     return "redirect:/";
   }
@@ -81,6 +92,20 @@ public class TodoController {
   @PostMapping("/search")
   public String searchResult(Model model, @RequestParam String search) {
     model.addAttribute("todos", todoService.findTodoByString(search));
+    return "todo";
+  }
+
+  @GetMapping("/searchByDate")
+  public String searchByDate(Model model){
+    model.addAttribute("task", todoService.findAll());
+    return "dateSearch";
+  }
+
+  @PostMapping("/searchByDate")
+  public String searchByDate(Model model, @RequestParam String dueDate2){
+    LocalDate dateTime = LocalDate.parse(dueDate2);
+    List<ToDo> result = todoService.findTodoByDate(dateTime);
+    model.addAttribute("todos", result);
     return "todo";
   }
 

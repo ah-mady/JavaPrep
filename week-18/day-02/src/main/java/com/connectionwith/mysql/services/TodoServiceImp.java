@@ -2,6 +2,8 @@ package com.connectionwith.mysql.services;
 
 import com.connectionwith.mysql.models.ToDo;
 import com.connectionwith.mysql.repositories.ToDoRepository;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -37,4 +39,10 @@ public class TodoServiceImp implements TodoService {
   public List<ToDo> findTodoByString(String search) {
     return toDoRepository.findTodoByString(search);
   }
+
+  @Override
+  public List<ToDo> findTodoByDate(LocalDate date) {
+    return toDoRepository.findTodoByDate(date);
+  }
+
 }

@@ -9,17 +9,19 @@
 </head>
 <body>
 
-<div th:fragment="header"  class="navbar navbar-dark bg-dark" style="width: 700px; margin-top: 10px">
-  <a th:href="@{/list}" class="btn btn-primary">Show All tasks</a>
+<div th:fragment="header"  class="navbar navbar-dark bg-dark" style="width: 800px; margin-top: 10px">
+  <a th:href="@{/list}" class="btn btn-primary">Show all tasks</a>
   <a th:href="@{/add}" class="btn btn-primary">Add new todo</a>
   <a th:href="@{/listAssignee}" class="btn btn-primary">List all Assignees</a>
   <a th:href="@{|/list?@{isActive=true}|}" class="btn btn-primary">Yet to be done</a>
   <a th:href="@{|/list?@{isActive=false}|}" class="btn btn-primary">Finished tasks</a>
-  <div style="text-align: right">
-    <form th:action="@{/search}" method="post" class="form-inline" style="margin: 10px">
+  <a th:href="@{/searchByDate}" class="btn btn-info">Search by date</a>
+
+  <div class="text-center">
+    <form th:action="@{/search}" method="post" class="form-inline" style="margin-top: 10px; margin-bottom: 5px">
       <label for="search" ></label>
-      <input type="text" id="search" name="search" placeholder="Search for task here.. " style="padding: 5px">
-      <input type="submit" value="Search Task" class="btn btn-primary">
+      <input type="text" id="search" name="search" placeholder="Search for task here.. " style="padding: 5px; margin-right: 10px">
+      <input type="submit" value="Search Task" class="btn btn-success">
     </form>
   </div>
 </div>
