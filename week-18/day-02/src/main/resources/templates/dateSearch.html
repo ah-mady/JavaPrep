@@ -25,25 +25,23 @@
         <label for="dueDate">Task due or creation date is:</label><br>
         <input type="date" id="dueDate" name="dueDate2" required>
         <br>
-        <h3><strong>OR</strong></h3>
-        <br>
         <label for="submit" style="margin-top: 10px">
           <button type="submit" id="submit" class="btn btn-primary">Search task</button>
         </label>
-
       </div>
+      <h3><strong>OR</strong></h3>
     </div>
   </form>
 
-  <form th:action="@{/${assignee.id}/todosByAssignee}" th:object="${task}" method="get">
+  <form action="/searchByAssignee" method="post">
     <div class="text-center" style="margin: 20px">
       <p class="card-title">Search tasks by name:
-        <select name="assignee">
-          <br>
-          <option th:value="0"> -- no one --</option>
+        <br>
+        <select name="id" id="id">
           <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
         </select>
-        <label for="submitName" style="margin-top: 10px">
+        <label for="submitName" style="margin-top: 5px">
+          <br>
           <button type="submit" id="submitName" class="btn btn-primary">Search task</button>
         </label>
     </div>

@@ -1,5 +1,6 @@
 package com.connectionwith.mysql.controllers;
 
+import com.connectionwith.mysql.models.Assignee;
 import com.connectionwith.mysql.models.ToDo;
 import com.connectionwith.mysql.services.AssigneeService;
 import com.connectionwith.mysql.services.TodoService;
@@ -96,23 +97,23 @@ public class TodoController {
   }
 
   @GetMapping("/searchByDate")
-  public String searchByDate(Model model, @PathVariable(required = false) Long id){
+  public String searchByDate(Model model, @PathVariable(required = false) Long id) {
     model.addAttribute("task", todoService.findAll());
     model.addAttribute("assignees", assigneeService.findAll());
     return "dateSearch";
   }
 
   @PostMapping("/searchByDate")
-  public String searchByDate(Model model, @RequestParam String dueDate2,
-                             @RequestParam(required = false) Long assignee,
-                             @ModelAttribute ToDo task){
-    model.addAttribute("todoByAssignee", assigneeService.getOne(assignee).getToDoList());
-    model.addAttribute("assignee", assigneeService.getOne(assignee));
+  public String searchByDate(Model model, @RequestParam String dueDate2) {
     LocalDate dateTime = LocalDate.parse(dueDate2);
     List<ToDo> result = todoService.findTodoByDate(dateTime);
     model.addAttribute("todos", result);
-
     return "todo";
+  }
+
+  @PostMapping("/searchByAssignee")
+  public String assigneeSearch(@RequestParam Integer id) {
+    return "redirect:/" + id + "/todosByAssignee";
   }
 
 }

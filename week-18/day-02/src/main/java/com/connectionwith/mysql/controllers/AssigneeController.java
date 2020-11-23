@@ -41,26 +41,26 @@ public class AssigneeController {
     return "redirect:/listAssignee";
   }
 
-  @GetMapping("{id}/deleteAssignee")
+  @GetMapping("/{id}/deleteAssignee")
   public String deleteAssignee(@PathVariable Long id) {
     assigneeService.deleteById(id);
     return "redirect:/listAssignee";
   }
 
-  @GetMapping("{id}/editAssignee")
+  @GetMapping("/{id}/editAssignee")
   public String editAssignee(Model model, @PathVariable Long id) {
     model.addAttribute("assignee", assigneeService.getOne(id));
     return "editAssignee";
   }
 
-  @PostMapping("{id}/editAssignee")
+  @PostMapping("/{id}/editAssignee")
   public String editAssigneeSubmit(@ModelAttribute Assignee assignee, @PathVariable Long id) {
     assignee.setId(id);
     assigneeService.save(assignee);
     return "redirect:/listAssignee";
   }
 
-  @GetMapping("{id}/todosByAssignee")
+  @GetMapping("/{id}/todosByAssignee")
   public String tasksByAssignee(Model model, @PathVariable Long id) {
     model.addAttribute("todoByAssignee", assigneeService.getOne(id).getToDoList());
     model.addAttribute("assignee", assigneeService.getOne(id));
