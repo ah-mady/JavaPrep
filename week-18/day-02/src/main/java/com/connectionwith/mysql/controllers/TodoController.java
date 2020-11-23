@@ -98,14 +98,20 @@ public class TodoController {
   @GetMapping("/searchByDate")
   public String searchByDate(Model model){
     model.addAttribute("task", todoService.findAll());
+    model.addAttribute("assignees", assigneeService.findAll());
     return "dateSearch";
   }
 
   @PostMapping("/searchByDate")
-  public String searchByDate(Model model, @RequestParam String dueDate2){
+  public String searchByDate(Model model, @RequestParam String dueDate2,
+                             @RequestParam(required = false) Long assignee,
+                             @ModelAttribute ToDo task){
+//    model.addAttribute("todoByAssignee", assigneeService.getOne(assignee).getToDoList());
+//    model.addAttribute("assignee", assigneeService.getOne(assignee));
     LocalDate dateTime = LocalDate.parse(dueDate2);
     List<ToDo> result = todoService.findTodoByDate(dateTime);
     model.addAttribute("todos", result);
+
     return "todo";
   }
 

@@ -15,22 +15,32 @@
   <form th:action="@{/searchByDate}" th:object="${task}" method="post">
     <div class="text-center">
       <div class="card-header">
-      <h5>
-        <strong>
-          Search By creation date or due date of the task:
-        </strong>
-      </h5>
-    </div>
-    <div class="card-body">
-      <div class="form-group">
+        <h5>
+          <strong>
+            Search By creation date or due date of the task:
+          </strong>
+        </h5>
+      </div>
+      <div class="card-body">
         <label for="dueDate">Task due or creation date is:</label><br>
-        <input type="date" id="dueDate" name="dueDate2">
+        <input type="date" id="dueDate" name="dueDate2" required>
+<!--        <br>-->
+<!--        <h3><strong>OR</strong></h3>-->
+<!--        <br>-->
+<!--        <div class="text-center" style="margin: 20px">-->
+<!--          <p class="card-title">Search tasks by name:-->
+<!--            <select name="assignee">-->
+<!--              <br>-->
+<!--              <option th:value="0"> &#45;&#45; no one &#45;&#45;</option>-->
+<!--              <option th:each="assignee: ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
         <br>
         <label for="submit" style="margin-top: 10px">
           <button type="submit" id="submit" class="btn btn-primary">Search task</button>
         </label>
+
       </div>
-    </div>
     </div>
   </form>
 </div>
