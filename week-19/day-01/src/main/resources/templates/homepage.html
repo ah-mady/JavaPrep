@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reddit Homepage</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<a th:href="@{/submitPost}">Submit new post</a>
+
+<h1><strong>Trending Posts</strong></h1>
+
+<table>
+  <tbody>
+  <tr th:each="post:${posts}">
+    <td th:text="${post.getVote()}"></td>
+    <td><a th:href="@{/increaseVote}">+</a></td>
+    <td><a th:href="@{/decreaseVote}">-</a></td>
+    <td>
+      <a th:if="${post.title} != null"
+         th:href="@{/{id}/postDetail (id=${post.getId()})}"
+         th:text="${post.title}"></a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
