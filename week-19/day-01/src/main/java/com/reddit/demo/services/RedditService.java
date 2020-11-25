@@ -14,5 +14,6 @@ public interface RedditService {
   Reddit findById(Long id);
 
   void upVote(Long id);
+
   void downVote(Long id);
 }
