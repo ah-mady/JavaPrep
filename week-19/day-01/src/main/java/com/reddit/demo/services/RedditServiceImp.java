@@ -31,6 +31,17 @@ public class RedditServiceImp implements RedditService{
 
   @Override
   public void upVote(Long id) {
+//    Reddit reddit = redditRepository.getOne(id);
+//    reddit.setVote(reddit.getVote() + 1);
+//    redditRepository.save(reddit);
     redditRepository.upVote(id);
+  }
+
+  @Override
+  public void downVote(Long id) {
+//    Reddit reddit = redditRepository.getOne(id);
+//    reddit.setVote(reddit.getVote() - 1);
+//    redditRepository.save(reddit);
+    redditRepository.downVote(id);
   }
 }

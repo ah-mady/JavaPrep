@@ -43,9 +43,17 @@ public class RedditController {
     return "postDetails";
   }
 
-  @GetMapping("/increaseVote")
-  public String upVote(@RequestParam(name = "id") Long id){
+  @GetMapping("/{id}/increaseVote")
+  public String upVote(@PathVariable Long id){
     redditService.upVote(id);
     return "redirect:/";
   }
+
+  @GetMapping("/{id}/decreaseVote")
+  public String downVote(@PathVariable Long id){
+    redditService.downVote(id);
+    return "redirect:/";
+  }
+
+
 }
