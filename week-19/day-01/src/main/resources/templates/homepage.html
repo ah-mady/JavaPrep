@@ -17,7 +17,9 @@
   <tbody>
   <tr th:each="post:${posts}">
     <td th:text="${post.getVote()}"></td>
-    <td><a th:href="@{/increaseVote}">+</a></td>
+    <td id="id" th:name="id">
+      <a th:href="@{/increaseVote}" th:value="${post.id}">+</a>
+    </td>
     <td><a th:href="@{/decreaseVote}">-</a></td>
     <td>
       <a th:if="${post.title} != null"

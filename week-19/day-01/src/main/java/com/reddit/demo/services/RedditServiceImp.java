@@ -28,4 +28,9 @@ public class RedditServiceImp implements RedditService{
   public Reddit findById(Long id) {
     return redditRepository.findById(id).orElse(null);
   }
+
+  @Override
+  public void upVote(Long id) {
+    redditRepository.upVote(id);
+  }
 }

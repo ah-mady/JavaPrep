@@ -12,4 +12,6 @@ public interface RedditService {
   void save(Reddit posts);
 
   Reddit findById(Long id);
+
+  void upVote(Long id);
 }
