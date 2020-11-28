@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImp implements UserService{
 
+  public static User loggedUser;
   private UserRepository userRepository;
 
   public UserServiceImp(UserRepository userRepository) {
@@ -21,6 +22,26 @@ public class UserServiceImp implements UserService{
   @Override
   public boolean validateCredential(String userName, String password) {
     User validUser = userRepository.fetchUsernameAndPassword(userName,password);
-    return validUser != null;
+    if (validUser != null){
+      loggedUser = validUser;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @Override
+  public User fetchUser(String userName, String password){
+    return userRepository.fetchUsernameAndPassword(userName, password);
+  }
+
+  @Override
+  public User loggedUser() {
+    return loggedUser;
+  }
+
+  @Override
+  public void logout() {
+    loggedUser = null;
   }
 }

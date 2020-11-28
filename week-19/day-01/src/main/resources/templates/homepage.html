@@ -11,6 +11,11 @@
 
 <a th:href="@{/submitPost}">Submit new post</a>
 
+<h3>Logged User: </h3>
+<p th:text="${loggedUser}"></p>
+
+<a th:href="@{/logout}">Logout</a>
+
 <h1><strong>Trending Posts</strong></h1>
 
 <table>

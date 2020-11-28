@@ -30,11 +30,19 @@ public class UserController {
                             @RequestParam String password,
                             Model model){
     if (userService.validateCredential(userName,password)){
+      this.currentlyLogged = userService.fetchUser(userName,password);
+      model.addAttribute("isLogged", true);
       return "redirect:/";
     } else{
       model.addAttribute("invalidLogin", true);
       return "login";
     }
+  }
+
+  @GetMapping("/logout")
+  public String logOut(){
+    userService.logout();
+    return "login";
   }
 
   @GetMapping("/createUser")

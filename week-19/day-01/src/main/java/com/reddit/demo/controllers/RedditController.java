@@ -24,8 +24,11 @@ public class RedditController {
 
   @GetMapping("/")
   public String homepage(Model model) {
+    if (userService.loggedUser() == null) {
+      return "login";
+    }
     model.addAttribute("posts", redditService.findAll());
-
+    model.addAttribute("loggedUser", userService.loggedUser().getUserName());
     return "homepage";
   }
 
@@ -42,19 +45,19 @@ public class RedditController {
   }
 
   @GetMapping("/{id}/postDetail")
-  public String posts(Model model, @PathVariable Long id){
+  public String posts(Model model, @PathVariable Long id) {
     model.addAttribute("post", redditService.findById(id));
     return "postDetails";
   }
 
   @GetMapping("/{id}/increaseVote")
-  public String upVote(@PathVariable Long id){
+  public String upVote(@PathVariable Long id) {
     redditService.upVote(id);
     return "redirect:/";
   }
 
   @GetMapping("/{id}/decreaseVote")
-  public String downVote(@PathVariable Long id){
+  public String downVote(@PathVariable Long id) {
     redditService.downVote(id);
     return "redirect:/";
   }

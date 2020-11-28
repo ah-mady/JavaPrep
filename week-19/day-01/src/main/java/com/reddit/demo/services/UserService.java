@@ -11,4 +11,9 @@ public interface UserService {
 
   boolean validateCredential(String userName, String password);
 
+  User fetchUser(String userName, String password);
+
+  User loggedUser();
+
+  void logout();
 }
