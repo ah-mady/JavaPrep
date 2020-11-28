@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
-  private User currentlyLogged;
   private UserService userService;
 
   public UserController(UserService userService) {
@@ -20,7 +19,7 @@ public class UserController {
   }
 
   @GetMapping("/login")
-  public String logIn(Model model){
+  public String logIn(Model model) {
     model.addAttribute("invalidLogin", false);
     return "login";
   }
@@ -28,31 +27,30 @@ public class UserController {
   @PostMapping("/login")
   public String logInSubmit(@RequestParam String userName,
                             @RequestParam String password,
-                            Model model){
-    if (userService.validateCredential(userName,password)){
-      this.currentlyLogged = userService.fetchUser(userName,password);
+                            Model model) {
+    if (userService.validateCredential(userName, password)) {
       model.addAttribute("isLogged", true);
       return "redirect:/";
-    } else{
+    } else {
       model.addAttribute("invalidLogin", true);
       return "login";
     }
   }
 
   @GetMapping("/logout")
-  public String logOut(){
-    this.currentlyLogged = null;
+  public String logOut() {
+    userService.setLoggedUser(null);
     userService.logout();
     return "login";
   }
 
   @GetMapping("/createUser")
-  public String createUser(){
-     return "createUser";
+  public String createUser() {
+    return "createUser";
   }
 
   @PostMapping("/createUser")
-  public String createUserSubmit(@ModelAttribute User user){
+  public String createUserSubmit(@ModelAttribute User user) {
     userService.save(user);
     return "login";
   }

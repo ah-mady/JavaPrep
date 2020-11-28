@@ -25,11 +25,11 @@
     <td id="upVoteId" name="upVoteId">
       <a th:href="@{/{id}/increaseVote (id = ${post.id})}"
          th:value="${post.id}"
-         th:field="${post.id}" >+</a>
+         th:field="${post.id}">+</a>
     </td>
     <td>
       <a th:href="@{/{id}/decreaseVote (id = ${post.id})}"
-           th:value="${post.id}">-</a>
+         th:value="${post.id}">-</a>
     </td>
     <td>
       <a th:if="${post.title} != null"

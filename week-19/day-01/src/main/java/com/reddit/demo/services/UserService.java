@@ -16,4 +16,8 @@ public interface UserService {
   User loggedUser();
 
   void logout();
+
+  User getLoggedUser();
+
+  void setLoggedUser(User loggedUser);
 }

@@ -5,9 +5,9 @@ import com.reddit.demo.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 
-  public static User loggedUser;
+  private User loggedUser;
   private UserRepository userRepository;
 
   public UserServiceImp(UserRepository userRepository) {
@@ -21,8 +21,8 @@ public class UserServiceImp implements UserService{
 
   @Override
   public boolean validateCredential(String userName, String password) {
-    User validUser = userRepository.fetchUsernameAndPassword(userName,password);
-    if (validUser != null){
+    User validUser = userRepository.fetchUsernameAndPassword(userName, password);
+    if (validUser != null) {
       loggedUser = validUser;
       return true;
     } else {
@@ -31,7 +31,7 @@ public class UserServiceImp implements UserService{
   }
 
   @Override
-  public User fetchUser(String userName, String password){
+  public User fetchUser(String userName, String password) {
     return userRepository.fetchUsernameAndPassword(userName, password);
   }
 
@@ -43,5 +43,15 @@ public class UserServiceImp implements UserService{
   @Override
   public void logout() {
     loggedUser = null;
+  }
+
+  @Override
+  public User getLoggedUser() {
+    return loggedUser;
+  }
+
+  @Override
+  public void setLoggedUser(User loggedUser) {
+    this.loggedUser = loggedUser;
   }
 }
