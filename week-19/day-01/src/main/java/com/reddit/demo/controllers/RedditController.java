@@ -2,6 +2,7 @@ package com.reddit.demo.controllers;
 
 import com.reddit.demo.models.Reddit;
 import com.reddit.demo.services.RedditService;
+import com.reddit.demo.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RedditController {
 
   private RedditService redditService;
+  private UserService userService;
 
-  public RedditController(RedditService redditService) {
+  public RedditController(RedditService redditService, UserService userService) {
     this.redditService = redditService;
+    this.userService = userService;
   }
 
   @GetMapping("/")
   public String homepage(Model model) {
     model.addAttribute("posts", redditService.findAll());
+
     return "homepage";
   }
 
