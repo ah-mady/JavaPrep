@@ -41,6 +41,7 @@ public class UserController {
 
   @GetMapping("/logout")
   public String logOut(){
+    this.currentlyLogged = null;
     userService.logout();
     return "login";
   }

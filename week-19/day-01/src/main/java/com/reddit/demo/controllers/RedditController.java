@@ -61,6 +61,4 @@ public class RedditController {
     redditService.downVote(id);
     return "redirect:/";
   }
-
-
 }
