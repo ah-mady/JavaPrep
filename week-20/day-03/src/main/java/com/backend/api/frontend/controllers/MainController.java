@@ -1,6 +1,7 @@
 package com.backend.api.frontend.controllers;
 
 import com.backend.api.frontend.models.AppendA;
+import com.backend.api.frontend.models.ArrayHandler;
 import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
@@ -77,6 +78,36 @@ public class MainController {
     headers.add("Content-Type", "application/json");
 
     return ResponseEntity.ok().headers(headers).body(doUntilObject);
+  }
+
+//  @PostMapping("/array")
+//  @ResponseBody
+//  public ResponseEntity<?> arrayHandlerRE(@RequestBody ArrayHandler arrayHandler) throws JsonProcessingException {
+//
+//    Integer[] array = new Integer[arrayHandler.getNumbers().size()];
+//    arrayHandler.getNumbers().toArray(array);
+//
+//
+//    ArrayHandler arrayHandler2 = mainServices.arrayHandler(arrayHandler.getWhat(), array);,
+//
+//    HttpHeaders headers = new HttpHeaders();
+//    headers.add("Content-Type", "application/json");
+//
+//    ObjectMapper objectMapper = new ObjectMapper();
+//    String json = objectMapper.writeValueAsString(arrayHandler2);
+//
+//    return ResponseEntity.ok().body(json);
+//  }
+
+  @PostMapping("/array")
+  public ResponseEntity<?> addMember(@RequestBody ArrayHandler arrayHandler){
+
+    ArrayHandler arrayHandlerObject = mainServices.arrayHandler(arrayHandler.getWhat(), arrayHandler.getNumbers());
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Content-Type", "application/json");
+
+    return ResponseEntity.ok().headers(headers).body(arrayHandlerObject);
   }
 
 }

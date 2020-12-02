@@ -1,9 +1,12 @@
 package com.backend.api.frontend.services;
 
 import com.backend.api.frontend.models.AppendA;
+import com.backend.api.frontend.models.ArrayHandler;
 import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -47,8 +50,6 @@ public class MainServicesImpl implements MainServices {
 
   @Override
   public DoUntil doUntil(String action, DoUntil until) {
-
-
     if (until.getUntil() == null) {
       until.setError("Please provide a number!");
       return until;
@@ -70,5 +71,41 @@ public class MainServicesImpl implements MainServices {
       until.setResult(findFactor);
     }
     return until;
+  }
+
+  @Override
+  public ArrayHandler arrayHandler(String what, int[] numbers) {
+    ArrayHandler arrayHandlerObject = new ArrayHandler();
+    if (what == null) {
+      arrayHandlerObject.setError("Please provide what to do with the numbers!");
+      return arrayHandlerObject;
+    } else if (numbers == null) {
+      arrayHandlerObject.setError("Please provide numbers to do the math!");
+      return arrayHandlerObject;
+    }
+
+    switch (what) {
+      case "sum":
+        int sumResult = IntStream.of(numbers).sum();
+//        arrayHandlerObject.setWhat("sum");
+        arrayHandlerObject.setResult(sumResult);
+        break;
+      case "multiply":
+        int multiplicationResult = 1;
+        for (int i = 0; i < numbers.length; i++) {
+          multiplicationResult = numbers[i] * numbers[i + 1];
+        }
+        arrayHandlerObject.setResult(multiplicationResult);
+        break;
+      case "double":
+        int[] doubleResult = new int[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+          doubleResult[i] = numbers[i] * 2;
+        }
+        arrayHandlerObject.setNumbers(doubleResult);
+        break;
+    }
+
+    return arrayHandlerObject;
   }
 }

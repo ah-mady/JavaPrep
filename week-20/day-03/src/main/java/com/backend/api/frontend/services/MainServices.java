@@ -1,6 +1,7 @@
 package com.backend.api.frontend.services;
 
 import com.backend.api.frontend.models.AppendA;
+import com.backend.api.frontend.models.ArrayHandler;
 import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
@@ -15,4 +16,6 @@ public interface MainServices {
   AppendA appendLetterA(String appendTo);
 
   DoUntil doUntil(String action, DoUntil until);
+
+  ArrayHandler arrayHandler(String what, int[] numbers);
 }
