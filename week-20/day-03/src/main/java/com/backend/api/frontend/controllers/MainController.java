@@ -1,5 +1,6 @@
 package com.backend.api.frontend.controllers;
 
+import com.backend.api.frontend.models.AppendA;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
 import com.backend.api.frontend.services.MainServices;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -44,6 +46,19 @@ public class MainController {
       return new ResponseEntity<>(greeterObject, HttpStatus.BAD_REQUEST);
     }
     return ResponseEntity.ok().headers(headers).body(greeterObject);
-
   }
+
+  @GetMapping("/appenda/{appendable}")
+  public ResponseEntity<AppendA> appendAResponseEntity(@PathVariable String appendable) {
+    AppendA appendObject = mainServices.appendLetterA(appendable);
+    if (appendable == null) {
+      return new ResponseEntity<>(appendObject, HttpStatus.NOT_FOUND);
+    }
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Content-Type", "application/json");
+
+    return ResponseEntity.ok().headers(headers).body(appendObject);
+  }
+
 }
