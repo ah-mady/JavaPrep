@@ -1,6 +1,7 @@
 package com.backend.api.frontend.services;
 
 import com.backend.api.frontend.models.AppendA;
+import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
 import org.springframework.stereotype.Service;
@@ -12,4 +13,6 @@ public interface MainServices {
   Greeter greeter(String name, String title);
 
   AppendA appendLetterA(String appendTo);
+
+  DoUntil doUntil(String action, DoUntil until);
 }

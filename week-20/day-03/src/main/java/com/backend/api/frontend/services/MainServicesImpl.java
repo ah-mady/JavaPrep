@@ -1,6 +1,7 @@
 package com.backend.api.frontend.services;
 
 import com.backend.api.frontend.models.AppendA;
+import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,32 @@ public class MainServicesImpl implements MainServices {
     AppendA appendObject = new AppendA();
     appendObject.setAppended(appendTo + "a");
     return appendObject;
+  }
+
+  @Override
+  public DoUntil doUntil(String action, DoUntil until) {
+
+
+    if (until.getUntil() == null) {
+      until.setError("Please provide a number!");
+      return until;
+    }
+
+    if (action.equals("sum")) {
+      int addition = 0;
+      for (int i = 1; i <= until.getUntil(); i++) {
+        addition += i;
+      }
+      until.setResult(addition);
+
+    } else if (action.equals("factor")) {
+      int findFactor = 1;
+
+      for (int i = 1; i <= until.getUntil(); i++) {
+        findFactor *= i;
+      }
+      until.setResult(findFactor);
+    }
+    return until;
   }
 }

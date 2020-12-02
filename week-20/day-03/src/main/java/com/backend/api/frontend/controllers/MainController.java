@@ -1,6 +1,7 @@
 package com.backend.api.frontend.controllers;
 
 import com.backend.api.frontend.models.AppendA;
+import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
 import com.backend.api.frontend.services.MainServices;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -59,6 +62,21 @@ public class MainController {
     headers.add("Content-Type", "application/json");
 
     return ResponseEntity.ok().headers(headers).body(appendObject);
+  }
+
+  @PostMapping("/dountil/{action}")
+  public ResponseEntity<DoUntil> doUntilResponseEntity(@PathVariable String action,
+                                                       @RequestBody(required = false) DoUntil until) {
+    DoUntil doUntilObject = mainServices.doUntil(action, until);
+
+    if (until == null) {
+      return new ResponseEntity<>(doUntilObject, HttpStatus.BAD_REQUEST);
+    }
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Content-Type", "application/json");
+
+    return ResponseEntity.ok().headers(headers).body(doUntilObject);
   }
 
 }
