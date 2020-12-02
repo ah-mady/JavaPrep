@@ -1,8 +1,10 @@
 package com.backend.api.frontend.controllers;
 
 import com.backend.api.frontend.models.Double;
+import com.backend.api.frontend.models.Greeter;
 import com.backend.api.frontend.services.MainServices;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,4 +32,18 @@ public class MainController {
     return ResponseEntity.ok().headers(headers).body(doubleObject);
   }
 
+  @GetMapping("/greeter")
+  public ResponseEntity<Greeter> greeterResponseEntity(@RequestParam(required = false) String name,
+                                                       @RequestParam(required = false) String title) {
+    Greeter greeterObject = mainServices.greeter(name, title);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Content-Type", "application/json");
+
+    if (title == null || name == null) {
+      return new ResponseEntity<>(greeterObject, HttpStatus.BAD_REQUEST);
+    }
+    return ResponseEntity.ok().headers(headers).body(greeterObject);
+
+  }
 }
