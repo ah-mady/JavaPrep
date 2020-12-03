@@ -87,25 +87,23 @@ public class MainServicesImpl implements MainServices {
     switch (what) {
       case "sum":
         int sumResult = IntStream.of(numbers).sum();
-//        arrayHandlerObject.setWhat("sum");
-        arrayHandlerObject.setResult(sumResult);
-        break;
+        arrayHandlerObject.setNumbers(new int[] {sumResult});
+        return arrayHandlerObject;
       case "multiply":
         int multiplicationResult = 1;
-        for (int i = 0; i < numbers.length; i++) {
-          multiplicationResult = numbers[i] * numbers[i + 1];
+        for (int value : numbers) {
+          multiplicationResult *= value;
         }
-        arrayHandlerObject.setResult(multiplicationResult);
-        break;
+        arrayHandlerObject.setNumbers(new int[] {multiplicationResult});
+        return arrayHandlerObject;
       case "double":
         int[] doubleResult = new int[numbers.length];
         for (int i = 0; i < numbers.length; i++) {
           doubleResult[i] = numbers[i] * 2;
         }
         arrayHandlerObject.setNumbers(doubleResult);
-        break;
+        return arrayHandlerObject;
     }
-
     return arrayHandlerObject;
   }
 }
