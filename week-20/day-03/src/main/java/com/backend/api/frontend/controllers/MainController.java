@@ -5,7 +5,13 @@ import com.backend.api.frontend.models.ArrayHandler;
 import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
+import com.backend.api.frontend.models.LogEntry;
+import com.backend.api.frontend.models.LogEntryOutput;
+import com.backend.api.frontend.repositories.LogRepository;
 import com.backend.api.frontend.services.MainServices;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,22 +21,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class MainController {
   private MainServices mainServices;
+  private LogRepository logRepository;
 
-  public MainController(MainServices mainServices) {
+  public MainController(MainServices mainServices, LogRepository logRepository) {
     this.mainServices = mainServices;
-  }
-
-  @GetMapping()
-  public String frontEnd() {
-    return "index";
+    this.logRepository = logRepository;
   }
 
   @GetMapping("/doubling")
   public ResponseEntity<Double> doubling(@RequestParam(required = false) Integer input) {
+
+    LogEntry logEntry = new LogEntry("/doubling", "input: " + input);
+    logRepository.save(logEntry);
+
     Double doubleObject = mainServices.doubleValue(input);
 
     HttpHeaders headers = new HttpHeaders();
@@ -41,6 +49,9 @@ public class MainController {
   @GetMapping("/greeter")
   public ResponseEntity<Greeter> greeterResponseEntity(@RequestParam(required = false) String name,
                                                        @RequestParam(required = false) String title) {
+    LogEntry logEntry = new LogEntry("/greeter", "name: " + name + "\ntitle: " + title);
+    logRepository.save(logEntry);
+
     Greeter greeterObject = mainServices.greeter(name, title);
 
     HttpHeaders headers = new HttpHeaders();
@@ -54,6 +65,10 @@ public class MainController {
 
   @GetMapping("/appenda/{appendable}")
   public ResponseEntity<AppendA> appendAResponseEntity(@PathVariable String appendable) {
+
+    LogEntry logEntry = new LogEntry("/appenda/" + appendable, "input: " + appendable);
+    logRepository.save(logEntry);
+
     AppendA appendObject = mainServices.appendLetterA(appendable);
     if (appendable == null) {
       return new ResponseEntity<>(appendObject, HttpStatus.NOT_FOUND);
@@ -68,6 +83,9 @@ public class MainController {
   @PostMapping("/dountil/{action}")
   public ResponseEntity<DoUntil> doUntilResponseEntity(@PathVariable String action,
                                                        @RequestBody(required = false) DoUntil until) {
+    LogEntry logEntry = new LogEntry("/dountil/" + action, "input: " + until.getUntil());
+    logRepository.save(logEntry);
+
     DoUntil doUntilObject = mainServices.doUntil(action, until);
 
     if (until == null) {
@@ -82,7 +100,11 @@ public class MainController {
 
 
   @PostMapping("/array")
-  public ResponseEntity<ArrayHandler> arrayHandlerRE(@RequestBody ArrayHandler arrayHandler){
+  public ResponseEntity<ArrayHandler> arrayHandlerRE(@RequestBody ArrayHandler arrayHandler) {
+
+    LogEntry logEntry = new LogEntry("/array", "what: " + arrayHandler.getWhat()
+        + " numbers: " + Arrays.toString(arrayHandler.getNumbers()));
+    logRepository.save(logEntry);
 
     ArrayHandler arrayHandlerObject = mainServices.arrayHandler(arrayHandler.getWhat(), arrayHandler.getNumbers());
 
@@ -90,6 +112,21 @@ public class MainController {
     headers.add("Content-Type", "application/json");
 
     return ResponseEntity.ok().headers(headers).body(arrayHandlerObject);
+  }
+
+  @GetMapping("/log")
+  public ResponseEntity<?> getLogs() {
+    List<LogEntry> logEntries = logRepository.findAll();
+
+    LogEntryOutput output = new LogEntryOutput();
+
+    output.setEntries(logEntries);
+    output.setEntryCount(logEntries.size());
+
+    if (logEntries == null || logEntries.isEmpty()) {
+      return ResponseEntity.status(400).body(output);
+    }
+    return ResponseEntity.ok().body(output);
   }
 
 }
