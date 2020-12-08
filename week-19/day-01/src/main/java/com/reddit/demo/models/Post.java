@@ -1,9 +1,14 @@
 package com.reddit.demo.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Post {
@@ -12,9 +17,16 @@ public class Post {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private int vote;
+  private int rating;
   private String title;
   private String url;
+
+  @OneToMany(mappedBy = "post")
+  private List<Vote> votes = new ArrayList<>();
+
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
 
   public Post() {
   }
@@ -32,12 +44,12 @@ public class Post {
     this.id = id;
   }
 
-  public int getVote() {
-    return vote;
+  public int getRating() {
+    return rating;
   }
 
-  public void setVote(int vote) {
-    this.vote = vote;
+  public void setRating(int vote) {
+    this.rating = vote;
   }
 
   public String getTitle() {
@@ -54,5 +66,21 @@ public class Post {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+  public List<Vote> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<Vote> votes) {
+    this.votes = votes;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }

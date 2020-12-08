@@ -1,11 +1,14 @@
 package com.reddit.demo.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -26,9 +29,17 @@ public class User {
   @Column(name = "is_logged")
   private Boolean isLogged;
 
+  @OneToMany (mappedBy = "user")
+  private List <Post> posts = new ArrayList<>();
+
   public User() {
     this.registeredAt = LocalDateTime.now();
     this.isLogged = false;
+  }
+
+  public User(String userName, String password) {
+    this.userName = userName;
+    this.password = password;
   }
 
   public Long getId() {
@@ -61,5 +72,21 @@ public class User {
 
   public void setLogged(Boolean logged) {
     isLogged = logged;
+  }
+
+  public LocalDateTime getRegisteredAt() {
+    return registeredAt;
+  }
+
+  public void setRegisteredAt(LocalDateTime registeredAt) {
+    this.registeredAt = registeredAt;
+  }
+
+  public List<Post> getPosts() {
+    return posts;
+  }
+
+  public void setPosts(List<Post> posts) {
+    this.posts = posts;
   }
 }

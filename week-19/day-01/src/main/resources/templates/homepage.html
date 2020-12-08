@@ -21,7 +21,7 @@
 <table>
   <tbody>
   <tr th:each="post:${posts}">
-    <td th:text="${post.getVote()}"></td>
+    <td th:text="${post.getRating()}"></td>
     <td id="upVoteId" name="upVoteId">
       <a th:href="@{/{id}/increaseVote (id = ${post.id})}"
          th:value="${post.id}"
