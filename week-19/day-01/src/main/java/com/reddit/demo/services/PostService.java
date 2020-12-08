@@ -1,17 +1,17 @@
 package com.reddit.demo.services;
 
-import com.reddit.demo.models.Reddit;
+import com.reddit.demo.models.Post;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface RedditService {
+public interface PostService {
 
-  List<Reddit> findAll();
+  List<Post> findAll();
 
-  void save(Reddit posts);
+  void save(Post posts);
 
-  Reddit findById(Long id);
+  Post findById(Long id);
 
   void upVote(Long id);
 

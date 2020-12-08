@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Reddit {
+public class Post {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ public class Reddit {
   private String title;
   private String url;
 
-  public Reddit() {
+  public Post() {
   }
 
-  public Reddit(String title, String url) {
+  public Post(String title, String url) {
     this.title = title;
     this.url = url;
   }
