@@ -5,6 +5,7 @@ import com.backend.api.frontend.models.ArrayHandler;
 import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
+import com.backend.api.frontend.models.Sith;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,4 +19,6 @@ public interface MainServices {
   DoUntil doUntil(String action, DoUntil until);
 
   ArrayHandler arrayHandler(String what, int[] numbers);
+
+//  Sith sith(String sith);
 }

@@ -5,7 +5,10 @@ import com.backend.api.frontend.models.ArrayHandler;
 import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
+import com.backend.api.frontend.models.Sith;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 import org.springframework.stereotype.Service;
 
@@ -106,4 +109,49 @@ public class MainServicesImpl implements MainServices {
     }
     return arrayHandlerObject;
   }
+
+//  @Override
+//  public Sith sith(String sith) {
+//    Random random = new Random();
+//    List<String> randomSithWords = Arrays.asList("Arrgh.", "Uhmm.", "Err..err.err.");
+//    List<String> sentenceWords = Arrays.asList(sith.split("\\."));
+//    StringBuilder sithText = new StringBuilder();
+//
+//    for (int i = 0; i < sentenceWords.size(); i++) {
+//      List<String> words = Arrays.asList(sentenceWords.get(i).split(" "));
+//
+////      words.set(i, words.get(0).substring(0, 1) + words.get(0).substring(1));
+////      words.set(i, words.get(1).substring(0, 1) + words.get(1).substring(1));
+//
+//      for (int j = 0; j < words.size(); j += 2) {
+//        String temp = words.get(j);
+//        if (words.get(j+1).isEmpty()){
+//          break;
+//        } else {
+//
+//          words.set(j, words.get(j + 1));
+//          sithText.append(words.get(j)).append(" ");
+//          words.set(j + 1, temp);
+//          sithText.append(words.get(j + 1)).append(" ");
+//        }
+//      }
+//
+//      if (words.size() % 2 != 0) {
+//        sithText.append(words.get(words.size() - 1));
+//      }
+//
+//      if (i == sentenceWords.size() - 1) {
+//        sithText.append(".");
+//      } else {
+//        sithText.append(". ");
+//      }
+//
+//      if (i == sentenceWords.size() - 1) {
+//        sithText.append(" ").append(randomSithWords.get(random.nextInt(3)));
+//      } else {
+//        sithText.append(randomSithWords.get(random.nextInt(3))).append(" ");
+//      }
+//    }
+//    return new Sith(sithText.toString());
+//  }
 }

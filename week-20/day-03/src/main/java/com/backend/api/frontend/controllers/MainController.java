@@ -7,6 +7,7 @@ import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
 import com.backend.api.frontend.models.LogEntry;
 import com.backend.api.frontend.models.LogEntryOutput;
+import com.backend.api.frontend.models.Sith;
 import com.backend.api.frontend.repositories.LogRepository;
 import com.backend.api.frontend.services.MainServices;
 import java.util.ArrayList;
@@ -128,5 +129,11 @@ public class MainController {
     }
     return ResponseEntity.ok().body(output);
   }
+
+//  @PostMapping("/sith")
+//  public ResponseEntity<Sith> sithResponseEntity(@RequestBody Sith sith){
+//  Sith sithObject = mainServices.sith(sith.getSith());
+//    return ResponseEntity.ok().body(sithObject);
+//  }
 
 }
