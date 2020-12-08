@@ -8,4 +8,8 @@ public interface VoteService {
 
   void setVote(Vote vote);
 
+  void upVote(Long id);
+
+  void downVote(Long id);
+
 }

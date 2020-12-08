@@ -1,5 +1,6 @@
 package com.reddit.demo.models;
 
+import java.util.Optional;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class Vote {
 
   private boolean isVoted;
 
-  private long votedByUserId;
+  @ManyToOne
+  private User votedByUserId;
 
   @ManyToOne
   @JoinColumn(name = "post_id")
@@ -25,7 +27,7 @@ public class Vote {
   public Vote() {
   }
 
-  public Vote(boolean isVoted, long votedByUserId) {
+  public Vote(boolean isVoted, User votedByUserId) {
     this.isVoted = isVoted;
     this.votedByUserId = votedByUserId;
   }
@@ -46,11 +48,11 @@ public class Vote {
     isVoted = voted;
   }
 
-  public long getVotedByUserId() {
+  public User getVotedByUserId() {
     return votedByUserId;
   }
 
-  public void setVotedByUserId(long votedByUserId) {
+  public void setVotedByUserId(User votedByUserId) {
     this.votedByUserId = votedByUserId;
   }
 

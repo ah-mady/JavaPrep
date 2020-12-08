@@ -32,6 +32,10 @@ public class User {
   @OneToMany (mappedBy = "user")
   private List <Post> posts = new ArrayList<>();
 
+  @OneToMany(mappedBy = "votedByUserId")
+  private List<Vote> votes = new ArrayList<>();
+
+
   public User() {
     this.registeredAt = LocalDateTime.now();
     this.isLogged = false;
@@ -88,5 +92,13 @@ public class User {
 
   public void setPosts(List<Post> posts) {
     this.posts = posts;
+  }
+
+  public List<Vote> getVotes() {
+    return votes;
+  }
+
+  public void setVotes(List<Vote> votes) {
+    this.votes = votes;
   }
 }

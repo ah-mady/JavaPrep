@@ -48,16 +48,4 @@ public class PostController {
     model.addAttribute("post", postService.findById(id));
     return "postDetails";
   }
-
-  @GetMapping("/{id}/increaseVote")
-  public String upVote(@PathVariable Long id) {
-    postService.upVote(id);
-    return "redirect:/";
-  }
-
-  @GetMapping("/{id}/decreaseVote")
-  public String downVote(@PathVariable Long id) {
-    postService.downVote(id);
-    return "redirect:/";
-  }
 }
