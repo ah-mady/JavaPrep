@@ -10,13 +10,11 @@ import com.backend.api.frontend.models.LogEntryOutput;
 import com.backend.api.frontend.models.Sith;
 import com.backend.api.frontend.repositories.LogRepository;
 import com.backend.api.frontend.services.MainServices;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -130,10 +128,11 @@ public class MainController {
     return ResponseEntity.ok().body(output);
   }
 
-//  @PostMapping("/sith")
-//  public ResponseEntity<Sith> sithResponseEntity(@RequestBody Sith sith){
-//  Sith sithObject = mainServices.sith(sith.getSith());
-//    return ResponseEntity.ok().body(sithObject);
-//  }
+  @PostMapping("/sith")
+  public ResponseEntity<Sith> sithResponseEntity(@RequestBody Sith sith) {
+    Sith sithObject = mainServices.sith(sith.getSith());
+//    ResponseEntity<?> sithResponseEntity = mainServices.responseSith(sith);
+    return ResponseEntity.ok().body(sithObject);
+  }
 
 }

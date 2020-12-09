@@ -6,6 +6,7 @@ import com.backend.api.frontend.models.DoUntil;
 import com.backend.api.frontend.models.Double;
 import com.backend.api.frontend.models.Greeter;
 import com.backend.api.frontend.models.Sith;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,5 +21,7 @@ public interface MainServices {
 
   ArrayHandler arrayHandler(String what, int[] numbers);
 
-//  Sith sith(String sith);
+  Sith sith(String sith);
+
+//  ResponseEntity<?> responseSith(String sith);
 }
