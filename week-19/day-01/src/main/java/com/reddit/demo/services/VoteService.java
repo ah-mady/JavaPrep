@@ -1,6 +1,9 @@
 package com.reddit.demo.services;
 
+import com.reddit.demo.models.Post;
+import com.reddit.demo.models.User;
 import com.reddit.demo.models.Vote;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,8 +11,8 @@ public interface VoteService {
 
   void setVote(Vote vote);
 
-  void upVote(Long id);
+  Vote returnVoteByPostAndUser(Post post, User loggedUser);
 
-  void downVote(Long id);
+  List<Vote> returnAllVotesByUser(User loggedUser);
 
 }

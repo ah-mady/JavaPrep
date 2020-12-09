@@ -1,6 +1,5 @@
 package com.reddit.demo.models;
 
-import java.util.Optional;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +14,10 @@ public class Vote {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private boolean isVoted;
+  private int upVote;
 
   @ManyToOne
+  @JoinColumn(name = "voter_id")
   private User votedByUserId;
 
   @ManyToOne
@@ -27,8 +27,7 @@ public class Vote {
   public Vote() {
   }
 
-  public Vote(boolean isVoted, User votedByUserId) {
-    this.isVoted = isVoted;
+  public Vote(User votedByUserId) {
     this.votedByUserId = votedByUserId;
   }
 
@@ -38,14 +37,6 @@ public class Vote {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  public boolean isVoted() {
-    return isVoted;
-  }
-
-  public void setVoted(boolean voted) {
-    isVoted = voted;
   }
 
   public User getVotedByUserId() {
@@ -62,5 +53,13 @@ public class Vote {
 
   public void setPost(Post post) {
     this.post = post;
+  }
+
+  public int getUpVote() {
+    return upVote;
+  }
+
+  public void setUpVote(int score) {
+    this.upVote = score;
   }
 }

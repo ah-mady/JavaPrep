@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImp implements UserService {
 
-  private User loggedUser;
+  private static User loggedUser;
   private UserRepository userRepository;
 
   public UserServiceImp(UserRepository userRepository) {

@@ -1,7 +1,10 @@
 package com.reddit.demo.models;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,9 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-public class Post {
+@Getter
+@Setter
+@AllArgsConstructor
+public class Post implements Comparable<Post> {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +29,10 @@ public class Post {
   private int rating;
   private String title;
   private String url;
+  private LocalDateTime creationDate;
+  private long likes;
 
-  @OneToMany(mappedBy = "post")
+  @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
   private List<Vote> votes = new ArrayList<>();
 
   @ManyToOne
@@ -29,58 +40,25 @@ public class Post {
   private User user;
 
   public Post() {
+    this.creationDate = LocalDateTime.now();
   }
 
   public Post(String title, String url) {
     this.title = title;
     this.url = url;
+    this.creationDate = LocalDateTime.now();
   }
 
-  public long getId() {
-    return id;
+  public void like() {
+    this.likes++;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void dislike() {
+    this.likes--;
   }
 
-  public int getRating() {
-    return rating;
-  }
-
-  public void setRating(int vote) {
-    this.rating = vote;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String description) {
-    this.title = description;
-  }
-
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public List<Vote> getVotes() {
-    return votes;
-  }
-
-  public void setVotes(List<Vote> votes) {
-    this.votes = votes;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
+  @Override
+  public int compareTo(Post other) {
+    return (int) (other.likes - likes);
   }
 }
