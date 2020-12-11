@@ -4,7 +4,6 @@ import com.orientation.practice.models.Url;
 import com.orientation.practice.repositories.UrlRepository;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,6 +42,22 @@ public class UrlServiceImpl implements UrlService {
   @Override
   public Url findByAlias(String alias) {
     return urlRepository.fetchAlias(alias);
+  }
+
+  @Override
+  public void deleteById(String id) {
+    Long longId = Long.valueOf(id);
+   urlRepository.deleteById(longId);
+  }
+
+  @Override
+  public Url findById(long id) {
+    return urlRepository.findById(id).orElse(null);
+  }
+
+  @Override
+  public boolean validateSecretCode(Url urlObject, String secretCode) {
+    return urlObject.getSecretCode().equals(secretCode);
   }
 
 }
