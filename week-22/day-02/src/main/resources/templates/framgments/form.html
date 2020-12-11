@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div th:fragment="form">
+    <form th:action="@{/save-link}" method="post">
+        <label for="url">URL</label>
+        <input type="url" id="url" name="URL" required>
+        <br>
+        <label for="alias">Alias</label>
+        <input type="text" name="alias" id="alias" required>
+        <br>
+        <input type="submit">
+
+    </form>
+</div>
+
+</body>
+</html>

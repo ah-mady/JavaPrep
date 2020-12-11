@@ -1,0 +1,42 @@
+package com.orientation.practice.services;
+
+import com.orientation.practice.models.Url;
+import com.orientation.practice.repositories.UrlRepository;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UrlServiceImpl implements UrlService {
+  private UrlRepository urlRepository;
+
+  public UrlServiceImpl(UrlRepository urlRepository) {
+    this.urlRepository = urlRepository;
+  }
+
+
+  @Override
+  public void save(Url url) {
+    url.setSecretCode(generateSecretCode());
+    urlRepository.save(url);
+  }
+
+  @Override
+  public List<Url> findAll() {
+    return urlRepository.findAll();
+  }
+
+  private String generateSecretCode() {
+    int code = (int) ((Math.random() * 9000) + 1000);
+    String generatedCode = String.valueOf(code);
+    return generatedCode;
+  }
+
+  @Override
+  public boolean validateAlias(String alias) {
+    Url validAlias = urlRepository.fetchAlias(alias);
+    return validAlias == null;
+  }
+
+}
