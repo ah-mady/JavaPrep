@@ -18,7 +18,7 @@ public class UrlServiceImpl implements UrlService {
 
   @Override
   public void save(Url url) {
-    url.setSecretCode(generateSecretCode());
+//    url.setSecretCode(generateSecretCode());
     urlRepository.save(url);
   }
 
@@ -27,7 +27,8 @@ public class UrlServiceImpl implements UrlService {
     return urlRepository.findAll();
   }
 
-  private String generateSecretCode() {
+  @Override
+  public String generateSecretCode() {
     int code = (int) ((Math.random() * 9000) + 1000);
     String generatedCode = String.valueOf(code);
     return generatedCode;
@@ -37,6 +38,11 @@ public class UrlServiceImpl implements UrlService {
   public boolean validateAlias(String alias) {
     Url validAlias = urlRepository.fetchAlias(alias);
     return validAlias == null;
+  }
+
+  @Override
+  public Url findByAlias(String alias) {
+    return urlRepository.fetchAlias(alias);
   }
 
 }

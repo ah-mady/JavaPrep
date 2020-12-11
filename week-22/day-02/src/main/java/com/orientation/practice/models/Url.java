@@ -1,5 +1,6 @@
 package com.orientation.practice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,9 @@ public class Url {
 
   private String URL;
   private String alias;
+  @JsonIgnore
   private String secretCode;
+  private int hitCount;
 
   public Url(String URL, String alias) {
     this.URL = URL;

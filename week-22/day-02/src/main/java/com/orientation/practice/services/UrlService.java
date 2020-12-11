@@ -11,6 +11,9 @@ public interface UrlService {
 
   List<Url> findAll();
 
+  String generateSecretCode();
+
   boolean validateAlias(String alias);
 
+  Url findByAlias(String alias);
 }
