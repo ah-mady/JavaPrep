@@ -52,6 +52,7 @@ public class UrlServiceImpl implements UrlService {
 
   @Override
   public Url findById(long id) {
+    urlRepository.findById(id);
     return urlRepository.findById(id).orElse(null);
   }
 

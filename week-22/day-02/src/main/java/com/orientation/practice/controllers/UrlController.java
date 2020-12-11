@@ -1,6 +1,7 @@
 package com.orientation.practice.controllers;
 
 import com.orientation.practice.models.Url;
+import com.orientation.practice.models.dtos.SecretCodeDto;
 import com.orientation.practice.services.UrlService;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -70,12 +71,15 @@ public class UrlController {
   @ResponseBody
   public ResponseEntity<List<Url>> showJson() {
     List<Url> urlEntries = urlService.findAll();
-    return ResponseEntity.ok().body(urlEntries);
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Content-Type", "application/json");
+    return ResponseEntity.ok().headers(headers).body(urlEntries);
   }
 
   @DeleteMapping("/api/links/{id}")
   @ResponseBody
-  public ResponseEntity<Url> deleteById(@PathVariable String id, @RequestBody Url url) {
+  public ResponseEntity<Url> deleteById(@PathVariable String id,
+                                        @RequestBody SecretCodeDto url) {
 
     Long longId = Long.valueOf(id);
     Url urlObject = urlService.findById(longId);
