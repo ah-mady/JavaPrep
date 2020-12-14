@@ -81,6 +81,8 @@ public class UrlController {
   public ResponseEntity<Url> deleteById(@PathVariable String id,
                                         @RequestBody SecretCodeDto url) {
 
+    SecretCodeDto secretCodeDto = new SecretCodeDto();
+
     Long longId = Long.valueOf(id);
     Url urlObject = urlService.findById(longId);
 

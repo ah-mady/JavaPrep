@@ -35,13 +35,13 @@ public class UrlServiceImpl implements UrlService {
 
   @Override
   public boolean validateAlias(String alias) {
-    Url validAlias = urlRepository.fetchAlias(alias);
+    Url validAlias = urlRepository.findByAlias(alias);
     return validAlias == null;
   }
 
   @Override
   public Url findByAlias(String alias) {
-    return urlRepository.fetchAlias(alias);
+    return urlRepository.findByAlias(alias);
   }
 
   @Override

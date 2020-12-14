@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UrlRepository extends JpaRepository<Url, Long> {
 
-  @Query("SELECT c FROM Url c WHERE c.alias = ?1")
-  Url fetchAlias(String alias);
+//  @Query("SELECT c FROM Url c WHERE c.alias = ?1")
+//  Url fetchAlias(String alias);
 
+  Url findByAlias(String alias);
 }
