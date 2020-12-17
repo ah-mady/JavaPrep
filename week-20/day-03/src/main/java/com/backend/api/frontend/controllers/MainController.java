@@ -131,7 +131,6 @@ public class MainController {
   @PostMapping("/sith")
   public ResponseEntity<Sith> sithResponseEntity(@RequestBody Sith sith) {
     Sith sithObject = mainServices.sith(sith.getSith());
-//    ResponseEntity<?> sithResponseEntity = mainServices.responseSith(sith);
     return ResponseEntity.ok().body(sithObject);
   }
 
