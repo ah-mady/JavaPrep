@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface TodoService {
+
   void save(TodoEntity todoEntity);
+
   List<TodoEntity> listTodos();
 }
