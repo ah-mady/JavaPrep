@@ -5,5 +5,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
+
   void save(UserEntity userEntity);
+
+  boolean findByUsernameAndPassword(String username, String password);
 }

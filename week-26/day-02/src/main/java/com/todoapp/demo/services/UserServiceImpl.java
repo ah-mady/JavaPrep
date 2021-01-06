@@ -16,4 +16,9 @@ public class UserServiceImpl implements UserService{
   public void save(UserEntity userEntity) {
     userRepository.save(userEntity);
   }
+
+  @Override
+  public boolean findByUsernameAndPassword(String username, String password) {
+    return userRepository.findByUsernameAndPassword(username, password);
+  }
 }

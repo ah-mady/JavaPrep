@@ -28,4 +28,18 @@ public class UserController {
     headers.add("Content-Type", "application/json");
     return ResponseEntity.ok().headers(headers).body(userEntity);
   }
+
+  @PostMapping("/login")
+  public ResponseEntity<UserEntity> loginUser(@RequestBody UserEntityDto userEntityDto){
+    UserEntity userEntity = new UserEntity();
+
+    if (userService.findByUsernameAndPassword(userEntityDto.getUsername(), userEntityDto.getPassword())){
+      userEntity.setUsername(userEntityDto.getUsername());
+      userEntity.setPassword(userEntityDto.getPassword());
+      return ResponseEntity.ok().body(userEntity);
+    } else {
+      return ResponseEntity.badRequest().body(userEntity);
+    }
+  }
+
 }
