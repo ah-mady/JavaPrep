@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,9 @@ public class TodoEntity {
   private String title;
   private boolean urgent;
   private boolean done;
+  @ManyToOne
+  @JoinColumn(name = "userId")
+  private UserEntity user;
 
   public TodoEntity() {
   }
