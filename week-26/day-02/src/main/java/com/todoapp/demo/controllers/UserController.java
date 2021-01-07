@@ -1,8 +1,10 @@
 package com.todoapp.demo.controllers;
 
+import com.todoapp.demo.models.TodoEntity;
 import com.todoapp.demo.models.UserEntity;
 import com.todoapp.demo.models.dto.UserEntityDto;
 import com.todoapp.demo.services.UserService;
+import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class UserController {
     UserEntity userEntity = new UserEntity();
     userEntity.setUsername(userEntityDto.getUsername());
     userEntity.setPassword(userEntityDto.getPassword());
+    List<TodoEntity> todoEntityList = userEntityDto.getTodoListDto();
+    userEntity.setListOfTodos(todoEntityList);
     userService.save(userEntity);
 
     HttpHeaders headers = new HttpHeaders();
