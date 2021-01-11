@@ -1,25 +1,28 @@
 package com.todoapp.demo.controllers;
 
+import com.todoapp.demo.configurations.jwt.JwtProvider;
 import com.todoapp.demo.models.TodoEntity;
 import com.todoapp.demo.models.UserEntity;
+import com.todoapp.demo.models.dto.AuthRequest;
+import com.todoapp.demo.models.dto.AuthResponse;
 import com.todoapp.demo.models.dto.UserEntityDto;
 import com.todoapp.demo.services.UserService;
 import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
   private UserService userService;
+  private JwtProvider jwtProvider;
 
-  public UserController(UserService userService) {
+  public UserController(UserService userService, JwtProvider jwtProvider) {
     this.userService = userService;
+    this.jwtProvider = jwtProvider;
   }
 
   @PostMapping("/register")
@@ -48,6 +51,14 @@ public class UserController {
       return ResponseEntity.badRequest().body(userEntity);
     }
   }
+
+  @PostMapping("/auth")
+  public AuthResponse authResponse(AuthRequest authRequest){
+    UserEntity userEntity = userService.findByUsernameAndPassword(authRequest.getUsername(), authRequest.getPassword());
+    String token = jwtProvider.generateToken(userEntity.getUsername());
+    return new AuthResponse(token);
+  }
+
 
   @GetMapping("/admin")
   public String admin (){
