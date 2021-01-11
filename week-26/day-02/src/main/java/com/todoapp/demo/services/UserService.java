@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 
   void save(UserEntity userEntity);
-
-  boolean findByUsernameAndPassword(String username, String password);
+  UserEntity findByUsername(String username);
+  UserEntity findByUsernameAndPassword(String username, String password);
 }

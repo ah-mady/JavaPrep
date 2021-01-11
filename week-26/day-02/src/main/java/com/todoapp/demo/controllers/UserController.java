@@ -34,10 +34,10 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public ResponseEntity<UserEntity> loginUser(@RequestBody UserEntityDto userEntityDto){
+  public ResponseEntity<UserEntity> loginUser(@RequestBody UserEntityDto userEntityDto) {
     UserEntity userEntity = new UserEntity();
 
-    if (userService.findByUsernameAndPassword(userEntityDto.getUsername(), userEntityDto.getPassword())){
+    if (userService.findByUsernameAndPassword(userEntityDto.getUsername(), userEntityDto.getPassword()) != null) {
       userEntity.setUsername(userEntityDto.getUsername());
       userEntity.setPassword(userEntityDto.getPassword());
       return ResponseEntity.ok().body(userEntity);
