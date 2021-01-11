@@ -18,7 +18,7 @@ public class RoleEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  private String name;
+  private String role;
 
   @OneToMany(mappedBy = "roleEntity")
   private List<UserEntity> userEntity;
@@ -27,6 +27,6 @@ public class RoleEntity {
   }
 
   public RoleEntity(String role) {
-    this.name = role;
+    this.role = role;
   }
 }
