@@ -21,6 +21,7 @@ public class UserEntity {
   private long id;
   @Column(unique = true)
   private String username;
+  @Column
   private String password;
 
   @OneToMany(mappedBy = "user")

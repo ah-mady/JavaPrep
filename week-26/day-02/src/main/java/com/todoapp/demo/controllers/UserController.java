@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -19,7 +20,7 @@ public class UserController {
     this.userService = userService;
   }
 
-  @PostMapping("/adduser")
+  @PostMapping("/register")
   public ResponseEntity<UserEntity> addUser(@RequestBody UserEntityDto userEntityDto) {
     UserEntity userEntity = new UserEntity();
     userEntity.setUsername(userEntityDto.getUsername());
@@ -44,6 +45,16 @@ public class UserController {
     } else {
       return ResponseEntity.badRequest().body(userEntity);
     }
+  }
+
+  @GetMapping("/admin")
+  public String admin (){
+    return "This is admin endpoint!";
+  }
+
+  @GetMapping("/user")
+  public String user(){
+    return "This is User endpoint!";
   }
 
 }
