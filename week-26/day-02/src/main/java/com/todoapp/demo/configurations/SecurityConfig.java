@@ -1,5 +1,6 @@
 package com.todoapp.demo.configurations;
 
+import com.todoapp.demo.configurations.jwt.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +15,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+  private JwtFilter jwtFilter;
+
+  public SecurityConfig(JwtFilter jwtFilter) {
+    this.jwtFilter = jwtFilter;
+  }
+
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.httpBasic().disable()
@@ -25,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/user/*").hasRole("USER")
         .antMatchers("/register", "/login").permitAll()
         .and()
-        .addFilterBefore(null, UsernamePasswordAuthenticationFilter.class);
+        .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
   }
 
   @Bean
