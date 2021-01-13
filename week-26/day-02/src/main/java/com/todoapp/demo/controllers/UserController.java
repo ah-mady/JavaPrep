@@ -3,7 +3,6 @@ package com.todoapp.demo.controllers;
 import com.todoapp.demo.configurations.jwt.JwtProvider;
 import com.todoapp.demo.models.TodoEntity;
 import com.todoapp.demo.models.UserEntity;
-import com.todoapp.demo.models.dto.AuthRequest;
 import com.todoapp.demo.models.dto.AuthResponse;
 import com.todoapp.demo.models.dto.UserEntityDto;
 import com.todoapp.demo.services.UserService;
@@ -40,23 +39,17 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public ResponseEntity<UserEntity> loginUser(@RequestBody UserEntityDto userEntityDto) {
+  public ResponseEntity<AuthResponse> loginUser(@RequestBody UserEntityDto userEntityDto) {
     UserEntity userEntity = new UserEntity();
 
     if (userService.findByUsernameAndPassword(userEntityDto.getUsername(), userEntityDto.getPassword()) != null) {
       userEntity.setUsername(userEntityDto.getUsername());
       userEntity.setPassword(userEntityDto.getPassword());
-      return ResponseEntity.ok().body(userEntity);
+      String token = jwtProvider.generateToken(userEntity.getUsername());
+      return ResponseEntity.ok().body(new AuthResponse(token));
     } else {
-      return ResponseEntity.badRequest().body(userEntity);
+      return ResponseEntity.badRequest().body(new AuthResponse());
     }
-  }
-
-  @PostMapping("/auth")
-  public AuthResponse authResponse(AuthRequest authRequest){
-    UserEntity userEntity = userService.findByUsernameAndPassword(authRequest.getUsername(), authRequest.getPassword());
-    String token = jwtProvider.generateToken(userEntity.getUsername());
-    return new AuthResponse(token);
   }
 
 

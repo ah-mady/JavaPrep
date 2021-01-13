@@ -16,6 +16,7 @@ public class UserEntityDto {
   private String username;
   @NotEmpty
   private String password;
+  private String role;
   private List<TodoEntity> todoListDto = new ArrayList<>();
 
   public UserEntityDto() {
