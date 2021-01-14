@@ -20,8 +20,8 @@ public class RoleEntity {
   private long id;
   private String role;
 
-  @OneToMany(mappedBy = "roleEntity")
-  private List<UserEntity> userEntity;
+//  @OneToMany(mappedBy = "roleEntity")
+//  private List<UserEntity> userEntity;
 
   public RoleEntity() {
   }

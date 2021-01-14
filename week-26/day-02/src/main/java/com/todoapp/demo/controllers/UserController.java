@@ -53,14 +53,4 @@ public class UserController {
   }
 
 
-  @GetMapping("/admin")
-  public String admin (){
-    return "This is admin endpoint!";
-  }
-
-  @GetMapping("/user")
-  public String user(){
-    return "This is User endpoint!";
-  }
-
 }
