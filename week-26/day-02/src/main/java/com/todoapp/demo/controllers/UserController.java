@@ -52,5 +52,16 @@ public class UserController {
     }
   }
 
+  @GetMapping("/user/get")
+  public String userPage(){
+    return "This is user page";
+  }
+
+
+  @GetMapping("/admin/get")
+  public String adminPage(){
+    return "This is admin page";
+  }
+
 
 }

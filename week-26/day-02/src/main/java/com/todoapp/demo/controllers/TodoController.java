@@ -1,10 +1,12 @@
 package com.todoapp.demo.controllers;
 
 import com.todoapp.demo.models.TodoEntity;
+import com.todoapp.demo.models.dto.ErrorDTO;
 import com.todoapp.demo.models.dto.TodoEntityDto;
 import com.todoapp.demo.services.TodoService;
 import java.util.List;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +34,14 @@ public class TodoController {
   }
 
   @PostMapping("/list")
-  public ResponseEntity<List<TodoEntity>> listTodos(){
+  public ResponseEntity<?> listTodos(){
     List<TodoEntity> todoEntityList = todoService.listTodos();
     HttpHeaders headers = new HttpHeaders();
     headers.add("Content-Type", "application/json");
+    if (todoEntityList.isEmpty()){
+      ErrorDTO errorDTO = todoService.setError("There are no todos");
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
+    }
     return ResponseEntity.ok().headers(headers).body(todoEntityList);
   }
 
