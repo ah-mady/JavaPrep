@@ -19,7 +19,7 @@ public class TodoController {
     this.todoService = todoService;
   }
 
-  @PostMapping("/save")
+  @PostMapping("/newtodo")
   public ResponseEntity<TodoEntity> saveTodo(@RequestBody TodoEntityDto todoEntityDto){
     TodoEntity todoEntity1 = new TodoEntity();
     todoEntity1.setTitle(todoEntityDto.getTitle());

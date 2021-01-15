@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,9 +18,6 @@ public class RoleEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String role;
-
-//  @OneToMany(mappedBy = "roleEntity")
-//  private List<UserEntity> userEntity;
 
   public RoleEntity() {
   }
