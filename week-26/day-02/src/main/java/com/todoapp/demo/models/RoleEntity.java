@@ -21,8 +21,4 @@ public class RoleEntity {
 
   public RoleEntity() {
   }
-
-  public RoleEntity(String role) {
-    this.role = role;
-  }
 }
