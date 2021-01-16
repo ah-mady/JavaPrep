@@ -4,7 +4,10 @@ import static org.junit.Assert.*;
 
 import com.todoapp.demo.models.TodoEntity;
 import com.todoapp.demo.services.TodoService;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;
 
 
@@ -42,6 +45,27 @@ public class UnitTest {
     todoService.save(todoEntity);
   }
 
+  @Test
+  public void listShouldListAllTodos(){
+    //Arrange
+    TodoEntity todoEntity1 = new TodoEntity("testing 1");
+    TodoEntity todoEntity2 = new TodoEntity("testing 2");
+    todoEntity2.setUrgent(true);
+    todoService.save(todoEntity1);
+    todoService.save(todoEntity2);
 
+    //Act
+    List<TodoEntity> todoEntityList = Arrays.asList(todoEntity1,todoEntity2);
+    List<TodoEntity> result = todoService.listTodos();
+
+    //Assert
+    assertEquals(todoEntityList,result);
+  }
+
+  @Test
+  public void returnTrue(){
+    boolean result = true;
+    Assertions.assertTrue(result);
+  }
 
 }
